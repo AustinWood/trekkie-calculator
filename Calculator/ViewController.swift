@@ -9,17 +9,55 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    
+    @IBAction func zeroPressed(sender: AnyObject) {
+        numberPressed("0")
     }
-
-
+    
+    @IBAction func onePressed(sender: AnyObject) {
+        numberPressed("1")
+    }
+    
+    @IBAction func twoPressed(sender: AnyObject) {
+        numberPressed("2")
+    }
+    
+    @IBAction func threePressed(sender: AnyObject) {
+        numberPressed("3")
+    }
+    
+    @IBAction func fourPressed(sender: AnyObject) {
+        numberPressed("4")
+    }
+    
+    @IBAction func fivePressed(sender: AnyObject) {
+        numberPressed("5")
+    }
+    
+    @IBAction func sixPressed(sender: AnyObject) {
+        numberPressed("6")
+    }
+    
+    @IBAction func sevenPressed(sender: AnyObject) {
+        numberPressed("7")
+    }
+    
+    @IBAction func eightPressed(sender: AnyObject) {
+        numberPressed("8")
+    }
+    
+    @IBAction func ninePressed(sender: AnyObject) {
+        numberPressed("9")
+    }
+    
+    func numberPressed(number: String) {
+        print(number)
+    }
+    
 }
-
