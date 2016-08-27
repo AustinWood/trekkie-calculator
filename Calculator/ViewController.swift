@@ -11,8 +11,138 @@ import UIKit
 class ViewController: UIViewController {
     
     
+    @IBOutlet weak var outputLbl: UILabel!
+    
+    
+    var runningNumber = String()
+    var leftString = String()
+    var rightString = String()
+    
+    
+    enum Operation {
+        case Divide
+        case Multiply
+        case Subtract
+        case Add
+        case Equals
+    }
+    
+    var currentOperation = Operation.Equals
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBarHidden = true
+        
+        resetCalc()
+    }
+    
+    
+    
+    
+    func resetCalc() {
+        
+        runningNumber = ""
+        leftString = ""
+        rightString = ""
+        
+        outputLbl.text = "0"
+    }
+    
+    
+    @IBAction func clearPressed(sender: AnyObject) {
+        resetCalc()
+    }
+    
+    
+
+    
+    
+    /////////////////////////////
+    ///// OPERATION PRESSED /////
+    /////////////////////////////
+    
+    
+    func processOperation() {
+        
+        var calculation = Int()
+        
+        switch currentOperation {
+        case .Divide:
+            
+            calculation = Int(leftString)! / Int(runningNumber)!
+            break
+            
+        case .Multiply:
+            
+            calculation = Int(leftString)! * Int(runningNumber)!
+            break
+            
+        case .Subtract:
+            
+            calculation = Int(leftString)! - Int(runningNumber)!
+            break
+            
+        case .Add:
+            
+            calculation = Int(leftString)! + Int(runningNumber)!
+            break
+            
+        case .Equals:
+            
+            ////// RESUME HERE
+            ////// EQUALS SOMETIMES BREAKS THE CODE
+            calculation = Int(runningNumber)!
+            break
+        }
+        
+        leftString = "\(calculation)"
+        runningNumber = ""
+        outputLbl.text = "\(calculation)"
+        
+    }
+    
+    
+    
+    @IBAction func dividePressed(sender: AnyObject) {
+        processOperation()
+        currentOperation = .Divide
+    }
+    
+    @IBAction func multiplyPressed(sender: AnyObject) {
+        processOperation()
+        currentOperation = .Multiply
+    }
+    
+    @IBAction func subtractPressed(sender: AnyObject) {
+        processOperation()
+        currentOperation = .Subtract
+    }
+    
+    @IBAction func addPressed(sender: AnyObject) {
+        processOperation()
+        currentOperation = .Add
+    }
+    
+    @IBAction func equalsPressed(sender: AnyObject) {
+        processOperation()
+        currentOperation = .Equals
+    }
+    
+    //////////////////////////
+    ///// NUMBER PRESSED /////
+    //////////////////////////
+    
+    
+    func numberPressed(number: String) {
+        print(number)
+        runningNumber = runningNumber + number
+        outputLbl.text = runningNumber
     }
     
     
@@ -56,8 +186,5 @@ class ViewController: UIViewController {
         numberPressed("9")
     }
     
-    func numberPressed(number: String) {
-        print(number)
-    }
     
 }
