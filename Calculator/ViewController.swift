@@ -37,9 +37,11 @@ class ViewController: UIViewController {
         outputLbl.text = "0"
     }
     
+    
     @IBAction func clearPressed(sender: AnyObject) {
         resetCalc()
     }
+    
     
     @IBAction func numberPressed(sender: AnyObject) {
         
@@ -51,6 +53,22 @@ class ViewController: UIViewController {
         runningNumber = runningNumber + number
         outputLbl.text = runningNumber
     }
+    
+    
+    @IBAction func decimalPressed(sender: AnyObject) {
+        
+        if equalsPressed {
+            resetCalc()
+        }
+        
+        if runningNumber == "" {
+            runningNumber = "0"
+        }
+        
+        runningNumber = runningNumber + "."
+        outputLbl.text = runningNumber
+    }
+    
     
     @IBAction func operationPressed(sender: AnyObject) {
         
@@ -80,9 +98,14 @@ class ViewController: UIViewController {
     }
     
     
+    @IBAction func reverseSignPressed(sender: AnyObject) {
+        
+    }
+    
+    
     func processOperation() {
         
-        var calculation = Int()
+        var calculation = Double()
         
         if leftString == "" {
             leftString = "0"
@@ -91,23 +114,36 @@ class ViewController: UIViewController {
         switch currentOperation {
         
         case 1:
-            calculation = Int(leftString)! / Int(rightString)!
+            calculation = Double(leftString)! / Double(rightString)!
             break
         case 2:
-            calculation = Int(leftString)! * Int(rightString)!
+            calculation = Double(leftString)! * Double(rightString)!
             break
         case 3:
-            calculation = Int(leftString)! - Int(rightString)!
+            calculation = Double(leftString)! - Double(rightString)!
             break
         case 4:
-            calculation = Int(leftString)! + Int(rightString)!
+            calculation = Double(leftString)! + Double(rightString)!
             break
         default:
             break
         }
         
-        leftString = "\(calculation)"
+        if calculation % 1 == 0 {
+            let intCalc = Int(calculation)
+            leftString = "\(intCalc)"
+        } else {
+            leftString = "\(calculation)"
+        }
+        
         outputLbl.text = leftString
+    }
+    
+    
+    func isInt(double: Double) -> Bool {
+        
+        let isInteger = double % 1 == 0
+        return isInteger
     }
     
 }
