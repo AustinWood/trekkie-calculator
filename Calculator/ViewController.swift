@@ -100,6 +100,31 @@ class ViewController: UIViewController {
     
     @IBAction func reverseSignPressed(sender: AnyObject) {
         
+        if outputLbl.text != "0" {
+            if outputLbl.text == runningNumber {
+                print("output = running")
+                runningNumber = reverseSign(runningNumber)
+                outputLbl.text = runningNumber
+            } else {
+                print("output != running")
+                leftString = reverseSign(leftString)
+                outputLbl.text = leftString
+            }
+        }
+    }
+    
+    
+    func reverseSign(inputString: String) -> String {
+        
+        var outputString = ""
+        
+        if inputString.rangeOfString("-") != nil {
+            outputString = inputString.stringByReplacingOccurrencesOfString("-", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        } else {
+            outputString = "-" + inputString
+        }
+        
+        return outputString
     }
     
     
