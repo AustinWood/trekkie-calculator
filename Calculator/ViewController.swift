@@ -8,6 +8,13 @@
 
 import UIKit
 
+/////////////////
+///// TO DO /////
+/////////////////
+
+// Long decimals and big numbers cut off with "..."
+// If memory is INT, don't display ".0"
+
 class ViewController: UIViewController {
     
     @IBOutlet weak var outputLbl: UILabel!
@@ -102,11 +109,9 @@ class ViewController: UIViewController {
         
         if outputLbl.text != "0" {
             if outputLbl.text == runningNumber {
-                print("output = running")
                 runningNumber = reverseSign(runningNumber)
                 outputLbl.text = runningNumber
             } else {
-                print("output != running")
                 leftString = reverseSign(leftString)
                 outputLbl.text = leftString
             }
@@ -163,6 +168,37 @@ class ViewController: UIViewController {
         
         outputLbl.text = leftString
     }
+    
+    
+    @IBAction func memoryPressed(sender: AnyObject) {
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        if sender.tag == 1 {
+            
+            defaults.setDouble(0.0, forKey: "memoryDouble")
+            
+        } else {
+            
+            var savedDouble = defaults.doubleForKey("memoryDouble")
+            
+            if sender.tag == 2 {
+                savedDouble += Double(outputLbl.text!)!
+                defaults.setDouble(savedDouble, forKey: "memoryDouble")
+            }
+            else if sender.tag == 3 {
+                savedDouble -= Double(outputLbl.text!)!
+                defaults.setDouble(savedDouble, forKey: "memoryDouble")
+            }
+            else {
+                runningNumber = "\(savedDouble)"
+                outputLbl.text = runningNumber
+            }
+            
+        }
+        
+    }
+    
     
     
     func isInt(double: Double) -> Bool {
