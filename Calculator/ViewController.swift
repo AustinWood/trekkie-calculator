@@ -14,31 +14,40 @@ import UIKit
 
 // Long decimals and big numbers cut off with "..."
 // If memory is INT, don't display ".0"
+// Bug: after memory button is pressed, then number, it extends instead of clearing
+// On second clear, alwats depress MC button
+// Equals pressed after MR displays 0
 
 class ViewController: UIViewController {
     
     @IBOutlet weak var outputLbl: UILabel!
     
-    var runningNumber = ""
-    var leftString = ""
-    var rightString = ""
+    var runningNumber = Double()
+    var leftString = Double()
+    var rightString = Double()
     var currentOperation = 0
     var equalsPressed = false
+    var decimalPressed = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func viewWillAppear(animated: Bool) {
+        
         super.viewWillAppear(animated)
         self.navigationController?.navigationBarHidden = true
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setDouble(0.0, forKey: "memoryDouble")
+            
         resetCalc()
     }
     
     func resetCalc() {
-        runningNumber = ""
-        leftString = ""
-        rightString = ""
+        runningNumber = 0.0
+        leftString = 0.0
+        rightString = 0.0
         currentOperation = 0
         equalsPressed = false
         outputLbl.text = "0"
@@ -56,28 +65,46 @@ class ViewController: UIViewController {
             resetCalc()
         }
         
-        let number = "\(sender.tag)"
-        runningNumber = runningNumber + number
-        outputLbl.text = runningNumber
+        let number = sender.tag
+        
+        if !decimalPressed {
+            runningNumber = Double(String(Int(runningNumber)) + String(number))!
+        }
+        else {
+            if isInt(runningNumber) {
+                runningNumber = Double(String(Int(runningNumber)) + "." + String(number))!
+            } else {
+                runningNumber = Double(String(runningNumber) + String(number))!
+            }
+        }
+        
+        outputLbl.text = formatOutputText(runningNumber)
     }
     
     
     @IBAction func decimalPressed(sender: AnyObject) {
         
-        if equalsPressed {
-            resetCalc()
+        if !decimalPressed {
+            
+            decimalPressed = true
+            
+            // TO-DO: is this still necessary?
+            if equalsPressed {
+                resetCalc()
+            }
+            
+        } else {
+            
+            // button press feedback to ackngoledge the operation regitsered but invalid
         }
         
-        if runningNumber == "" {
-            runningNumber = "0"
-        }
-        
-        runningNumber = runningNumber + "."
-        outputLbl.text = runningNumber
+        outputLbl.text = formatOutputText(runningNumber)
     }
     
     
     @IBAction func operationPressed(sender: AnyObject) {
+        
+        decimalPressed = false
         
         if equalsPressed {
             equalsPressed = false
@@ -88,17 +115,19 @@ class ViewController: UIViewController {
             processOperation()
         }
         
-        runningNumber = ""
+        runningNumber = 0.0
         currentOperation = sender.tag
     }
     
     
     @IBAction func equalsPressed(sender: AnyObject) {
         
+        decimalPressed = false
+        
         if !equalsPressed {
             equalsPressed = true
             rightString = runningNumber
-            runningNumber = ""
+            runningNumber = 0.0
         }
         
         processOperation()
@@ -108,69 +137,71 @@ class ViewController: UIViewController {
     @IBAction func reverseSignPressed(sender: AnyObject) {
         
         if outputLbl.text != "0" {
-            if outputLbl.text == runningNumber {
-                runningNumber = reverseSign(runningNumber)
-                outputLbl.text = runningNumber
+            if Double(outputLbl.text!)! == runningNumber {
+                runningNumber = runningNumber * -1
+                outputLbl.text = String(runningNumber)
             } else {
-                leftString = reverseSign(leftString)
-                outputLbl.text = leftString
+                leftString = leftString * -1
+                outputLbl.text = String(leftString)
             }
         }
     }
     
     
-    func reverseSign(inputString: String) -> String {
-        
-        var outputString = ""
-        
-        if inputString.rangeOfString("-") != nil {
-            outputString = inputString.stringByReplacingOccurrencesOfString("-", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
-        } else {
-            outputString = "-" + inputString
-        }
-        
-        return outputString
-    }
+//    func reverseSign(inputString: String) -> String {
+//        
+//        var outputString = ""
+//        
+//        if inputString.rangeOfString("-") != nil {
+//            outputString = inputString.stringByReplacingOccurrencesOfString("-", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+//        } else {
+//            outputString = "-" + inputString
+//        }
+//        
+//        return outputString
+//    }
     
     
     func processOperation() {
         
         var calculation = Double()
         
-        if leftString == "" {
-            leftString = "0"
-        }
-        
         switch currentOperation {
         
         case 1:
-            calculation = Double(leftString)! / Double(rightString)!
+            calculation = leftString / rightString
             break
         case 2:
-            calculation = Double(leftString)! * Double(rightString)!
+            calculation = leftString * rightString
             break
         case 3:
-            calculation = Double(leftString)! - Double(rightString)!
+            calculation = leftString - rightString
             break
         case 4:
-            calculation = Double(leftString)! + Double(rightString)!
+            calculation = leftString + rightString
             break
         default:
+            calculation = runningNumber
             break
         }
         
-        if calculation % 1 == 0 {
-            let intCalc = Int(calculation)
-            leftString = "\(intCalc)"
-        } else {
-            leftString = "\(calculation)"
-        }
+//        if calculation % 1 == 0 {
+//            let intCalc = Int(calculation)
+//            leftString = "\(intCalc)"
+//        } else {
+//            leftString = "\(calculation)"
+//        }
         
-        outputLbl.text = leftString
+        leftString = calculation
+        
+        outputLbl.text = formatOutputText(leftString)
     }
     
     
     @IBAction func memoryPressed(sender: AnyObject) {
+        
+        equalsPressed = true
+        currentOperation = 0
         
         let defaults = NSUserDefaults.standardUserDefaults()
         
@@ -191,12 +222,32 @@ class ViewController: UIViewController {
                 defaults.setDouble(savedDouble, forKey: "memoryDouble")
             }
             else {
-                runningNumber = "\(savedDouble)"
-                outputLbl.text = runningNumber
+                runningNumber = savedDouble
+                outputLbl.text = formatOutputText(runningNumber)
             }
             
         }
         
+    }
+    
+    
+    func formatOutputText(inputDouble: Double) -> String {
+        
+        var outputString = String()
+        
+        if inputDouble % 1 == 0 {
+            
+            outputString = String(Int(inputDouble))
+            
+            if decimalPressed {
+                outputString = outputString + "."
+            }
+                
+        } else {
+            outputString = String(inputDouble)
+        }
+        
+        return outputString
     }
     
     
@@ -206,5 +257,7 @@ class ViewController: UIViewController {
         let isInteger = double % 1 == 0
         return isInteger
     }
+    
+    // TO-DO: Can I create a "formatInt" function that returns an Int if an Int and a Double if a Double?
     
 }
