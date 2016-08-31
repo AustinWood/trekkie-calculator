@@ -13,10 +13,8 @@ import UIKit
 /////////////////
 
 // Long decimals and big numbers cut off with "..."
-// If memory is INT, don't display ".0"
-// Bug: after memory button is pressed, then number, it extends instead of clearing
-// On second clear, alwats depress MC button
-// Equals pressed after MR displays 0
+// On second clear, also depress MC button
+// Equals pressed after first number input resets to 0
 
 class ViewController: UIViewController {
     
