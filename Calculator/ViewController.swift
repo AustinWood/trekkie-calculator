@@ -14,7 +14,6 @@ import UIKit
 
 // Long decimals and big numbers cut off with "..."
 // On second clear, also depress MC button
-// Equals pressed after first number input resets to 0
 
 class ViewController: UIViewController {
     
@@ -43,6 +42,7 @@ class ViewController: UIViewController {
     }
     
     func resetCalc() {
+        print("func resetCalc()")
         runningNumber = 0.0
         leftString = 0.0
         rightString = 0.0
@@ -102,9 +102,9 @@ class ViewController: UIViewController {
     
     @IBAction func operationPressed(sender: AnyObject) {
         
-        print("Operation pressed")
-        print("running number = \(runningNumber)")
-        print("current operation = \(currentOperation)")
+        print("operationPressed()")
+        print("runningNumber = \(runningNumber)")
+        print("currentOperation = \(currentOperation)")
         
         decimalPressed = false
         
@@ -143,10 +143,10 @@ class ViewController: UIViewController {
         if outputLbl.text != "0" {
             if Double(outputLbl.text!)! == runningNumber {
                 runningNumber = runningNumber * -1
-                outputLbl.text = String(runningNumber)
+                outputLbl.text = formatOutputText(runningNumber)
             } else {
                 leftString = leftString * -1
-                outputLbl.text = String(leftString)
+                outputLbl.text = formatOutputText(leftString)
             }
         }
     }
@@ -174,13 +174,6 @@ class ViewController: UIViewController {
             calculation = runningNumber
             break
         }
-        
-//        if calculation % 1 == 0 {
-//            let intCalc = Int(calculation)
-//            leftString = "\(intCalc)"
-//        } else {
-//            leftString = "\(calculation)"
-//        }
         
         leftString = calculation
         
@@ -217,8 +210,9 @@ class ViewController: UIViewController {
             }
             
             runningNumber = Double(outputLbl.text!)!
-            print("Memory pressed")
-            print("running number = \(runningNumber)")
+            
+            print("memoryPressed()")
+            print("runningNumber = \(runningNumber)")
         }
         
     }
@@ -250,7 +244,5 @@ class ViewController: UIViewController {
         let isInteger = double % 1 == 0
         return isInteger
     }
-    
-    // TO-DO: Can I create a "formatInt" function that returns an Int if an Int and a Double if a Double?
     
 }
