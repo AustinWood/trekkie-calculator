@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     var leftString = Double()
     var rightString = Double()
     var currentOperation = 0
-    var equalsPressed = false
+    var resetOutput = false
     var decimalPressed = false
     
     override func viewDidLoad() {
@@ -47,7 +47,7 @@ class ViewController: UIViewController {
         leftString = 0.0
         rightString = 0.0
         currentOperation = 0
-        equalsPressed = false
+        resetOutput = false
         outputLbl.text = "0"
     }
     
@@ -59,7 +59,7 @@ class ViewController: UIViewController {
     
     @IBAction func numberPressed(sender: AnyObject) {
         
-        if equalsPressed {
+        if resetOutput {
             resetCalc()
         }
         
@@ -87,7 +87,7 @@ class ViewController: UIViewController {
             decimalPressed = true
             
             // TO-DO: is this still necessary?
-            if equalsPressed {
+            if resetOutput {
                 resetCalc()
             }
             
@@ -102,11 +102,17 @@ class ViewController: UIViewController {
     
     @IBAction func operationPressed(sender: AnyObject) {
         
+        print("Operation pressed")
+        print("running number = \(runningNumber)")
+        print("current operation = \(currentOperation)")
+        
         decimalPressed = false
         
-        if equalsPressed {
-            equalsPressed = false
-        } else if currentOperation == 0 {
+        if resetOutput {
+            resetOutput = false
+        }
+        
+        if currentOperation == 0 {
             leftString = runningNumber
         } else {
             rightString = runningNumber
@@ -122,8 +128,8 @@ class ViewController: UIViewController {
         
         decimalPressed = false
         
-        if !equalsPressed {
-            equalsPressed = true
+        if !resetOutput && currentOperation != 0 {
+            resetOutput = true
             rightString = runningNumber
             runningNumber = 0.0
         }
@@ -144,20 +150,6 @@ class ViewController: UIViewController {
             }
         }
     }
-    
-    
-//    func reverseSign(inputString: String) -> String {
-//        
-//        var outputString = ""
-//        
-//        if inputString.rangeOfString("-") != nil {
-//            outputString = inputString.stringByReplacingOccurrencesOfString("-", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
-//        } else {
-//            outputString = "-" + inputString
-//        }
-//        
-//        return outputString
-//    }
     
     
     func processOperation() {
@@ -198,7 +190,7 @@ class ViewController: UIViewController {
     
     @IBAction func memoryPressed(sender: AnyObject) {
         
-        equalsPressed = true
+        resetOutput = true
         currentOperation = 0
         
         let defaults = NSUserDefaults.standardUserDefaults()
@@ -224,6 +216,9 @@ class ViewController: UIViewController {
                 outputLbl.text = formatOutputText(runningNumber)
             }
             
+            runningNumber = Double(outputLbl.text!)!
+            print("Memory pressed")
+            print("running number = \(runningNumber)")
         }
         
     }
