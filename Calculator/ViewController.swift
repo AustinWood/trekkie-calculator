@@ -13,11 +13,12 @@ import UIKit
 /////////////////
 
 // Long decimals and big numbers cut off with "..."
-// On second clear, also depress MC button
+// C vs AC
 
 class ViewController: UIViewController {
     
     @IBOutlet weak var outputLbl: UILabel!
+    @IBOutlet weak var clearBtn: CalcButton!
     
     var runningNumber = Double()
     var leftString = Double()
@@ -49,11 +50,19 @@ class ViewController: UIViewController {
         currentOperation = 0
         resetOutput = false
         outputLbl.text = "0"
+        clearBtn.setTitle("AC", forState: .Normal)
     }
     
     
     @IBAction func clearPressed(sender: AnyObject) {
-        resetCalc()
+        
+        if clearBtn.titleLabel?.text == "AC" {
+            resetCalc()
+        } else {
+            runningNumber = 0.0
+            outputLbl.text = "0"
+            clearBtn.setTitle("AC", forState: .Normal)
+        }
     }
     
     
@@ -62,6 +71,8 @@ class ViewController: UIViewController {
         if resetOutput {
             resetCalc()
         }
+        
+        clearBtn.setTitle("C", forState: .Normal)
         
         let number = sender.tag
         
