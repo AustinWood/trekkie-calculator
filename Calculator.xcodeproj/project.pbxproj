@@ -10,6 +10,7 @@
 		4202967D1D86F9BB0061AC8B /* PinkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4202967C1D86F9BB0061AC8B /* PinkButton.swift */; };
 		4202967F1D86F9D00061AC8B /* PurpleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4202967E1D86F9D00061AC8B /* PurpleButton.swift */; };
 		420296811D86F9FB0061AC8B /* EqualsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420296801D86F9FB0061AC8B /* EqualsButton.swift */; };
+		420296851D870CC70061AC8B /* LeftBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420296841D870CC70061AC8B /* LeftBar.swift */; };
 		422C47081D70C92E008CDFCB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422C47071D70C92E008CDFCB /* AppDelegate.swift */; };
 		422C470A1D70C92E008CDFCB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422C47091D70C92E008CDFCB /* ViewController.swift */; };
 		422C470D1D70C92E008CDFCB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 422C470B1D70C92E008CDFCB /* Main.storyboard */; };
@@ -42,6 +43,7 @@
 		4202967C1D86F9BB0061AC8B /* PinkButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinkButton.swift; sourceTree = "<group>"; };
 		4202967E1D86F9D00061AC8B /* PurpleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurpleButton.swift; sourceTree = "<group>"; };
 		420296801D86F9FB0061AC8B /* EqualsButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EqualsButton.swift; sourceTree = "<group>"; };
+		420296841D870CC70061AC8B /* LeftBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftBar.swift; sourceTree = "<group>"; };
 		422C47041D70C92E008CDFCB /* Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		422C47071D70C92E008CDFCB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		422C47091D70C92E008CDFCB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				4202967C1D86F9BB0061AC8B /* PinkButton.swift */,
 				4202967E1D86F9D00061AC8B /* PurpleButton.swift */,
 				420296801D86F9FB0061AC8B /* EqualsButton.swift */,
+				420296841D870CC70061AC8B /* LeftBar.swift */,
 			);
 			name = "Style subclasses";
 			path = Calculator;
@@ -280,6 +283,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				420296851D870CC70061AC8B /* LeftBar.swift in Sources */,
 				420296811D86F9FB0061AC8B /* EqualsButton.swift in Sources */,
 				422C470A1D70C92E008CDFCB /* ViewController.swift in Sources */,
 				4202967D1D86F9BB0061AC8B /* PinkButton.swift in Sources */,

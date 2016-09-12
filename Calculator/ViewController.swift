@@ -19,13 +19,6 @@ class ViewController: UIViewController {
     
     
     
-    @IBOutlet weak var rightMargin: NSLayoutConstraint!
-    @IBOutlet weak var leftMargin: NSLayoutConstraint!
-    @IBOutlet weak var bottomMargin: NSLayoutConstraint!
-    
-    @IBOutlet weak var buttonsRightMargin: NSLayoutConstraint!
-    @IBOutlet weak var buttonsLeftMargin: NSLayoutConstraint!
-    @IBOutlet weak var buttonsBottomMargin: NSLayoutConstraint!
     
     @IBOutlet weak var borderView: UIView!
     
@@ -43,23 +36,23 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let screenSize: CGRect = UIScreen.mainScreen().bounds
-        let screenWidth = screenSize.width
-        let outerMargin = screenWidth / 1242 * 30
-        
-        rightMargin.constant = outerMargin
-        leftMargin.constant = outerMargin
-        bottomMargin.constant = outerMargin
-        
-        let borderWidth = self.borderView.frame.size.width / 1182 * 40
-        let innerBorder = outerMargin + borderWidth + 4
-        
-        buttonsRightMargin.constant = outerMargin
-        buttonsLeftMargin.constant = innerBorder
-        buttonsBottomMargin.constant = innerBorder
-        
-        print(outerMargin)
-        print(innerBorder)
+//        let screenSize: CGRect = UIScreen.mainScreen().bounds
+//        let screenWidth = screenSize.width
+//        let outerMargin = screenWidth / 1242 * 30
+//        
+//        rightMargin.constant = outerMargin
+//        leftMargin.constant = outerMargin
+//        bottomMargin.constant = outerMargin
+//        
+//        let borderWidth = self.borderView.frame.size.width / 1182 * 40
+//        let innerBorder = outerMargin + borderWidth + 4
+//        
+//        buttonsRightMargin.constant = outerMargin
+//        buttonsLeftMargin.constant = innerBorder
+//        buttonsBottomMargin.constant = innerBorder
+//        
+//        print(outerMargin)
+//        print(innerBorder)
         
     }
     
