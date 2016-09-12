@@ -3,6 +3,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -17,278 +19,236 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="9IS-7H-nCf">
-                                <rect key="frame" x="32" y="88" width="350" height="560"/>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lzh-Ms-2og">
+                                <rect key="frame" x="10" y="28" width="394" height="700"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1234567890" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NgZ-Wo-8cZ">
-                                        <rect key="frame" x="0.0" y="0.0" width="345" height="73"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="49"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="T45-9J-5XY" userLabel="Memory">
-                                        <rect key="frame" x="0.0" y="81" width="350" height="73"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="side_bottom_bar" translatesAutoresizingMaskIntoConstraints="NO" id="6A3-Ok-UcE">
+                                        <rect key="frame" x="0.0" y="116" width="394" height="584"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="6A3-Ok-UcE" secondAttribute="height" multiplier="1182:1732" id="KZA-Id-8u3"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="6A3-Ok-UcE" firstAttribute="leading" secondItem="lzh-Ms-2og" secondAttribute="leading" id="RKy-9d-S5I"/>
+                                    <constraint firstAttribute="trailing" secondItem="6A3-Ok-UcE" secondAttribute="trailing" id="s0s-Dz-UzG"/>
+                                    <constraint firstAttribute="bottom" secondItem="6A3-Ok-UcE" secondAttribute="bottom" id="yQq-mk-gFf"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Zvx-FG-NmC" userLabel="All buttons">
+                                <rect key="frame" x="50" y="233" width="314" height="473"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="buE-ir-L2Z" userLabel="[M btns]">
+                                        <rect key="frame" x="0.0" y="0.0" width="314" height="76"/>
                                         <subviews>
-                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mQN-gh-EID" customClass="CalcButton" customModule="Calculator" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="82" height="73"/>
-                                                <state key="normal" title="MC">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="memoryPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OdJ-K3-nQw"/>
-                                                </connections>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XdT-zc-UCo" customClass="PurpleButton" customModule="Calculator" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="76" height="76"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="XdT-zc-UCo" secondAttribute="height" multiplier="1:1" id="162-7t-ycV"/>
+                                                </constraints>
+                                                <state key="normal" title="MC"/>
                                             </button>
-                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WgI-5G-B76" customClass="CalcButton" customModule="Calculator" customModuleProvider="target">
-                                                <rect key="frame" x="90" y="0.0" width="81" height="73"/>
-                                                <state key="normal" title="M+">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="memoryPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ihQ-h5-t2K"/>
-                                                </connections>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FN1-9P-pi4" customClass="PurpleButton" customModule="Calculator" customModuleProvider="target">
+                                                <rect key="frame" x="80" y="0.0" width="75" height="76"/>
+                                                <state key="normal" title="M+"/>
                                             </button>
-                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hY2-Nc-prj" customClass="CalcButton" customModule="Calculator" customModuleProvider="target">
-                                                <rect key="frame" x="179" y="0.0" width="82" height="73"/>
-                                                <state key="normal" title="M-">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="memoryPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="J7a-jq-hJ7"/>
-                                                </connections>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tqo-r1-hcE" customClass="PurpleButton" customModule="Calculator" customModuleProvider="target">
+                                                <rect key="frame" x="159" y="0.0" width="76" height="76"/>
+                                                <state key="normal" title="M-"/>
                                             </button>
-                                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ycv-h2-hqx" customClass="CalcButton" customModule="Calculator" customModuleProvider="target">
-                                                <rect key="frame" x="269" y="0.0" width="81" height="73"/>
-                                                <state key="normal" title="MR">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="memoryPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4ng-T8-TvG"/>
-                                                </connections>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bCe-LH-5ad" customClass="PurpleButton" customModule="Calculator" customModuleProvider="target">
+                                                <rect key="frame" x="239" y="0.0" width="75" height="76"/>
+                                                <state key="normal" title="MR"/>
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="CNO-zc-8oH" userLabel="Clear">
-                                        <rect key="frame" x="0.0" y="162" width="350" height="73"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="yYs-n4-auf" userLabel="[C +- / *]">
+                                        <rect key="frame" x="0.0" y="80" width="314" height="75"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="obd-Os-X6e" customClass="CalcButton" customModule="Calculator" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="111" height="73"/>
-                                                <state key="normal" title="AC">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="clearPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3W0-hM-pQ8"/>
-                                                </connections>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="etz-tY-bWf" customClass="PinkButton" customModule="Calculator" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="76" height="75"/>
+                                                <state key="normal" title="C"/>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="igs-Mj-fFb" customClass="CalcButton" customModule="Calculator" customModuleProvider="target">
-                                                <rect key="frame" x="119" y="0.0" width="112" height="73"/>
-                                                <state key="normal" title="+/-">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="reverseSignPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="obD-YB-2IR"/>
-                                                </connections>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UMl-OJ-RAC" userLabel="[+/-]" customClass="PinkButton" customModule="Calculator" customModuleProvider="target">
+                                                <rect key="frame" x="80" y="0.0" width="75" height="75"/>
+                                                <state key="normal" title="+/-"/>
                                             </button>
-                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JXi-0h-rsT" customClass="CalcButton" customModule="Calculator" customModuleProvider="target">
-                                                <rect key="frame" x="239" y="0.0" width="111" height="73"/>
-                                                <state key="normal" title="÷">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="operationPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="D9I-5K-l26"/>
-                                                </connections>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zle-xX-Ece" userLabel="[/]" customClass="PinkButton" customModule="Calculator" customModuleProvider="target">
+                                                <rect key="frame" x="159" y="0.0" width="76" height="75"/>
+                                                <state key="normal" title="/"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qm9-hi-MZ4" userLabel="[*]" customClass="PinkButton" customModule="Calculator" customModuleProvider="target">
+                                                <rect key="frame" x="239" y="0.0" width="75" height="75"/>
+                                                <state key="normal" title="*"/>
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="KVa-dk-zce" userLabel="789x">
-                                        <rect key="frame" x="0.0" y="243" width="350" height="74"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="3EP-BW-6Hy" userLabel="[Bottom 4 rows]">
+                                        <rect key="frame" x="0.0" y="159" width="314" height="314"/>
                                         <subviews>
-                                            <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fr6-a9-VOK" customClass="CalcButton" customModule="Calculator" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="82" height="74"/>
-                                                <state key="normal" title="7">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="numberPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JVo-OQ-ah3"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bwK-Pg-Pof" customClass="CalcButton" customModule="Calculator" customModuleProvider="target">
-                                                <rect key="frame" x="90" y="0.0" width="81" height="74"/>
-                                                <state key="normal" title="8">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="numberPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ap2-uG-d9u"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mqZ-zx-CQN" customClass="CalcButton" customModule="Calculator" customModuleProvider="target">
-                                                <rect key="frame" x="179" y="0.0" width="82" height="74"/>
-                                                <state key="normal" title="9">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="numberPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fE6-5K-uxD"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MMG-8n-PFX" customClass="CalcButton" customModule="Calculator" customModuleProvider="target">
-                                                <rect key="frame" x="269" y="0.0" width="81" height="74"/>
-                                                <state key="normal" title="x">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="operationPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="U5X-Oy-Te4"/>
-                                                </connections>
-                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="bTR-QR-xFQ" userLabel="Numbers">
+                                                <rect key="frame" x="0.0" y="0.0" width="235" height="314"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="qla-MS-GaO" userLabel="[7 8 9]">
+                                                        <rect key="frame" x="0.0" y="0.0" width="235" height="76"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dLw-4a-nMB" customClass="RoundButton" customModule="Calculator" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="76" height="76"/>
+                                                                <state key="normal" title="7"/>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kUN-Yc-Joy" customClass="RoundButton" customModule="Calculator" customModuleProvider="target">
+                                                                <rect key="frame" x="80" y="0.0" width="75" height="76"/>
+                                                                <state key="normal" title="8"/>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SZK-Zu-rw4" customClass="RoundButton" customModule="Calculator" customModuleProvider="target">
+                                                                <rect key="frame" x="159" y="0.0" width="76" height="76"/>
+                                                                <state key="normal" title="9"/>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="SZK-Zu-rw4" firstAttribute="width" secondItem="dLw-4a-nMB" secondAttribute="width" id="P4r-fx-gQm"/>
+                                                            <constraint firstItem="kUN-Yc-Joy" firstAttribute="width" secondItem="dLw-4a-nMB" secondAttribute="width" id="WyS-5f-Lze"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="aA9-IB-0Pz" userLabel="[4 5 6]">
+                                                        <rect key="frame" x="0.0" y="80" width="235" height="75"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oQO-Ig-UWn" customClass="RoundButton" customModule="Calculator" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="76" height="75"/>
+                                                                <state key="normal" title="4"/>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="33n-KL-uTs" customClass="RoundButton" customModule="Calculator" customModuleProvider="target">
+                                                                <rect key="frame" x="80" y="0.0" width="75" height="75"/>
+                                                                <state key="normal" title="5"/>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U2m-t8-URy" customClass="RoundButton" customModule="Calculator" customModuleProvider="target">
+                                                                <rect key="frame" x="159" y="0.0" width="76" height="75"/>
+                                                                <state key="normal" title="6"/>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="U2m-t8-URy" firstAttribute="width" secondItem="oQO-Ig-UWn" secondAttribute="width" id="LXY-Ht-OO1"/>
+                                                            <constraint firstItem="33n-KL-uTs" firstAttribute="width" secondItem="oQO-Ig-UWn" secondAttribute="width" id="jk0-KS-XaM"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="5zH-P7-tFX" userLabel="[1 2 3]">
+                                                        <rect key="frame" x="0.0" y="159" width="235" height="76"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vug-SM-0TA" customClass="RoundButton" customModule="Calculator" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="76" height="76"/>
+                                                                <state key="normal" title="1"/>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ptk-P6-Nlf" customClass="RoundButton" customModule="Calculator" customModuleProvider="target">
+                                                                <rect key="frame" x="80" y="0.0" width="75" height="76"/>
+                                                                <state key="normal" title="2"/>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="29l-vJ-QpJ" customClass="RoundButton" customModule="Calculator" customModuleProvider="target">
+                                                                <rect key="frame" x="159" y="0.0" width="76" height="76"/>
+                                                                <state key="normal" title="3"/>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="Ptk-P6-Nlf" firstAttribute="width" secondItem="Vug-SM-0TA" secondAttribute="width" id="2uc-7B-t9A"/>
+                                                            <constraint firstItem="29l-vJ-QpJ" firstAttribute="width" secondItem="Vug-SM-0TA" secondAttribute="width" id="uL1-h5-acJ"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="WeA-er-oJ6" userLabel="[0 .]">
+                                                        <rect key="frame" x="0.0" y="239" width="235" height="75"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OLS-Je-5B4" customClass="RoundButton" customModule="Calculator" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="155" height="75"/>
+                                                                <state key="normal" title="0"/>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V12-O2-KK8" customClass="RoundButton" customModule="Calculator" customModuleProvider="target">
+                                                                <rect key="frame" x="159" y="0.0" width="76" height="75"/>
+                                                                <state key="normal" title="."/>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="V12-O2-KK8" firstAttribute="width" secondItem="29l-vJ-QpJ" secondAttribute="width" id="yS4-f8-w3a"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="dxv-oH-SgK" userLabel="[+ - =]">
+                                                <rect key="frame" x="239" y="0.0" width="75" height="314"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UTo-V8-ZuC" customClass="PinkButton" customModule="Calculator" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="75" height="76"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="UTo-V8-ZuC" secondAttribute="height" multiplier="1:1" id="FvT-9o-TFE"/>
+                                                        </constraints>
+                                                        <state key="normal" title="+"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u0g-SC-BfX" customClass="PinkButton" customModule="Calculator" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="80" width="75" height="75"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="u0g-SC-BfX" secondAttribute="height" multiplier="1:1" id="wea-XY-uJ3"/>
+                                                        </constraints>
+                                                        <state key="normal" title="-"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CbW-P4-5lo" customClass="EqualsButton" customModule="Calculator" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="159" width="75" height="155"/>
+                                                        <state key="normal" title="="/>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="u0g-SC-BfX" firstAttribute="height" secondItem="UTo-V8-ZuC" secondAttribute="height" id="tdh-We-Dea"/>
+                                                </constraints>
+                                            </stackView>
                                         </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="2b9-DZ-xKc" userLabel="456-">
-                                        <rect key="frame" x="0.0" y="325" width="350" height="73"/>
-                                        <subviews>
-                                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="toX-qv-Eve" customClass="CalcButton" customModule="Calculator" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="82" height="73"/>
-                                                <state key="normal" title="4">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="numberPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QRy-lc-BMT"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G1H-Db-ap1" customClass="CalcButton" customModule="Calculator" customModuleProvider="target">
-                                                <rect key="frame" x="90" y="0.0" width="81" height="73"/>
-                                                <state key="normal" title="5">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="numberPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AnI-Yk-xoh"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j6z-IX-vg3" customClass="CalcButton" customModule="Calculator" customModuleProvider="target">
-                                                <rect key="frame" x="179" y="0.0" width="82" height="73"/>
-                                                <state key="normal" title="6">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="numberPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="o8h-ja-n7W"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8bK-P0-o77" customClass="CalcButton" customModule="Calculator" customModuleProvider="target">
-                                                <rect key="frame" x="269" y="0.0" width="81" height="73"/>
-                                                <state key="normal" title="-">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="operationPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KTz-ck-zJW"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="f3W-67-f7W" userLabel="123+">
-                                        <rect key="frame" x="0.0" y="406" width="350" height="73"/>
-                                        <subviews>
-                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PPX-31-vAa" customClass="CalcButton" customModule="Calculator" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="82" height="73"/>
-                                                <state key="normal" title="1">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="numberPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="clg-uF-VO0"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6pR-eR-qft" customClass="CalcButton" customModule="Calculator" customModuleProvider="target">
-                                                <rect key="frame" x="90" y="0.0" width="81" height="73"/>
-                                                <state key="normal" title="2">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="numberPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hZK-ho-Z9t"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ht9-BN-uyz" customClass="CalcButton" customModule="Calculator" customModuleProvider="target">
-                                                <rect key="frame" x="179" y="0.0" width="82" height="73"/>
-                                                <state key="normal" title="3">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="numberPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4Gu-FB-eEl"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eSp-RJ-Bys" customClass="CalcButton" customModule="Calculator" customModuleProvider="target">
-                                                <rect key="frame" x="269" y="0.0" width="81" height="73"/>
-                                                <state key="normal" title="+">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="operationPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mTq-xI-4MO"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="9ev-n1-ngm" userLabel="0.=">
-                                        <rect key="frame" x="0.0" y="487" width="350" height="73"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="esw-Z8-LJj" customClass="CalcButton" customModule="Calculator" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="111" height="73"/>
-                                                <state key="normal" title="0">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="numberPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iTi-bE-mz3"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gHj-NE-q2b" customClass="CalcButton" customModule="Calculator" customModuleProvider="target">
-                                                <rect key="frame" x="119" y="0.0" width="112" height="73"/>
-                                                <state key="normal" title=".">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="decimalPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ALz-mq-epd"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5fa-p7-Bee" customClass="CalcButton" customModule="Calculator" customModuleProvider="target">
-                                                <rect key="frame" x="239" y="0.0" width="111" height="73"/>
-                                                <state key="normal" title="=">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="equalsPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Qb-N9-xqD"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="29l-vJ-QpJ" firstAttribute="width" secondItem="dxv-oH-SgK" secondAttribute="width" id="Hn0-E3-GkI"/>
+                                            <constraint firstItem="bTR-QR-xFQ" firstAttribute="top" secondItem="3EP-BW-6Hy" secondAttribute="top" id="LW7-s1-uCI"/>
+                                            <constraint firstItem="dxv-oH-SgK" firstAttribute="top" secondItem="3EP-BW-6Hy" secondAttribute="top" id="WzN-hr-y8j"/>
+                                            <constraint firstAttribute="bottom" secondItem="bTR-QR-xFQ" secondAttribute="bottom" id="cAM-Z4-jhK"/>
+                                            <constraint firstAttribute="bottom" secondItem="dxv-oH-SgK" secondAttribute="bottom" id="vb1-C3-hmo"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="560" id="2e8-PM-rjD"/>
-                                    <constraint firstAttribute="trailing" secondItem="CNO-zc-8oH" secondAttribute="trailing" id="6Y9-se-yUk"/>
-                                    <constraint firstItem="f3W-67-f7W" firstAttribute="leading" secondItem="9IS-7H-nCf" secondAttribute="leading" id="AfV-FR-CSh"/>
-                                    <constraint firstAttribute="trailing" secondItem="T45-9J-5XY" secondAttribute="trailing" id="Foi-CK-377"/>
-                                    <constraint firstItem="T45-9J-5XY" firstAttribute="leading" secondItem="9IS-7H-nCf" secondAttribute="leading" id="GTQ-03-J28"/>
-                                    <constraint firstItem="KVa-dk-zce" firstAttribute="leading" secondItem="9IS-7H-nCf" secondAttribute="leading" id="KNR-yA-QUF"/>
-                                    <constraint firstItem="CNO-zc-8oH" firstAttribute="leading" secondItem="9IS-7H-nCf" secondAttribute="leading" id="Qjd-Bg-m4S"/>
-                                    <constraint firstAttribute="trailing" secondItem="f3W-67-f7W" secondAttribute="trailing" id="URV-mk-4KS"/>
-                                    <constraint firstItem="2b9-DZ-xKc" firstAttribute="leading" secondItem="9IS-7H-nCf" secondAttribute="leading" id="av9-nh-oEp"/>
-                                    <constraint firstAttribute="trailing" secondItem="2b9-DZ-xKc" secondAttribute="trailing" id="deH-05-xfN"/>
-                                    <constraint firstAttribute="trailing" secondItem="9ev-n1-ngm" secondAttribute="trailing" id="fc7-bE-Yt8"/>
-                                    <constraint firstAttribute="width" constant="350" id="hYe-in-8BT"/>
-                                    <constraint firstAttribute="trailing" secondItem="KVa-dk-zce" secondAttribute="trailing" id="hs0-Pp-7h5"/>
-                                    <constraint firstItem="9ev-n1-ngm" firstAttribute="leading" secondItem="9IS-7H-nCf" secondAttribute="leading" id="isz-eE-HbK"/>
-                                    <constraint firstAttribute="trailing" secondItem="NgZ-Wo-8cZ" secondAttribute="trailing" constant="5" id="uPY-Ta-ObU"/>
-                                    <constraint firstItem="NgZ-Wo-8cZ" firstAttribute="leading" secondItem="9IS-7H-nCf" secondAttribute="leading" id="zwC-rt-pb0"/>
+                                    <constraint firstItem="qla-MS-GaO" firstAttribute="height" secondItem="buE-ir-L2Z" secondAttribute="height" id="0gs-ES-x6e"/>
+                                    <constraint firstAttribute="trailing" secondItem="yYs-n4-auf" secondAttribute="trailing" id="1R4-lu-fWW"/>
+                                    <constraint firstItem="5zH-P7-tFX" firstAttribute="height" secondItem="buE-ir-L2Z" secondAttribute="height" id="Gtm-da-992"/>
+                                    <constraint firstAttribute="trailing" secondItem="3EP-BW-6Hy" secondAttribute="trailing" id="JaF-qN-9ma"/>
+                                    <constraint firstItem="buE-ir-L2Z" firstAttribute="leading" secondItem="Zvx-FG-NmC" secondAttribute="leading" id="K9a-Pq-qeh"/>
+                                    <constraint firstItem="yYs-n4-auf" firstAttribute="height" secondItem="buE-ir-L2Z" secondAttribute="height" id="MtO-h0-XcN"/>
+                                    <constraint firstItem="WeA-er-oJ6" firstAttribute="height" secondItem="buE-ir-L2Z" secondAttribute="height" id="VnS-bx-Sfy"/>
+                                    <constraint firstItem="aA9-IB-0Pz" firstAttribute="height" secondItem="buE-ir-L2Z" secondAttribute="height" id="irX-i9-6rc"/>
+                                    <constraint firstItem="yYs-n4-auf" firstAttribute="leading" secondItem="Zvx-FG-NmC" secondAttribute="leading" id="mcS-OP-o7V"/>
+                                    <constraint firstAttribute="trailing" secondItem="buE-ir-L2Z" secondAttribute="trailing" id="men-F0-FJO"/>
+                                    <constraint firstItem="3EP-BW-6Hy" firstAttribute="leading" secondItem="Zvx-FG-NmC" secondAttribute="leading" id="njh-wA-DnN"/>
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.52941176470588236" green="0.52156862745098043" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="9IS-7H-nCf" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="MbE-VS-m77"/>
-                            <constraint firstItem="9IS-7H-nCf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="l8w-qg-VW9"/>
+                            <constraint firstAttribute="trailing" secondItem="lzh-Ms-2og" secondAttribute="trailing" constant="10" id="851-L3-dDB"/>
+                            <constraint firstItem="Zvx-FG-NmC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="30" id="97r-cD-0Y6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Zvx-FG-NmC" secondAttribute="trailing" constant="30" id="Wcu-jV-eVJ"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Zvx-FG-NmC" secondAttribute="bottom" constant="30" id="kG2-dW-W1V"/>
+                            <constraint firstItem="lzh-Ms-2og" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="10" id="nWZ-J8-rjp"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="lzh-Ms-2og" secondAttribute="bottom" constant="8" id="uN4-6E-4IC"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
-                        <outlet property="clearBtn" destination="obd-Os-X6e" id="k1N-xd-He4"/>
-                        <outlet property="outputLbl" destination="NgZ-Wo-8cZ" id="hs0-P2-A8c"/>
+                        <outlet property="borderView" destination="lzh-Ms-2og" id="z82-eR-9P7"/>
+                        <outlet property="bottomMargin" destination="uN4-6E-4IC" id="fD2-Fd-Cbt"/>
+                        <outlet property="buttonsBottomMargin" destination="kG2-dW-W1V" id="uh2-ou-48d"/>
+                        <outlet property="buttonsLeftMargin" destination="97r-cD-0Y6" id="Oay-kd-pYU"/>
+                        <outlet property="buttonsRightMargin" destination="Wcu-jV-eVJ" id="dbm-GR-n0c"/>
+                        <outlet property="leftMargin" destination="nWZ-J8-rjp" id="jgQ-uO-7tu"/>
+                        <outlet property="rightMargin" destination="851-L3-dDB" id="FgT-Y7-aRe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="600" y="477"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="side_bottom_bar" width="1182" height="1732"/>
+    </resources>
 </document>
