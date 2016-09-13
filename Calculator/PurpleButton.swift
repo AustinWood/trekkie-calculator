@@ -15,8 +15,8 @@ class PurpleButton: UIButton {
         let COLOR_PURPLE = UIColor(red:0.600, green:0.604, blue:0.792, alpha:1.00)
         backgroundColor = COLOR_PURPLE
         
-        setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        titleLabel!.font =  UIFont(name: "Helvetica-Bold", size: 18)
+        setTitleColor(BUTTON_TEXT_COLOR, forState: UIControlState.Normal)
+        titleLabel!.font =  UIFont(name: BUTTON_TEXT_FONT, size: BUTTON_TEXT_SIZE)
         
     }
 

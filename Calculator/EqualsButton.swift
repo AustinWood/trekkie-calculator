@@ -15,8 +15,8 @@ class EqualsButton: UIButton {
         let COLOR_ORANGE = UIColor(red:0.992, green:0.596, blue:0.153, alpha:1.00)
         backgroundColor = COLOR_ORANGE
         
-        setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        titleLabel!.font =  UIFont(name: "Helvetica-Bold", size: 18)
+        setTitleColor(BUTTON_TEXT_COLOR, forState: UIControlState.Normal)
+        titleLabel!.font =  UIFont(name: BUTTON_TEXT_FONT, size: BUTTON_TEXT_SIZE)
         
     }
 

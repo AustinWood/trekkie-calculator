@@ -8,17 +8,15 @@
 
 import UIKit
 
-class RoundButton: UIButton {
+class NumberButton: UIButton {
     
     override func awakeFromNib() {
-        
-        //layer.cornerRadius = 20
         
         let COLOR_SALMON = UIColor(red:0.992, green:0.600, blue:0.420, alpha:1.00)
         backgroundColor = COLOR_SALMON
         
-        setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        titleLabel!.font =  UIFont(name: "Helvetica-Bold", size: 18)
+        setTitleColor(BUTTON_TEXT_COLOR, forState: UIControlState.Normal)
+        titleLabel!.font =  UIFont(name: BUTTON_TEXT_FONT, size: BUTTON_TEXT_SIZE * 1.5)
         
     }
     

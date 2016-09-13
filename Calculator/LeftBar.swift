@@ -11,15 +11,11 @@ import UIKit
 class LeftBar: UIView {
     
     override func awakeFromNib() {
-
-//    Swift 2
+        
+//    This code creates a very small but undersired gap between the leftBar and bottomBar, so I've chosen not to use it until I can find a solution.
+        
 //        let maskLayer = CAShapeLayer()
-//        maskLayer.path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: UIRectCorner.TopLeft, cornerRadii: CGSizeMake(0, 0)).CGPath
-//        self.layer.mask = maskLayer
-
-//    Swift 3
-//        let maskLayer = CAShapeLayer()
-//        maskLayer.path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: [.TopLeft, .TopRight], cornerRadii: CGSize(width: 10, height: 10)).CGPath
+//        maskLayer.path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: [.TopLeft], cornerRadii: CGSize(width: 10, height: 10)).CGPath
 //        self.layer.mask = maskLayer
         
     }
