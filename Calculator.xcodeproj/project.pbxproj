@@ -11,7 +11,7 @@
 		4202967F1D86F9D00061AC8B /* PurpleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4202967E1D86F9D00061AC8B /* PurpleButton.swift */; };
 		420296811D86F9FB0061AC8B /* EqualsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420296801D86F9FB0061AC8B /* EqualsButton.swift */; };
 		420296851D870CC70061AC8B /* LeftBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420296841D870CC70061AC8B /* LeftBar.swift */; };
-		42122EA81D8857A600B180D8 /* FinalFrontierOldStyle.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 42122EA71D8857A600B180D8 /* FinalFrontierOldStyle.ttf */; };
+		42122EA81D8857A600B180D8 /* FinalFrontierOldStyle.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 42122EA71D8857A600B180D8 /* FinalFrontierOldStyle.TTF */; };
 		42122EAC1D8859DC00B180D8 /* ButtonConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42122EAB1D8859DC00B180D8 /* ButtonConstants.swift */; };
 		422C47081D70C92E008CDFCB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422C47071D70C92E008CDFCB /* AppDelegate.swift */; };
 		422C470A1D70C92E008CDFCB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422C47091D70C92E008CDFCB /* ViewController.swift */; };
@@ -46,7 +46,7 @@
 		4202967E1D86F9D00061AC8B /* PurpleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurpleButton.swift; sourceTree = "<group>"; };
 		420296801D86F9FB0061AC8B /* EqualsButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EqualsButton.swift; sourceTree = "<group>"; };
 		420296841D870CC70061AC8B /* LeftBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftBar.swift; sourceTree = "<group>"; };
-		42122EA71D8857A600B180D8 /* FinalFrontierOldStyle.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FinalFrontierOldStyle.ttf; sourceTree = "<group>"; };
+		42122EA71D8857A600B180D8 /* FinalFrontierOldStyle.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = FinalFrontierOldStyle.TTF; sourceTree = "<group>"; };
 		42122EAB1D8859DC00B180D8 /* ButtonConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonConstants.swift; sourceTree = "<group>"; };
 		422C47041D70C92E008CDFCB /* Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		422C47071D70C92E008CDFCB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -95,7 +95,7 @@
 			children = (
 				422C47061D70C92E008CDFCB /* Calculator */,
 				42B538341D71BD6D0033F453 /* Style subclasses */,
-				42122EA71D8857A600B180D8 /* FinalFrontierOldStyle.ttf */,
+				42122EA71D8857A600B180D8 /* FinalFrontierOldStyle.TTF */,
 				422C471E1D70C92E008CDFCB /* CalculatorTests */,
 				422C47291D70C92E008CDFCB /* CalculatorUITests */,
 				422C47051D70C92E008CDFCB /* Products */,
@@ -262,7 +262,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				42122EA81D8857A600B180D8 /* FinalFrontierOldStyle.ttf in Resources */,
+				42122EA81D8857A600B180D8 /* FinalFrontierOldStyle.TTF in Resources */,
 				422C47151D70C92E008CDFCB /* LaunchScreen.storyboard in Resources */,
 				422C47121D70C92E008CDFCB /* Assets.xcassets in Resources */,
 				422C470D1D70C92E008CDFCB /* Main.storyboard in Resources */,
