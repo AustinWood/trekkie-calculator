@@ -1,3 +1,6 @@
+// DEEP WORK start: 15:46
+
+
 //
 //  ViewController.swift
 //  Calculator
@@ -15,18 +18,18 @@ import UIKit
 // Long decimals and big numbers cut off with "..."
 // C vs AC
 // Make Memory buttons a Switch statement
+// Register hardware keyboard presses
+// Second label that shows input trace
+
+// Add slide in animation to new numbers
+// http://www.andrewcbancroft.com/2014/09/24/slide-in-animation-in-swift/
 
 class ViewController: UIViewController {
     
-    
-    
-    
     @IBOutlet weak var reverseSignButton: PinkButton!
     @IBOutlet weak var borderView: UIView!
-    
     @IBOutlet weak var outputLbl: UILabel!
     @IBOutlet weak var clearBtn: PinkButton!
-    
     
     var runningNumber = Double()
     var leftString = Double()
@@ -37,34 +40,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let font: UIFont? = UIFont(name: BUTTON_TEXT_FONT, size: BUTTON_TEXT_SIZE)
-        let fontSuper: UIFont? = UIFont(name: BUTTON_TEXT_FONT, size: BUTTON_TEXT_SIZE / 1.5)
-        let attString: NSMutableAttributedString = NSMutableAttributedString(string: "+/–", attributes: [NSFontAttributeName: font!])
-        attString.setAttributes([NSFontAttributeName: fontSuper!, NSBaselineOffsetAttributeName: 10], range: NSRange(location:0,length:1))
-        attString.setAttributes([NSFontAttributeName: fontSuper!, NSBaselineOffsetAttributeName: 2], range: NSRange(location:2,length:1))
-        reverseSignButton.setAttributedTitle(attString, forState: .Normal)
-        
-        
-        
-//        let screenSize: CGRect = UIScreen.mainScreen().bounds
-//        let screenWidth = screenSize.width
-//        let outerMargin = screenWidth / 1242 * 30
-//        
-//        rightMargin.constant = outerMargin
-//        leftMargin.constant = outerMargin
-//        bottomMargin.constant = outerMargin
-//        
-//        let borderWidth = self.borderView.frame.size.width / 1182 * 40
-//        let innerBorder = outerMargin + borderWidth + 4
-//        
-//        buttonsRightMargin.constant = outerMargin
-//        buttonsLeftMargin.constant = innerBorder
-//        buttonsBottomMargin.constant = innerBorder
-//        
-//        print(outerMargin)
-//        print(innerBorder)
-        
+        stylizeReverseSignButton()
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -72,18 +48,26 @@ class ViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        
         super.viewWillAppear(animated)
         self.navigationController?.navigationBarHidden = true
-        
         let defaults = NSUserDefaults.standardUserDefaults()
         defaults.setDouble(0.0, forKey: "memoryDouble")
-            
         resetCalc()
     }
     
+    func stylizeReverseSignButton() {
+        let font: UIFont? = UIFont(name: BUTTON_TEXT_FONT, size: BUTTON_TEXT_SIZE)
+        let fontSuper: UIFont? = UIFont(name: BUTTON_TEXT_FONT, size: BUTTON_TEXT_SIZE / 1.5)
+        let attString: NSMutableAttributedString = NSMutableAttributedString(string: "+/–", attributes: [NSFontAttributeName: font!])
+        attString.setAttributes([NSFontAttributeName: fontSuper!, NSBaselineOffsetAttributeName: 10], range: NSRange(location:0,length:1))
+        attString.setAttributes([NSFontAttributeName: fontSuper!, NSBaselineOffsetAttributeName: 2], range: NSRange(location:2,length:1))
+        reverseSignButton.setAttributedTitle(attString, forState: .Normal)
+    }
+    
     func resetCalc() {
+        
         print("func resetCalc()")
+        
         runningNumber = 0.0
         leftString = 0.0
         rightString = 0.0
@@ -92,7 +76,6 @@ class ViewController: UIViewController {
         outputLbl.text = "0"
         clearBtn.setTitle("AC", forState: .Normal)
     }
-    
     
     @IBAction func clearPressed(sender: AnyObject) {
         
@@ -105,8 +88,10 @@ class ViewController: UIViewController {
         }
     }
     
-    
-    @IBAction func numberPressed(sender: AnyObject) {
+    @IBAction func numberPressed(sender: UIButton) {
+        
+        sender.fadeOut()
+        sender.fadeIn()
         
         if resetOutput {
             resetCalc()
@@ -118,8 +103,7 @@ class ViewController: UIViewController {
         
         if !decimalPressed {
             runningNumber = Double(String(Int(runningNumber)) + String(number))!
-        }
-        else {
+        } else {
             if isInt(runningNumber) {
                 runningNumber = Double(String(Int(runningNumber)) + "." + String(number))!
             } else {
@@ -130,14 +114,12 @@ class ViewController: UIViewController {
         outputLbl.text = formatOutputText(runningNumber)
     }
     
-    
     @IBAction func decimalPressed(sender: AnyObject) {
         
         if !decimalPressed {
             
             decimalPressed = true
             
-            // TO-DO: is this still necessary?
             if resetOutput {
                 resetCalc()
             }
