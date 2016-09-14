@@ -26,6 +26,9 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var twoView: UIView!
+    @IBOutlet weak var twoLabel: UILabel!
+    
     @IBOutlet weak var reverseSignButton: PinkButton!
     @IBOutlet weak var borderView: UIView!
     @IBOutlet weak var outputLbl: UILabel!
@@ -90,8 +93,8 @@ class ViewController: UIViewController {
     
     @IBAction func numberPressed(sender: UIButton) {
         
-        sender.fadeOut()
-        sender.fadeIn()
+        twoLabel.fadeOut()
+        twoLabel.fadeIn()
         
         if resetOutput {
             resetCalc()

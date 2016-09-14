@@ -6,7 +6,7 @@
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="FinalFrontierOldStyle.ttf">
+        <mutableArray key="FinalFrontierOldStyle.TTF">
             <string>FinalFrontierOldStyle</string>
         </mutableArray>
     </customFonts>
@@ -26,26 +26,26 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gis-gy-n90" userLabel="megaStackView">
                                 <rect key="frame" x="10" y="142" width="394" height="584"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xzt-G3-fb0" userLabel="barAndButtons">
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xzt-G3-fb0" userLabel="barAndButtons">
                                         <rect key="frame" x="0.0" y="0.0" width="394" height="571"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BfP-wN-A03" userLabel="leftBar" customClass="LeftBar" customModule="Calculator" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BfP-wN-A03" userLabel="leftBar" customClass="LeftBar" customModule="Calculator" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="13" height="571"/>
                                                 <color key="backgroundColor" red="0.52941176470588236" green="0.52156862745098043" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="13" id="bUR-YD-zom"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lzh-Ms-2og" userLabel="buttonsView">
+                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lzh-Ms-2og" userLabel="buttonsView">
                                                 <rect key="frame" x="13" y="0.0" width="381" height="571"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Zvx-FG-NmC" userLabel="All buttons">
+                                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Zvx-FG-NmC" userLabel="All buttons">
                                                         <rect key="frame" x="4" y="0.0" width="377" height="567"/>
                                                         <subviews>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="buE-ir-L2Z" userLabel="[M btns]">
+                                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="buE-ir-L2Z" userLabel="[M btns]">
                                                                 <rect key="frame" x="0.0" y="0.0" width="377" height="91"/>
                                                                 <subviews>
-                                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XdT-zc-UCo" customClass="PurpleButton" customModule="Calculator" customModuleProvider="target">
+                                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XdT-zc-UCo" customClass="PurpleButton" customModule="Calculator" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="0.0" width="91" height="91"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="XdT-zc-UCo" secondAttribute="height" multiplier="1:1" id="162-7t-ycV"/>
@@ -55,21 +55,21 @@
                                                                             <action selector="memoryPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tLl-Mf-0W2"/>
                                                                         </connections>
                                                                     </button>
-                                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FN1-9P-pi4" customClass="PurpleButton" customModule="Calculator" customModuleProvider="target">
+                                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FN1-9P-pi4" customClass="PurpleButton" customModule="Calculator" customModuleProvider="target">
                                                                         <rect key="frame" x="95" y="0.0" width="92" height="91"/>
                                                                         <state key="normal" title="M+"/>
                                                                         <connections>
                                                                             <action selector="memoryPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7Ik-xy-qhv"/>
                                                                         </connections>
                                                                     </button>
-                                                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tqo-r1-hcE" customClass="PurpleButton" customModule="Calculator" customModuleProvider="target">
+                                                                    <button opaque="NO" tag="3" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tqo-r1-hcE" customClass="PurpleButton" customModule="Calculator" customModuleProvider="target">
                                                                         <rect key="frame" x="191" y="0.0" width="91" height="91"/>
                                                                         <state key="normal" title="M–"/>
                                                                         <connections>
                                                                             <action selector="memoryPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KJf-xr-cqK"/>
                                                                         </connections>
                                                                     </button>
-                                                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bCe-LH-5ad" customClass="PurpleButton" customModule="Calculator" customModuleProvider="target">
+                                                                    <button opaque="NO" tag="4" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bCe-LH-5ad" customClass="PurpleButton" customModule="Calculator" customModuleProvider="target">
                                                                         <rect key="frame" x="286" y="0.0" width="91" height="91"/>
                                                                         <state key="normal" title="MR"/>
                                                                         <connections>
@@ -78,7 +78,7 @@
                                                                     </button>
                                                                 </subviews>
                                                             </stackView>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="yYs-n4-auf" userLabel="[C +- / *]">
+                                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="yYs-n4-auf" userLabel="[C +- / *]">
                                                                 <rect key="frame" x="0.0" y="95" width="377" height="91"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="etz-tY-bWf" customClass="PinkButton" customModule="Calculator" customModuleProvider="target">
@@ -111,7 +111,7 @@
                                                                     </button>
                                                                 </subviews>
                                                             </stackView>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="3EP-BW-6Hy" userLabel="[Bottom 4 rows]">
+                                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="3EP-BW-6Hy" userLabel="[Bottom 4 rows]">
                                                                 <rect key="frame" x="0.0" y="190" width="377" height="377"/>
                                                                 <subviews>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="bTR-QR-xFQ" userLabel="Numbers">
@@ -181,21 +181,44 @@
                                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="5zH-P7-tFX" userLabel="[1 2 3]">
                                                                                 <rect key="frame" x="0.0" y="191" width="282" height="91"/>
                                                                                 <subviews>
-                                                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vug-SM-0TA" customClass="NumberButton" customModule="Calculator" customModuleProvider="target">
+                                                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vug-SM-0TA" customClass="NumberButton" customModule="Calculator" customModuleProvider="target">
                                                                                         <rect key="frame" x="0.0" y="0.0" width="91" height="91"/>
                                                                                         <state key="normal" title="1"/>
                                                                                         <connections>
                                                                                             <action selector="numberPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jnx-e2-HvV"/>
                                                                                         </connections>
                                                                                     </button>
-                                                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ptk-P6-Nlf" customClass="NumberButton" customModule="Calculator" customModuleProvider="target">
+                                                                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ync-3Y-jHu">
                                                                                         <rect key="frame" x="95" y="0.0" width="92" height="91"/>
-                                                                                        <state key="normal" title="2"/>
-                                                                                        <connections>
-                                                                                            <action selector="numberPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ua9-S3-19K"/>
-                                                                                        </connections>
-                                                                                    </button>
-                                                                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="29l-vJ-QpJ" customClass="NumberButton" customModule="Calculator" customModuleProvider="target">
+                                                                                        <subviews>
+                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WCR-bq-U6H">
+                                                                                                <rect key="frame" x="0.0" y="0.0" width="92" height="91"/>
+                                                                                                <color key="backgroundColor" red="0.99215686274509807" green="0.52549019607843139" blue="0.32549019607843138" alpha="1" colorSpace="calibratedRGB"/>
+                                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                                                <nil key="highlightedColor"/>
+                                                                                            </label>
+                                                                                            <button opaque="NO" tag="2" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ptk-P6-Nlf" customClass="Number2Button" customModule="Calculator" customModuleProvider="target">
+                                                                                                <rect key="frame" x="0.0" y="0.0" width="92" height="91"/>
+                                                                                                <state key="normal" title="2"/>
+                                                                                                <connections>
+                                                                                                    <action selector="numberPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ua9-S3-19K"/>
+                                                                                                </connections>
+                                                                                            </button>
+                                                                                        </subviews>
+                                                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                                        <constraints>
+                                                                                            <constraint firstAttribute="trailing" secondItem="WCR-bq-U6H" secondAttribute="trailing" id="EMX-I3-LrA"/>
+                                                                                            <constraint firstAttribute="bottom" secondItem="WCR-bq-U6H" secondAttribute="bottom" id="FuM-7d-J1Z"/>
+                                                                                            <constraint firstItem="Ptk-P6-Nlf" firstAttribute="leading" secondItem="Ync-3Y-jHu" secondAttribute="leading" id="KEJ-Fa-eXb"/>
+                                                                                            <constraint firstItem="Ptk-P6-Nlf" firstAttribute="top" secondItem="Ync-3Y-jHu" secondAttribute="top" id="P3H-z7-3Et"/>
+                                                                                            <constraint firstAttribute="bottom" secondItem="Ptk-P6-Nlf" secondAttribute="bottom" id="TmZ-aq-euw"/>
+                                                                                            <constraint firstItem="WCR-bq-U6H" firstAttribute="top" secondItem="Ync-3Y-jHu" secondAttribute="top" id="oJx-mV-kcl"/>
+                                                                                            <constraint firstAttribute="trailing" secondItem="Ptk-P6-Nlf" secondAttribute="trailing" id="q5y-9C-Jh9"/>
+                                                                                            <constraint firstItem="WCR-bq-U6H" firstAttribute="leading" secondItem="Ync-3Y-jHu" secondAttribute="leading" id="veb-6H-HQt"/>
+                                                                                        </constraints>
+                                                                                    </view>
+                                                                                    <button opaque="NO" tag="3" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="29l-vJ-QpJ" customClass="NumberButton" customModule="Calculator" customModuleProvider="target">
                                                                                         <rect key="frame" x="191" y="0.0" width="91" height="91"/>
                                                                                         <state key="normal" title="3"/>
                                                                                         <connections>
@@ -204,7 +227,7 @@
                                                                                     </button>
                                                                                 </subviews>
                                                                                 <constraints>
-                                                                                    <constraint firstItem="Ptk-P6-Nlf" firstAttribute="width" secondItem="Vug-SM-0TA" secondAttribute="width" id="2uc-7B-t9A"/>
+                                                                                    <constraint firstItem="Ync-3Y-jHu" firstAttribute="width" secondItem="Vug-SM-0TA" secondAttribute="width" id="Qp5-3q-1w6"/>
                                                                                     <constraint firstItem="29l-vJ-QpJ" firstAttribute="width" secondItem="Vug-SM-0TA" secondAttribute="width" id="uL1-h5-acJ"/>
                                                                                 </constraints>
                                                                             </stackView>
@@ -302,7 +325,7 @@
                                             </view>
                                         </subviews>
                                     </stackView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="REk-HF-Ne9" userLabel="bottomBar">
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="REk-HF-Ne9" userLabel="bottomBar">
                                         <rect key="frame" x="0.0" y="571" width="394" height="13"/>
                                         <color key="backgroundColor" red="0.52941176470588236" green="0.52156862745098043" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -350,6 +373,8 @@
                         <outlet property="clearBtn" destination="etz-tY-bWf" id="Snj-5D-pzl"/>
                         <outlet property="outputLbl" destination="1ID-Ss-rRh" id="4RF-qV-Bi1"/>
                         <outlet property="reverseSignButton" destination="UMl-OJ-RAC" id="IYt-te-GNV"/>
+                        <outlet property="twoLabel" destination="WCR-bq-U6H" id="mbb-oU-M14"/>
+                        <outlet property="twoView" destination="Ync-3Y-jHu" id="uP8-CP-jQV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
