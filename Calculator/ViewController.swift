@@ -1,6 +1,3 @@
-// DEEP WORK start: 15:46
-
-
 //
 //  ViewController.swift
 //  Calculator
@@ -15,6 +12,9 @@ import UIKit
 ///// TO DO /////
 /////////////////
 
+// NEXT STEP: Fix the names of labels, views and buttons
+// then, add tags to everything
+
 // Long decimals and big numbers cut off with "..."
 // C vs AC
 // Make Memory buttons a Switch statement
@@ -25,9 +25,6 @@ import UIKit
 // http://www.andrewcbancroft.com/2014/09/24/slide-in-animation-in-swift/
 
 class ViewController: UIViewController {
-    
-    @IBOutlet weak var twoView: UIView!
-    @IBOutlet weak var twoLabel: UILabel!
     
     @IBOutlet weak var reverseSignButton: PinkButton!
     @IBOutlet weak var borderView: UIView!
@@ -44,7 +41,32 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         stylizeReverseSignButton()
+        
+        
+        
+        
+        let labels = getLabelsInView(self.view)
+        for label in labels {
+            //label.text = "yo"
+        }
     }
+    
+    
+    
+    func getLabelsInView(view: UIView) -> [UILabel] {
+        var results = [UILabel]()
+        for subview in view.subviews as [UIView] {
+            if let labelView = subview as? UILabel {
+                results += [labelView]
+            } else {
+                results += getLabelsInView(subview)
+            }
+        }
+        return results
+    }
+    
+    
+    
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
@@ -59,12 +81,12 @@ class ViewController: UIViewController {
     }
     
     func stylizeReverseSignButton() {
-        let font: UIFont? = UIFont(name: BUTTON_TEXT_FONT, size: BUTTON_TEXT_SIZE)
-        let fontSuper: UIFont? = UIFont(name: BUTTON_TEXT_FONT, size: BUTTON_TEXT_SIZE / 1.5)
-        let attString: NSMutableAttributedString = NSMutableAttributedString(string: "+/–", attributes: [NSFontAttributeName: font!])
-        attString.setAttributes([NSFontAttributeName: fontSuper!, NSBaselineOffsetAttributeName: 10], range: NSRange(location:0,length:1))
-        attString.setAttributes([NSFontAttributeName: fontSuper!, NSBaselineOffsetAttributeName: 2], range: NSRange(location:2,length:1))
-        reverseSignButton.setAttributedTitle(attString, forState: .Normal)
+//        let font: UIFont? = UIFont(name: BUTTON_TEXT_FONT, size: BUTTON_TEXT_SIZE)
+//        let fontSuper: UIFont? = UIFont(name: BUTTON_TEXT_FONT, size: BUTTON_TEXT_SIZE / 1.5)
+//        let attString: NSMutableAttributedString = NSMutableAttributedString(string: "+/–", attributes: [NSFontAttributeName: font!])
+//        attString.setAttributes([NSFontAttributeName: fontSuper!, NSBaselineOffsetAttributeName: 10], range: NSRange(location:0,length:1))
+//        attString.setAttributes([NSFontAttributeName: fontSuper!, NSBaselineOffsetAttributeName: 2], range: NSRange(location:2,length:1))
+//        reverseSignButton.setAttributedTitle(attString, forState: .Normal)
     }
     
     func resetCalc() {
@@ -77,7 +99,7 @@ class ViewController: UIViewController {
         currentOperation = 0
         resetOutput = false
         outputLbl.text = "0"
-        clearBtn.setTitle("AC", forState: .Normal)
+//        clearBtn.setTitle("AC", forState: .Normal)
     }
     
     @IBAction func clearPressed(sender: AnyObject) {
@@ -93,8 +115,8 @@ class ViewController: UIViewController {
     
     @IBAction func numberPressed(sender: UIButton) {
         
-        twoLabel.fadeOut()
-        twoLabel.fadeIn()
+        //twoLabel.fadeOut()
+        //twoLabel.fadeIn()
         
         if resetOutput {
             resetCalc()
