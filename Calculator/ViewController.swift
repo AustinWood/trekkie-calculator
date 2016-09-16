@@ -31,6 +31,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var outputLbl: UILabel!
     @IBOutlet weak var clearBtn: PinkButton!
     
+    var labelArray = [UILabel]()
+    var buttonArray = [UIButton]()
+    
     var runningNumber = Double()
     var leftString = Double()
     var rightString = Double()
@@ -47,7 +50,8 @@ class ViewController: UIViewController {
         
         let labels = getLabelsInView(self.view)
         for label in labels {
-            //label.text = "yo"
+            print(label.text)
+            print(label.tag)
         }
     }
     

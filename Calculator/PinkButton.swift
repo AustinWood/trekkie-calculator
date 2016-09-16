@@ -12,11 +12,11 @@ class PinkButton: UIButton {
 
     override func awakeFromNib() {
         
-        let COLOR_PINK = UIColor(red:0.796, green:0.604, blue:0.796, alpha:1.00)
-        backgroundColor = COLOR_PINK
-        
-        setTitleColor(BUTTON_TEXT_COLOR, forState: UIControlState.Normal)
-        titleLabel!.font =  UIFont(name: BUTTON_TEXT_FONT, size: BUTTON_TEXT_SIZE)
+//        let COLOR_PINK = UIColor(red:0.796, green:0.604, blue:0.796, alpha:1.00)
+//        backgroundColor = COLOR_PINK
+//        
+//        setTitleColor(BUTTON_TEXT_COLOR, forState: UIControlState.Normal)
+//        titleLabel!.font =  UIFont(name: BUTTON_TEXT_FONT, size: BUTTON_TEXT_SIZE)
         
     }
 
