@@ -12,24 +12,43 @@ import UIKit
 ///// TO DO /////
 /////////////////
 
-// NEXT STEP: Fix the names of labels, views and buttons
-// then, add tags to everything
-
+// Press down - fade out, let up - fade in
+// Reconnect all buttons to their original functions
 // Long decimals and big numbers cut off with "..."
+// Put colors in a separate file
 // C vs AC
 // Make Memory buttons a Switch statement
 // Register hardware keyboard presses
-// Second label that shows input trace
+// Add second label that shows previous operations
+// Add slide in animation to new numbers: http://www.andrewcbancroft.com/2014/09/24/slide-in-animation-in-swift/
 
-// Add slide in animation to new numbers
-// http://www.andrewcbancroft.com/2014/09/24/slide-in-animation-in-swift/
+/////////////////////////////////////////////////
+///// TAG REFERENCES FOR BUTTONS and LABELS /////
+/////////////////////////////////////////////////
+
+// 0-9: Numbers
+// 10: Decimal
+//
+// 20: Equals
+// 21: Addition
+// 22: Subtraction
+// 23: Multiplication
+// 24: Division
+//
+// 30: Clear
+// 31: Reverse sign
+//
+// 40: MC
+// 41: M+
+// 42: M-
+// 43: MR
+//
+// 50: Output label
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var reverseSignButton: PinkButton!
     @IBOutlet weak var borderView: UIView!
     @IBOutlet weak var outputLbl: UILabel!
-    @IBOutlet weak var clearBtn: PinkButton!
     
     var labelArray = [UILabel]()
     var buttonArray = [UIButton]()
@@ -45,16 +64,24 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         stylizeReverseSignButton()
         
-        
-        
-        
-        let labels = getLabelsInView(self.view)
-        for label in labels {
-            print(label.text)
-            print(label.tag)
-        }
+        labelArray = getLabelsInView(self.view)
+        formatLabels()
+        buttonArray = getButtonsInView(self.view)
     }
     
+    
+    @IBAction func buttonPressed(sender: AnyObject) {
+        animateLabel(sender.tag)
+    }
+    
+    
+    func animateLabel(labelTag: Int) {
+        for label in labelArray {
+            if label.tag == labelTag {
+                label.fadeOutIn()
+            }
+        }
+    }
     
     
     func getLabelsInView(view: UIView) -> [UILabel] {
@@ -70,6 +97,50 @@ class ViewController: UIViewController {
     }
     
     
+    func formatLabels() {
+        
+        let COLOR_SALMON = UIColor(red:0.992, green:0.600, blue:0.420, alpha:1.00)
+        let COLOR_PINK = UIColor(red:0.796, green:0.604, blue:0.796, alpha:1.00)
+        let COLOR_PURPLE = UIColor(red:0.600, green:0.604, blue:0.792, alpha:1.00)
+        let COLOR_ORANGE = UIColor(red:0.992, green:0.596, blue:0.153, alpha:1.00)
+        
+        let BUTTON_TEXT_FONT = "FinalFrontierOldStyle"
+        //let BUTTON_TEXT_FONT = "Helvetica-Bold"
+        let BUTTON_TEXT_SIZE = 28 as CGFloat
+        let BUTTON_TEXT_COLOR = UIColor.blackColor()
+        
+        for label in labelArray {
+            label.textColor = BUTTON_TEXT_COLOR
+            if label.tag <= 10 {
+                label.font = UIFont(name: BUTTON_TEXT_FONT, size: BUTTON_TEXT_SIZE * 1.5)
+                label.backgroundColor = COLOR_SALMON
+            } else {
+                label.font = UIFont(name: BUTTON_TEXT_FONT, size: BUTTON_TEXT_SIZE * 1.0)
+                if label.tag == 20 {
+                    label.backgroundColor = COLOR_ORANGE
+                } else if label.tag >= 21 && label.tag <= 31 {
+                    label.backgroundColor = COLOR_PINK
+                } else if label.tag >= 40 && label.tag <= 43 {
+                    label.backgroundColor = COLOR_PURPLE
+                } else {
+                    label.backgroundColor = UIColor.clearColor()
+                }
+            }
+        }
+    }
+    
+    
+    func getButtonsInView(view: UIView) -> [UIButton] {
+        var results = [UIButton]()
+        for subview in view.subviews as [UIView] {
+            if let buttonView = subview as? UIButton {
+                results += [buttonView]
+            } else {
+                results += getButtonsInView(subview)
+            }
+        }
+        return results
+    }
     
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -108,25 +179,22 @@ class ViewController: UIViewController {
     
     @IBAction func clearPressed(sender: AnyObject) {
         
-        if clearBtn.titleLabel?.text == "AC" {
-            resetCalc()
-        } else {
-            runningNumber = 0.0
-            outputLbl.text = "0"
-            clearBtn.setTitle("AC", forState: .Normal)
-        }
+//        if clearBtn.titleLabel?.text == "AC" {
+//            resetCalc()
+//        } else {
+//            runningNumber = 0.0
+//            outputLbl.text = "0"
+//            clearBtn.setTitle("AC", forState: .Normal)
+//        }
     }
     
     @IBAction func numberPressed(sender: UIButton) {
-        
-        //twoLabel.fadeOut()
-        //twoLabel.fadeIn()
         
         if resetOutput {
             resetCalc()
         }
         
-        clearBtn.setTitle("C", forState: .Normal)
+//        clearBtn.setTitle("C", forState: .Normal)
         
         let number = sender.tag
         
