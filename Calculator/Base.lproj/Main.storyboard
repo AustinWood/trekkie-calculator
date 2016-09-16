@@ -59,7 +59,7 @@
                                                                                 <rect key="frame" x="0.0" y="0.0" width="92" height="91"/>
                                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                                 <connections>
-                                                                                    <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Iod-2f-gSJ"/>
+                                                                                    <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gH0-yq-mLt"/>
                                                                                 </connections>
                                                                             </button>
                                                                         </subviews>
@@ -89,7 +89,7 @@
                                                                                 <rect key="frame" x="0.0" y="0.0" width="92" height="91"/>
                                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                                 <connections>
-                                                                                    <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Jb9-bZ-gbn"/>
+                                                                                    <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IKW-B5-VTf"/>
                                                                                 </connections>
                                                                             </button>
                                                                         </subviews>
@@ -119,7 +119,7 @@
                                                                                 <rect key="frame" x="0.0" y="0.0" width="92" height="91"/>
                                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                                 <connections>
-                                                                                    <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="veM-KF-l3W"/>
+                                                                                    <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Qh-HI-j3J"/>
                                                                                 </connections>
                                                                             </button>
                                                                         </subviews>
@@ -149,7 +149,7 @@
                                                                                 <rect key="frame" x="0.0" y="0.0" width="92" height="91"/>
                                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                                 <connections>
-                                                                                    <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4xP-zc-zpm"/>
+                                                                                    <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nmZ-Tw-Bjr"/>
                                                                                 </connections>
                                                                             </button>
                                                                         </subviews>
@@ -188,7 +188,7 @@
                                                                                 <rect key="frame" x="0.0" y="0.0" width="92" height="91"/>
                                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                                 <connections>
-                                                                                    <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g2I-8K-vds"/>
+                                                                                    <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sue-Fh-Paw"/>
                                                                                 </connections>
                                                                             </button>
                                                                         </subviews>
@@ -218,7 +218,7 @@
                                                                                 <rect key="frame" x="0.0" y="0.0" width="92" height="91"/>
                                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                                 <connections>
-                                                                                    <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FGQ-fd-GdG"/>
+                                                                                    <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2Kb-tk-88V"/>
                                                                                 </connections>
                                                                             </button>
                                                                         </subviews>
@@ -248,7 +248,7 @@
                                                                                 <rect key="frame" x="0.0" y="0.0" width="92" height="91"/>
                                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                                 <connections>
-                                                                                    <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pob-QP-cxf"/>
+                                                                                    <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4ul-1l-5Jv"/>
                                                                                 </connections>
                                                                             </button>
                                                                         </subviews>
@@ -278,7 +278,7 @@
                                                                                 <rect key="frame" x="0.0" y="0.0" width="92" height="91"/>
                                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                                 <connections>
-                                                                                    <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GUE-19-KZh"/>
+                                                                                    <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Di-KO-Qz0"/>
                                                                                 </connections>
                                                                             </button>
                                                                         </subviews>
@@ -323,7 +323,7 @@
                                                                                                 <rect key="frame" x="0.0" y="0.0" width="92" height="91"/>
                                                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                                                 <connections>
-                                                                                                    <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ri2-h9-Tqt"/>
+                                                                                                    <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NEk-C5-yHh"/>
                                                                                                 </connections>
                                                                                             </button>
                                                                                         </subviews>
@@ -353,7 +353,7 @@
                                                                                                 <rect key="frame" x="0.0" y="0.0" width="92" height="91"/>
                                                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                                                 <connections>
-                                                                                                    <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LD4-5z-TDi"/>
+                                                                                                    <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="znM-NO-AC8"/>
                                                                                                 </connections>
                                                                                             </button>
                                                                                         </subviews>
@@ -383,7 +383,7 @@
                                                                                                 <rect key="frame" x="0.0" y="0.0" width="92" height="91"/>
                                                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                                                 <connections>
-                                                                                                    <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vqd-FX-QOu"/>
+                                                                                                    <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vul-8f-Zzm"/>
                                                                                                 </connections>
                                                                                             </button>
                                                                                         </subviews>
@@ -422,7 +422,7 @@
                                                                                                 <rect key="frame" x="0.0" y="0.0" width="92" height="91"/>
                                                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                                                 <connections>
-                                                                                                    <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kpM-Vp-6Sx"/>
+                                                                                                    <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Sok-a5-jv2"/>
                                                                                                 </connections>
                                                                                             </button>
                                                                                         </subviews>
@@ -452,7 +452,7 @@
                                                                                                 <rect key="frame" x="0.0" y="0.0" width="92" height="91"/>
                                                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                                                 <connections>
-                                                                                                    <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8uZ-gn-kQm"/>
+                                                                                                    <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="09F-Q9-VEc"/>
                                                                                                 </connections>
                                                                                             </button>
                                                                                         </subviews>
@@ -482,7 +482,7 @@
                                                                                                 <rect key="frame" x="0.0" y="0.0" width="92" height="91"/>
                                                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                                                 <connections>
-                                                                                                    <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vLx-xm-dTH"/>
+                                                                                                    <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7v7-sj-sdZ"/>
                                                                                                 </connections>
                                                                                             </button>
                                                                                         </subviews>
@@ -521,7 +521,7 @@
                                                                                                 <rect key="frame" x="0.0" y="0.0" width="92" height="91"/>
                                                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                                                 <connections>
-                                                                                                    <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KY3-e7-CGS"/>
+                                                                                                    <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DWu-XF-GqD"/>
                                                                                                 </connections>
                                                                                             </button>
                                                                                         </subviews>
@@ -552,7 +552,7 @@
                                                                                                 <rect key="frame" x="0.0" y="0.0" width="92" height="91"/>
                                                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                                                 <connections>
-                                                                                                    <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g1J-gm-ncF"/>
+                                                                                                    <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0RS-mD-Ld2"/>
                                                                                                 </connections>
                                                                                             </button>
                                                                                         </subviews>
@@ -582,7 +582,7 @@
                                                                                                 <rect key="frame" x="0.0" y="0.0" width="92" height="91"/>
                                                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                                                 <connections>
-                                                                                                    <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uvZ-rM-ghV"/>
+                                                                                                    <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="d6F-rn-97o"/>
                                                                                                 </connections>
                                                                                             </button>
                                                                                         </subviews>
@@ -621,7 +621,8 @@
                                                                                                 <rect key="frame" x="0.0" y="0.0" width="187" height="91"/>
                                                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                                                 <connections>
-                                                                                                    <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FRW-uS-ZzV"/>
+                                                                                                    <action selector="buttonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="0xw-3C-hRu"/>
+                                                                                                    <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fZ5-TE-7Ib"/>
                                                                                                 </connections>
                                                                                             </button>
                                                                                         </subviews>
@@ -651,7 +652,7 @@
                                                                                                 <rect key="frame" x="0.0" y="0.0" width="92" height="91"/>
                                                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                                                 <connections>
-                                                                                                    <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iqZ-Xo-pvY"/>
+                                                                                                    <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8UR-5S-gSi"/>
                                                                                                 </connections>
                                                                                             </button>
                                                                                         </subviews>
@@ -691,7 +692,7 @@
                                                                                         <rect key="frame" x="0.0" y="0.0" width="92" height="91"/>
                                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                                         <connections>
-                                                                                            <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="a5L-0O-22s"/>
+                                                                                            <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iUI-3s-t7N"/>
                                                                                         </connections>
                                                                                     </button>
                                                                                 </subviews>
@@ -722,7 +723,7 @@
                                                                                         <rect key="frame" x="0.0" y="0.0" width="92" height="91"/>
                                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                                         <connections>
-                                                                                            <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HWn-KB-CV5"/>
+                                                                                            <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CgF-DI-YRG"/>
                                                                                         </connections>
                                                                                     </button>
                                                                                 </subviews>
@@ -753,7 +754,7 @@
                                                                                         <rect key="frame" x="0.0" y="0.0" width="92" height="186"/>
                                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                                         <connections>
-                                                                                            <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MCv-dv-UZl"/>
+                                                                                            <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VyJ-do-bhP"/>
                                                                                         </connections>
                                                                                     </button>
                                                                                 </subviews>

@@ -11,12 +11,13 @@ import UIKit
 
 extension UIView {
     
-    func fadeOutIn() {
-        
+    func fadeOut() {
         UIView.animateWithDuration(0.2, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
             self.alpha = 0.0
             }, completion: nil)
-        
+    }
+    
+    func fadeIn() {
         UIView.animateWithDuration(0.4, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
             self.alpha = 1.0
             }, completion: nil)

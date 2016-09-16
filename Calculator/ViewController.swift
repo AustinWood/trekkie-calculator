@@ -12,8 +12,10 @@ import UIKit
 ///// TO DO /////
 /////////////////
 
-// Press down - fade out, let up - fade in
+// Connect touchDown() to all buttons
+// Create a dragOut() function to animate fade in, but not register button press
 // Reconnect all buttons to their original functions
+
 // Long decimals and big numbers cut off with "..."
 // Put colors in a separate file
 // C vs AC
@@ -70,15 +72,18 @@ class ViewController: UIViewController {
     }
     
     
-    @IBAction func buttonPressed(sender: AnyObject) {
-        animateLabel(sender.tag)
+    @IBAction func buttonTouchDown(sender: AnyObject) {
+        for label in labelArray {
+            if label.tag == sender.tag {
+                label.fadeOut()
+            }
+        }
     }
     
-    
-    func animateLabel(labelTag: Int) {
+    @IBAction func buttonTouchUp(sender: AnyObject) {
         for label in labelArray {
-            if label.tag == labelTag {
-                label.fadeOutIn()
+            if label.tag == sender.tag {
+                label.fadeIn()
             }
         }
     }
@@ -123,6 +128,7 @@ class ViewController: UIViewController {
                 } else if label.tag >= 40 && label.tag <= 43 {
                     label.backgroundColor = COLOR_PURPLE
                 } else {
+                    label.font = UIFont(name: BUTTON_TEXT_FONT, size: BUTTON_TEXT_SIZE * 2.0)
                     label.backgroundColor = UIColor.clearColor()
                 }
             }
