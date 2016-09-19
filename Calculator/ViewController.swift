@@ -52,24 +52,24 @@
 
 import UIKit
 
+//////////////////
+///// COLORS /////
+//////////////////
+
+let COLOR_SALMON = UIColor(red:0.992, green:0.600, blue:0.420, alpha:1.00)
+let COLOR_PINK = UIColor(red:0.796, green:0.604, blue:0.796, alpha:1.00)
+let COLOR_PURPLE = UIColor(red:0.600, green:0.604, blue:0.792, alpha:1.00)
+let COLOR_ORANGE = UIColor(red:0.992, green:0.596, blue:0.153, alpha:1.00)
+
+////////////////
+///// TEXT /////
+////////////////
+
+let TEXT_FONT = "FinalFrontierOldStyle" // or "Helvetica-Bold" ?
+let TEXT_SIZE = 28 as CGFloat
+let TEXT_COLOR = UIColor.black
+
 class ViewController: UIViewController {
-    
-    //////////////////
-    ///// COLORS /////
-    //////////////////
-    
-    let COLOR_SALMON = UIColor(red:0.992, green:0.600, blue:0.420, alpha:1.00)
-    let COLOR_PINK = UIColor(red:0.796, green:0.604, blue:0.796, alpha:1.00)
-    let COLOR_PURPLE = UIColor(red:0.600, green:0.604, blue:0.792, alpha:1.00)
-    let COLOR_ORANGE = UIColor(red:0.992, green:0.596, blue:0.153, alpha:1.00)
-    
-    ////////////////
-    ///// TEXT /////
-    ////////////////
-    
-    let TEXT_FONT = "FinalFrontierOldStyle" // or "Helvetica-Bold" ?
-    let TEXT_SIZE = 28 as CGFloat
-    let TEXT_COLOR = UIColor.black
     
     ////////////////////////////
     ///// OUTLETS and VARS /////
@@ -151,26 +151,32 @@ class ViewController: UIViewController {
     func formatLabels() {
         for label in labelArray {
             label.textColor = TEXT_COLOR
+            label.backgroundColor = getLabelBackgroundColor(labelTag: label.tag)
             if label.tag <= 10 {
                 label.font = UIFont(name: TEXT_FONT, size: TEXT_SIZE * 1.5)
-                label.backgroundColor = COLOR_SALMON
             } else if label.tag == 50 {
                 label.font = UIFont(name: TEXT_FONT, size: TEXT_SIZE * 2.0)
-                label.backgroundColor = UIColor.clear
             } else {
                 label.font = UIFont(name: TEXT_FONT, size: TEXT_SIZE * 1.0)
-                if label.tag == 20 {
-                    label.backgroundColor = COLOR_ORANGE
-                } else if label.tag >= 21 && label.tag <= 31 {
-                    label.backgroundColor = COLOR_PINK
-                } else if label.tag >= 40 && label.tag <= 43 {
-                    label.backgroundColor = COLOR_PURPLE
-                }
             }
         }
         stylizeReverseSignLabel()
     }
     
+    func getLabelBackgroundColor(labelTag: Int) -> UIColor {
+        var labelBackgroundColor = COLOR_SALMON
+        if labelTag == 50 {
+            labelBackgroundColor = UIColor.clear
+        } else if labelTag == 20 {
+            labelBackgroundColor = COLOR_ORANGE
+        } else if labelTag >= 21 && labelTag <= 31 {
+            labelBackgroundColor = COLOR_PINK
+        } else if labelTag >= 40 && labelTag <= 43 {
+            labelBackgroundColor = COLOR_PURPLE
+        }
+        return labelBackgroundColor
+    }
+
     func stylizeReverseSignLabel() {
         let font: UIFont? = UIFont(name: TEXT_FONT, size: TEXT_SIZE)
         let fontSuper: UIFont? = UIFont(name: TEXT_FONT, size: TEXT_SIZE / 1.5)
@@ -211,7 +217,8 @@ class ViewController: UIViewController {
     func labelFadeIn(senderTag: Int) {
         for label in labelArray {
             if label.tag == senderTag {
-                label.fadeIn()
+                let labelBackgroundColor = getLabelBackgroundColor(labelTag: senderTag)
+                label.fadeIn(labelBackgroundColor: labelBackgroundColor)
             }
         }
     }
@@ -423,19 +430,27 @@ class ViewController: UIViewController {
 ///// EXTENSIONS /////
 //////////////////////
 
-extension UIView {
+extension UILabel {
     
     func fadeOut() {
-        UIView.animate(withDuration: 0.2, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
-            self.alpha = 0.0
-            }, completion: nil)
+        UILabel.transition(with: self, duration: 0.25, options: .transitionCrossDissolve, animations: {() -> Void in
+            self.textColor = UIColor.white
+            self.backgroundColor = UIColor.black
+            }, completion: {(finished: Bool) -> Void in
+        })
     }
     
-    func fadeIn() {
-        UIView.animate(withDuration: 0.4, delay: 0.0, options: UIViewAnimationOptions.curveEaseIn, animations: {
-            self.alpha = 1.0
-            }, completion: nil)
+    func fadeIn(labelBackgroundColor: UIColor) {
+        UILabel.transition(with: self, duration: 0.25, options: .transitionCrossDissolve, animations: {() -> Void in
+            self.textColor = UIColor.black
+            self.backgroundColor = labelBackgroundColor
+            }, completion: {(finished: Bool) -> Void in
+        })
     }
+    
+}
+
+extension UIView {
     
     func roundCorners(corners:UIRectCorner, radius: CGFloat) {
         let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
