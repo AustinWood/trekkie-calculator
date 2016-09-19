@@ -17,7 +17,8 @@
 // Long decimals and big numbers cut off with "..."
 // Put colors in a separate file
 // C vs AC
-// Make Memory buttons a Switch statement
+// Make Memory buttons a SWITCH statement
+// Make currentOperation a SWITCH statement
 // Register hardware keyboard presses
 // Add second label that shows previous operations
 // Add slide in animation to new numbers: http://www.andrewcbancroft.com/2014/09/24/slide-in-animation-in-swift/
@@ -26,6 +27,7 @@
 // Create app icon
 // Create launch screen
 // Create info/about screen?
+// Make iPhone only (no iPad)
 
 /////////////////////////////////////////////////
 ///// TAG REFERENCES for BUTTONS and LABELS /////
@@ -75,11 +77,10 @@ class ViewController: UIViewController {
     ///// OUTLETS and VARS /////
     ////////////////////////////
     
-    //@IBOutlet weak var borderView: UIView!
-    
     @IBOutlet weak var outputLabel: UILabel!
     @IBOutlet weak var clearLabel: UILabel!
     @IBOutlet weak var reverseSignLabel: UILabel!
+    
     @IBOutlet weak var outputView: UIView!
     @IBOutlet weak var megaView: UIView!
     
@@ -89,7 +90,9 @@ class ViewController: UIViewController {
     var runningNumber = Double()
     var leftString = Double()
     var rightString = Double()
+    
     var currentOperation = 0
+    
     var resetOutput = false
     var decimalPressed = false
     
@@ -151,7 +154,8 @@ class ViewController: UIViewController {
     func formatLabels() {
         for label in labelArray {
             label.textColor = TEXT_COLOR
-            label.backgroundColor = getLabelBackgroundColor(labelTag: label.tag)
+            let backgroundColor = getLabelBackgroundColor(labelTag: label.tag)
+            label.backgroundColor = backgroundColor
             if label.tag <= 10 {
                 label.font = UIFont(name: TEXT_FONT, size: TEXT_SIZE * 1.5)
             } else if label.tag == 50 {
@@ -190,35 +194,44 @@ class ViewController: UIViewController {
     ///// BUTTON PRESSES /////
     //////////////////////////
     
+    var touchDownArray = [Int]()
+    
+    enum animationType {
+        case fadeOut
+        case fadeCancel
+        case fadeIn
+    }
+    
     @IBAction func buttonTouchDown(_ sender: AnyObject) {
-        labelFadeOut(senderTag: sender.tag)
+        touchDownArray.append(sender.tag)
+        animateLabel(senderTag: sender.tag, animationType: .fadeOut)
     }
     
     @IBAction func buttonTouchDragOutside(_ sender: AnyObject) {
-        labelFadeIn(senderTag: sender.tag)
-    }
-    
-    @IBAction func buttonTouchUp(_ sender: AnyObject) {
-        labelFadeIn(senderTag: sender.tag)
-    }
-    
-    //////////////////////
-    ///// ANIMATIONS /////
-    //////////////////////
-    
-    func labelFadeOut(senderTag: Int) {
-        for label in labelArray {
-            if label.tag == senderTag {
-                label.fadeOut()
-            }
+        if touchDownArray.contains(sender.tag) {
+            touchDownArray = touchDownArray.filter { $0 != sender.tag }
+            animateLabel(senderTag: sender.tag, animationType: .fadeCancel)
         }
     }
     
-    func labelFadeIn(senderTag: Int) {
+    @IBAction func buttonTouchUp(_ sender: AnyObject) {
+        touchDownArray = touchDownArray.filter { $0 != sender.tag }
+        animateLabel(senderTag: sender.tag, animationType: .fadeIn)
+    }
+    
+    func animateLabel(senderTag: Int, animationType: animationType) {
+        let labelBackgroundColor = getLabelBackgroundColor(labelTag: senderTag)
         for label in labelArray {
             if label.tag == senderTag {
-                let labelBackgroundColor = getLabelBackgroundColor(labelTag: senderTag)
-                label.fadeIn(labelBackgroundColor: labelBackgroundColor)
+                switch animationType {
+                case .fadeOut:
+                    label.fadeOut()
+                case .fadeCancel:
+                    label.fadeCancel(labelBackgroundColor: labelBackgroundColor)
+                case .fadeIn:
+                    label.fadeIn(labelBackgroundColor: labelBackgroundColor)
+                }
+                break
             }
         }
     }
@@ -440,8 +453,21 @@ extension UILabel {
         })
     }
     
-    func fadeIn(labelBackgroundColor: UIColor) {
+    func fadeCancel(labelBackgroundColor: UIColor) {
         UILabel.transition(with: self, duration: 0.25, options: .transitionCrossDissolve, animations: {() -> Void in
+            self.textColor = UIColor.black
+            self.backgroundColor = UIColor.black
+            }, completion: {(finished: Bool) -> Void in
+                UILabel.transition(with: self, duration: 0.5, options: .transitionCrossDissolve, animations: {() -> Void in
+                    self.textColor = UIColor.black
+                    self.backgroundColor = labelBackgroundColor
+                    }, completion: {(finished: Bool) -> Void in
+                })
+        })
+    }
+    
+    func fadeIn(labelBackgroundColor: UIColor) {
+        UILabel.transition(with: self, duration: 0.4, options: .transitionCrossDissolve, animations: {() -> Void in
             self.textColor = UIColor.black
             self.backgroundColor = labelBackgroundColor
             }, completion: {(finished: Bool) -> Void in
