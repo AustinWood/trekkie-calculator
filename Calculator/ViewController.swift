@@ -10,10 +10,10 @@
 /////////////// TO DO ///////////////
 /////////////////////////////////////
 
-// Add text animations
 // Clean up CALCULATOR LOGIC code
 // Reconnect all buttons to their original functions
 
+// Add animation/styling for operation depressed (for example, Apple iPhone calc app has black border)
 // Long decimals and big numbers cut off with "..."
 // Put colors in a separate file
 // C vs AC
