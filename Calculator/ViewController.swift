@@ -6,14 +6,12 @@
 //  Copyright © 2016 Austin Wood. All rights reserved.
 //
 
-import UIKit
+/////////////////////////////////////
+/////////////// TO DO ///////////////
+/////////////////////////////////////
 
-/////////////////
-///// TO DO /////
-/////////////////
-
-// Connect touchDown() to all buttons
-// Create a dragOut() function to animate fade in, but not register button press
+// Add text animations
+// Clean up CALCULATOR LOGIC code
 // Reconnect all buttons to their original functions
 
 // Long decimals and big numbers cut off with "..."
@@ -25,7 +23,7 @@ import UIKit
 // Add slide in animation to new numbers: http://www.andrewcbancroft.com/2014/09/24/slide-in-animation-in-swift/
 
 /////////////////////////////////////////////////
-///// TAG REFERENCES FOR BUTTONS and LABELS /////
+///// TAG REFERENCES for BUTTONS and LABELS /////
 /////////////////////////////////////////////////
 
 // 0-9: Numbers
@@ -47,10 +45,36 @@ import UIKit
 //
 // 50: Output label
 
+import UIKit
+
 class ViewController: UIViewController {
     
-    @IBOutlet weak var borderView: UIView!
-    @IBOutlet weak var outputLbl: UILabel!
+    //////////////////
+    ///// COLORS /////
+    //////////////////
+    
+    let COLOR_SALMON = UIColor(red:0.992, green:0.600, blue:0.420, alpha:1.00)
+    let COLOR_PINK = UIColor(red:0.796, green:0.604, blue:0.796, alpha:1.00)
+    let COLOR_PURPLE = UIColor(red:0.600, green:0.604, blue:0.792, alpha:1.00)
+    let COLOR_ORANGE = UIColor(red:0.992, green:0.596, blue:0.153, alpha:1.00)
+    
+    ////////////////
+    ///// TEXT /////
+    ////////////////
+    
+    let TEXT_FONT = "FinalFrontierOldStyle" // or "Helvetica-Bold" ?
+    let TEXT_SIZE = 28 as CGFloat
+    let TEXT_COLOR = UIColor.black
+    
+    ////////////////////////////
+    ///// OUTLETS and VARS /////
+    ////////////////////////////
+    
+    //@IBOutlet weak var borderView: UIView!
+    
+    @IBOutlet weak var outputLabel: UILabel!
+    @IBOutlet weak var clearLabel: UILabel!
+    @IBOutlet weak var reverseSignLabel: UILabel!
     
     var labelArray = [UILabel]()
     var buttonArray = [UIButton]()
@@ -62,35 +86,28 @@ class ViewController: UIViewController {
     var resetOutput = false
     var decimalPressed = false
     
+    ///////////////////
+    ///// ON LOAD /////
+    ///////////////////
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        stylizeReverseSignButton()
-        
         labelArray = getLabelsInView(self.view)
-        formatLabels()
         buttonArray = getButtonsInView(self.view)
+        formatLabels()
     }
     
-    
-    @IBAction func buttonTouchDown(_ sender: AnyObject) {
-        for label in labelArray {
-            if label.tag == sender.tag {
-                label.fadeOut()
-            }
-        }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = true
+        let defaults = UserDefaults.standard
+        defaults.set(0.0, forKey: "memoryDouble")
+        resetCalc()
     }
     
-    @IBAction func buttonTouchUp(_ sender: AnyObject) {
-        for label in labelArray {
-            if label.tag == sender.tag {
-                label.fadeOut()
-                label.fadeIn()
-            }
-        }
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
     }
-    
-    
-    
     
     func getLabelsInView(_ view: UIView) -> [UILabel] {
         var results = [UILabel]()
@@ -104,41 +121,6 @@ class ViewController: UIViewController {
         return results
     }
     
-    
-    func formatLabels() {
-        
-        let COLOR_SALMON = UIColor(red:0.992, green:0.600, blue:0.420, alpha:1.00)
-        let COLOR_PINK = UIColor(red:0.796, green:0.604, blue:0.796, alpha:1.00)
-        let COLOR_PURPLE = UIColor(red:0.600, green:0.604, blue:0.792, alpha:1.00)
-        let COLOR_ORANGE = UIColor(red:0.992, green:0.596, blue:0.153, alpha:1.00)
-        
-        let BUTTON_TEXT_FONT = "FinalFrontierOldStyle"
-        //let BUTTON_TEXT_FONT = "Helvetica-Bold"
-        let BUTTON_TEXT_SIZE = 28 as CGFloat
-        let BUTTON_TEXT_COLOR = UIColor.black
-        
-        for label in labelArray {
-            label.textColor = BUTTON_TEXT_COLOR
-            if label.tag <= 10 {
-                label.font = UIFont(name: BUTTON_TEXT_FONT, size: BUTTON_TEXT_SIZE * 1.5)
-                label.backgroundColor = COLOR_SALMON
-            } else {
-                label.font = UIFont(name: BUTTON_TEXT_FONT, size: BUTTON_TEXT_SIZE * 1.0)
-                if label.tag == 20 {
-                    label.backgroundColor = COLOR_ORANGE
-                } else if label.tag >= 21 && label.tag <= 31 {
-                    label.backgroundColor = COLOR_PINK
-                } else if label.tag >= 40 && label.tag <= 43 {
-                    label.backgroundColor = COLOR_PURPLE
-                } else {
-                    label.font = UIFont(name: BUTTON_TEXT_FONT, size: BUTTON_TEXT_SIZE * 2.0)
-                    label.backgroundColor = UIColor.clear
-                }
-            }
-        }
-    }
-    
-    
     func getButtonsInView(_ view: UIView) -> [UIButton] {
         var results = [UIButton]()
         for subview in view.subviews as [UIView] {
@@ -151,50 +133,97 @@ class ViewController: UIViewController {
         return results
     }
     
-    
-    override var preferredStatusBarStyle : UIStatusBarStyle {
-        return UIStatusBarStyle.lightContent
+    func formatLabels() {
+        for label in labelArray {
+            label.textColor = TEXT_COLOR
+            if label.tag <= 10 {
+                label.font = UIFont(name: TEXT_FONT, size: TEXT_SIZE * 1.5)
+                label.backgroundColor = COLOR_SALMON
+            } else if label.tag == 50 {
+                label.font = UIFont(name: TEXT_FONT, size: TEXT_SIZE * 2.0)
+                label.backgroundColor = UIColor.clear
+            } else {
+                label.font = UIFont(name: TEXT_FONT, size: TEXT_SIZE * 1.0)
+                if label.tag == 20 {
+                    label.backgroundColor = COLOR_ORANGE
+                } else if label.tag >= 21 && label.tag <= 31 {
+                    label.backgroundColor = COLOR_PINK
+                } else if label.tag >= 40 && label.tag <= 43 {
+                    label.backgroundColor = COLOR_PURPLE
+                }
+            }
+        }
+        stylizeReverseSignLabel()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.isNavigationBarHidden = true
-        let defaults = UserDefaults.standard
-        defaults.set(0.0, forKey: "memoryDouble")
-        resetCalc()
+    func stylizeReverseSignLabel() {
+        let font: UIFont? = UIFont(name: TEXT_FONT, size: TEXT_SIZE)
+        let fontSuper: UIFont? = UIFont(name: TEXT_FONT, size: TEXT_SIZE / 1.5)
+        let attString: NSMutableAttributedString = NSMutableAttributedString(string: "+/–", attributes: [NSFontAttributeName: font!])
+        attString.setAttributes([NSFontAttributeName: fontSuper!, NSBaselineOffsetAttributeName: 10], range: NSRange(location:0,length:1))
+        attString.setAttributes([NSFontAttributeName: fontSuper!, NSBaselineOffsetAttributeName: 2], range: NSRange(location:2,length:1))
+        reverseSignLabel.attributedText = attString
     }
     
-    func stylizeReverseSignButton() {
-//        let font: UIFont? = UIFont(name: BUTTON_TEXT_FONT, size: BUTTON_TEXT_SIZE)
-//        let fontSuper: UIFont? = UIFont(name: BUTTON_TEXT_FONT, size: BUTTON_TEXT_SIZE / 1.5)
-//        let attString: NSMutableAttributedString = NSMutableAttributedString(string: "+/–", attributes: [NSFontAttributeName: font!])
-//        attString.setAttributes([NSFontAttributeName: fontSuper!, NSBaselineOffsetAttributeName: 10], range: NSRange(location:0,length:1))
-//        attString.setAttributes([NSFontAttributeName: fontSuper!, NSBaselineOffsetAttributeName: 2], range: NSRange(location:2,length:1))
-//        reverseSignButton.setAttributedTitle(attString, forState: .Normal)
+    //////////////////////////
+    ///// BUTTON PRESSES /////
+    //////////////////////////
+    
+    @IBAction func buttonTouchDown(_ sender: AnyObject) {
+        labelFadeOut(senderTag: sender.tag)
     }
+    
+    @IBAction func buttonTouchDragOutside(_ sender: AnyObject) {
+        labelFadeIn(senderTag: sender.tag)
+    }
+    
+    @IBAction func buttonTouchUp(_ sender: AnyObject) {
+        labelFadeIn(senderTag: sender.tag)
+    }
+    
+    //////////////////////
+    ///// ANIMATIONS /////
+    //////////////////////
+    
+    func labelFadeOut(senderTag: Int) {
+        for label in labelArray {
+            if label.tag == senderTag {
+                label.fadeOut()
+            }
+        }
+    }
+    
+    func labelFadeIn(senderTag: Int) {
+        for label in labelArray {
+            if label.tag == senderTag {
+                label.fadeIn()
+            }
+        }
+    }
+    
+    ////////////////////////////
+    ///// CALCULATOR LOGIC /////
+    ////////////////////////////
     
     func resetCalc() {
-        
         print("func resetCalc()")
-        
         runningNumber = 0.0
         leftString = 0.0
         rightString = 0.0
         currentOperation = 0
         resetOutput = false
-        outputLbl.text = "0"
-//        clearBtn.setTitle("AC", forState: .Normal)
+        outputLabel.text = "0"
+        clearLabel.text = "AC"
     }
     
     @IBAction func clearPressed(_ sender: AnyObject) {
-        
-//        if clearBtn.titleLabel?.text == "AC" {
-//            resetCalc()
-//        } else {
-//            runningNumber = 0.0
-//            outputLbl.text = "0"
-//            clearBtn.setTitle("AC", forState: .Normal)
-//        }
+        if clearLabel.text == "AC" {
+            resetCalc()
+        } else {
+            runningNumber = 0.0
+            outputLabel.text = "0"
+            clearLabel.text = "AC"
+        }
     }
     
     @IBAction func numberPressed(_ sender: UIButton) {
@@ -203,8 +232,7 @@ class ViewController: UIViewController {
             resetCalc()
         }
         
-//        clearBtn.setTitle("C", forState: .Normal)
-        
+        clearLabel.text = "C"
         let number = sender.tag
         
         if !decimalPressed {
@@ -217,27 +245,23 @@ class ViewController: UIViewController {
             }
         }
         
-        outputLbl.text = formatOutputText(runningNumber)
+        outputLabel.text = formatOutputText(runningNumber)
     }
     
     @IBAction func decimalPressed(_ sender: AnyObject) {
         
         if !decimalPressed {
-            
             decimalPressed = true
-            
             if resetOutput {
                 resetCalc()
             }
-            
         } else {
-            
-            // button press feedback to ackngoledge the operation regitsered but invalid
+            // Button press feedback to acknowledge the operation regitsered but invalid
+            // Put this in the BUTTON PRESS section?
         }
         
-        outputLbl.text = formatOutputText(runningNumber)
+        outputLabel.text = formatOutputText(runningNumber)
     }
-    
     
     @IBAction func operationPressed(_ sender: AnyObject) {
         
@@ -276,20 +300,18 @@ class ViewController: UIViewController {
         processOperation()
     }
     
-    
     @IBAction func reverseSignPressed(_ sender: AnyObject) {
         
-        if outputLbl.text != "0" {
-            if Double(outputLbl.text!)! == runningNumber {
+        if outputLabel.text != "0" {
+            if Double(outputLabel.text!)! == runningNumber {
                 runningNumber = runningNumber * -1
-                outputLbl.text = formatOutputText(runningNumber)
+                outputLabel.text = formatOutputText(runningNumber)
             } else {
                 leftString = leftString * -1
-                outputLbl.text = formatOutputText(leftString)
+                outputLabel.text = formatOutputText(leftString)
             }
         }
     }
-    
     
     func processOperation() {
         
@@ -316,9 +338,8 @@ class ViewController: UIViewController {
         
         leftString = calculation
         
-        outputLbl.text = formatOutputText(leftString)
+        outputLabel.text = formatOutputText(leftString)
     }
-    
     
     @IBAction func memoryPressed(_ sender: AnyObject) {
         
@@ -337,26 +358,24 @@ class ViewController: UIViewController {
             var savedDouble = defaults.double(forKey: "memoryDouble")
             
             if sender.tag == 2 {
-                savedDouble += Double(outputLbl.text!)!
+                savedDouble += Double(outputLabel.text!)!
                 defaults.set(savedDouble, forKey: "memoryDouble")
             }
             else if sender.tag == 3 {
-                savedDouble -= Double(outputLbl.text!)!
+                savedDouble -= Double(outputLabel.text!)!
                 defaults.set(savedDouble, forKey: "memoryDouble")
             }
             else {
                 runningNumber = savedDouble
-                outputLbl.text = formatOutputText(runningNumber)
+                outputLabel.text = formatOutputText(runningNumber)
             }
             
-            runningNumber = Double(outputLbl.text!)!
+            runningNumber = Double(outputLabel.text!)!
             
             print("memoryPressed()")
             print("runningNumber = \(runningNumber)")
         }
-        
     }
-    
     
     func formatOutputText(_ inputDouble: Double) -> String {
         
@@ -376,8 +395,6 @@ class ViewController: UIViewController {
         
         return outputString
     }
-    
-    
     
     func isInt(_ double: Double) -> Bool {
         

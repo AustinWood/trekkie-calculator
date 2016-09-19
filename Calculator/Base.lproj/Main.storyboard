@@ -21,11 +21,10 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gis-gy-n90" userLabel="megaStackView">
-                                <frame key="frameInset" minX="10" minY="142" width="394" height="584"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gis-gy-n90" userLabel="megaStackView">
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xzt-G3-fb0" userLabel="barAndButtons">
                                         <subviews>
@@ -43,7 +42,7 @@
                                                                 <subviews>
                                                                     <view tag="40" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fdE-wi-pCu" userLabel="MC View">
                                                                         <subviews>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="40" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ry3-SD-JYS" userLabel="MC Label" customClass="CustomLabel" customModule="Calculator" customModuleProvider="target">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="40" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ry3-SD-JYS" userLabel="MC Label">
                                                                                 <color key="backgroundColor" red="0.99215686270000003" green="0.52549019610000003" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -52,6 +51,8 @@
                                                                             <button opaque="NO" tag="40" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OWi-oO-GGp" userLabel="MC Button">
                                                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <connections>
+                                                                                    <action selector="buttonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="DDm-s9-08x"/>
+                                                                                    <action selector="buttonTouchDragOutside:" destination="BYZ-38-t0r" eventType="touchDragOutside" id="iq8-hj-7nh"/>
                                                                                     <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gH0-yq-mLt"/>
                                                                                 </connections>
                                                                             </button>
@@ -70,7 +71,7 @@
                                                                     </view>
                                                                     <view tag="41" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VMq-Mh-qLv" userLabel="M+ View">
                                                                         <subviews>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="41" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="M+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VFh-gU-eD4" userLabel="M+ Label" customClass="CustomLabel" customModule="Calculator" customModuleProvider="target">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="41" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="M+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VFh-gU-eD4" userLabel="M+ Label">
                                                                                 <color key="backgroundColor" red="0.99215686270000003" green="0.52549019610000003" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -79,6 +80,8 @@
                                                                             <button opaque="NO" tag="41" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RBG-fF-HfU" userLabel="M+ Button">
                                                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <connections>
+                                                                                    <action selector="buttonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="Q6R-wV-vfq"/>
+                                                                                    <action selector="buttonTouchDragOutside:" destination="BYZ-38-t0r" eventType="touchDragOutside" id="jGn-Eh-njc"/>
                                                                                     <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IKW-B5-VTf"/>
                                                                                 </connections>
                                                                             </button>
@@ -97,7 +100,7 @@
                                                                     </view>
                                                                     <view tag="42" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JWT-Iy-qjd" userLabel="M- View">
                                                                         <subviews>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="42" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="M-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8eT-xd-pOL" userLabel="M- Label" customClass="CustomLabel" customModule="Calculator" customModuleProvider="target">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="42" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="M-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8eT-xd-pOL" userLabel="M- Label">
                                                                                 <color key="backgroundColor" red="0.99215686270000003" green="0.52549019610000003" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -106,6 +109,8 @@
                                                                             <button opaque="NO" tag="42" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cGj-ez-9ic" userLabel="M- Button">
                                                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <connections>
+                                                                                    <action selector="buttonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="rR8-KV-SF5"/>
+                                                                                    <action selector="buttonTouchDragOutside:" destination="BYZ-38-t0r" eventType="touchDragOutside" id="VjC-NG-4g7"/>
                                                                                     <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Qh-HI-j3J"/>
                                                                                 </connections>
                                                                             </button>
@@ -124,7 +129,7 @@
                                                                     </view>
                                                                     <view tag="43" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N0T-to-vRI" userLabel="MR View">
                                                                         <subviews>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="43" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2JZ-1T-s3Z" userLabel="MR Label" customClass="CustomLabel" customModule="Calculator" customModuleProvider="target">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="43" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2JZ-1T-s3Z" userLabel="MR Label">
                                                                                 <color key="backgroundColor" red="0.99215686270000003" green="0.52549019610000003" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -133,6 +138,8 @@
                                                                             <button opaque="NO" tag="43" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Or5-Ua-DaK" userLabel="MR Button">
                                                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <connections>
+                                                                                    <action selector="buttonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="gMX-hz-Brp"/>
+                                                                                    <action selector="buttonTouchDragOutside:" destination="BYZ-38-t0r" eventType="touchDragOutside" id="gxX-bB-eBJ"/>
                                                                                     <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nmZ-Tw-Bjr"/>
                                                                                 </connections>
                                                                             </button>
@@ -159,7 +166,7 @@
                                                                 <subviews>
                                                                     <view tag="30" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hKU-Z4-Puz" userLabel="Clear View">
                                                                         <subviews>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="30" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="C" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FBg-St-OgH" userLabel="Clear Label" customClass="CustomLabel" customModule="Calculator" customModuleProvider="target">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="30" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="C" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FBg-St-OgH" userLabel="Clear Label">
                                                                                 <color key="backgroundColor" red="0.99215686270000003" green="0.52549019610000003" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -168,6 +175,8 @@
                                                                             <button opaque="NO" tag="30" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XxT-yn-Pgh" userLabel="Clear Button">
                                                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <connections>
+                                                                                    <action selector="buttonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="ekl-uF-ueP"/>
+                                                                                    <action selector="buttonTouchDragOutside:" destination="BYZ-38-t0r" eventType="touchDragOutside" id="ux5-8z-eQx"/>
                                                                                     <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sue-Fh-Paw"/>
                                                                                 </connections>
                                                                             </button>
@@ -186,7 +195,7 @@
                                                                     </view>
                                                                     <view tag="31" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WSG-6h-2ZS" userLabel="Reverse View">
                                                                         <subviews>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="31" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+/–" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wzD-hT-KNr" userLabel="Reverse Label" customClass="CustomLabel" customModule="Calculator" customModuleProvider="target">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="31" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+/–" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wzD-hT-KNr" userLabel="Reverse Label">
                                                                                 <color key="backgroundColor" red="0.99215686270000003" green="0.52549019610000003" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -195,6 +204,8 @@
                                                                             <button opaque="NO" tag="31" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n9Q-IA-pjI" userLabel="Reverse Button">
                                                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <connections>
+                                                                                    <action selector="buttonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="IsZ-eW-MCO"/>
+                                                                                    <action selector="buttonTouchDragOutside:" destination="BYZ-38-t0r" eventType="touchDragOutside" id="A2g-Kb-ZuD"/>
                                                                                     <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2Kb-tk-88V"/>
                                                                                 </connections>
                                                                             </button>
@@ -213,7 +224,7 @@
                                                                     </view>
                                                                     <view tag="24" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zUW-55-x5G" userLabel="Division View">
                                                                         <subviews>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="24" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="÷" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lyp-oR-dR3" userLabel="Division Label" customClass="CustomLabel" customModule="Calculator" customModuleProvider="target">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="24" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="÷" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lyp-oR-dR3" userLabel="Division Label">
                                                                                 <color key="backgroundColor" red="0.99215686270000003" green="0.52549019610000003" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -222,6 +233,8 @@
                                                                             <button opaque="NO" tag="24" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wSC-dx-cW3" userLabel="Division Button">
                                                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <connections>
+                                                                                    <action selector="buttonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="And-hL-4eL"/>
+                                                                                    <action selector="buttonTouchDragOutside:" destination="BYZ-38-t0r" eventType="touchDragOutside" id="wbv-md-bcx"/>
                                                                                     <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4ul-1l-5Jv"/>
                                                                                 </connections>
                                                                             </button>
@@ -240,7 +253,7 @@
                                                                     </view>
                                                                     <view tag="23" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ha8-Vg-pT4" userLabel="Multiplication View">
                                                                         <subviews>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="23" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="x" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gup-T9-JZl" userLabel="Multiplication Label" customClass="CustomLabel" customModule="Calculator" customModuleProvider="target">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="23" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="x" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gup-T9-JZl" userLabel="Multiplication Label">
                                                                                 <color key="backgroundColor" red="0.99215686270000003" green="0.52549019610000003" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -249,6 +262,8 @@
                                                                             <button opaque="NO" tag="23" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6f3-U8-CBQ" userLabel="Multiplication Button">
                                                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <connections>
+                                                                                    <action selector="buttonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="xJJ-25-ERo"/>
+                                                                                    <action selector="buttonTouchDragOutside:" destination="BYZ-38-t0r" eventType="touchDragOutside" id="GhB-1n-jSf"/>
                                                                                     <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Di-KO-Qz0"/>
                                                                                 </connections>
                                                                             </button>
@@ -279,7 +294,7 @@
                                                                                 <subviews>
                                                                                     <view tag="7" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7ss-4O-DgM" userLabel="7 View">
                                                                                         <subviews>
-                                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="7" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dGo-Li-io0" userLabel="7 Label" customClass="CustomLabel" customModule="Calculator" customModuleProvider="target">
+                                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="7" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dGo-Li-io0" userLabel="7 Label">
                                                                                                 <color key="backgroundColor" red="0.99215686270000003" green="0.52549019610000003" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -288,6 +303,8 @@
                                                                                             <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9JN-om-CJD" userLabel="7 Button">
                                                                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                 <connections>
+                                                                                                    <action selector="buttonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="f1n-hB-iP8"/>
+                                                                                                    <action selector="buttonTouchDragOutside:" destination="BYZ-38-t0r" eventType="touchDragOutside" id="F2T-7c-cSt"/>
                                                                                                     <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NEk-C5-yHh"/>
                                                                                                 </connections>
                                                                                             </button>
@@ -306,7 +323,7 @@
                                                                                     </view>
                                                                                     <view tag="8" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gxb-bL-apy" userLabel="8 View">
                                                                                         <subviews>
-                                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="8" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nx8-zm-9BF" userLabel="8 Label" customClass="CustomLabel" customModule="Calculator" customModuleProvider="target">
+                                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="8" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nx8-zm-9BF" userLabel="8 Label">
                                                                                                 <color key="backgroundColor" red="0.99215686270000003" green="0.52549019610000003" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -315,6 +332,8 @@
                                                                                             <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N6c-ln-vz6" userLabel="8 Button">
                                                                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                 <connections>
+                                                                                                    <action selector="buttonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="M9j-Sn-dFj"/>
+                                                                                                    <action selector="buttonTouchDragOutside:" destination="BYZ-38-t0r" eventType="touchDragOutside" id="yVs-SY-IbT"/>
                                                                                                     <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="znM-NO-AC8"/>
                                                                                                 </connections>
                                                                                             </button>
@@ -333,7 +352,7 @@
                                                                                     </view>
                                                                                     <view tag="9" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Ne-5a-Urg" userLabel="9 View">
                                                                                         <subviews>
-                                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="9" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KTK-2k-f1y" userLabel="9 Label" customClass="CustomLabel" customModule="Calculator" customModuleProvider="target">
+                                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="9" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KTK-2k-f1y" userLabel="9 Label">
                                                                                                 <color key="backgroundColor" red="0.99215686270000003" green="0.52549019610000003" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -342,6 +361,8 @@
                                                                                             <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sCa-3C-oHo" userLabel="9 Button">
                                                                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                 <connections>
+                                                                                                    <action selector="buttonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="WlF-Ma-ySz"/>
+                                                                                                    <action selector="buttonTouchDragOutside:" destination="BYZ-38-t0r" eventType="touchDragOutside" id="Y5r-XC-cMU"/>
                                                                                                     <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vul-8f-Zzm"/>
                                                                                                 </connections>
                                                                                             </button>
@@ -368,7 +389,7 @@
                                                                                 <subviews>
                                                                                     <view tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ync-3Y-jHu" userLabel="4 View">
                                                                                         <subviews>
-                                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WCR-bq-U6H" userLabel="4 Label" customClass="CustomLabel" customModule="Calculator" customModuleProvider="target">
+                                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WCR-bq-U6H" userLabel="4 Label">
                                                                                                 <color key="backgroundColor" red="0.99215686274509807" green="0.52549019607843139" blue="0.32549019607843138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -377,6 +398,8 @@
                                                                                             <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ptk-P6-Nlf" userLabel="4 Button">
                                                                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                 <connections>
+                                                                                                    <action selector="buttonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="or7-HW-57K"/>
+                                                                                                    <action selector="buttonTouchDragOutside:" destination="BYZ-38-t0r" eventType="touchDragOutside" id="hnA-re-JTd"/>
                                                                                                     <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Sok-a5-jv2"/>
                                                                                                 </connections>
                                                                                             </button>
@@ -395,7 +418,7 @@
                                                                                     </view>
                                                                                     <view tag="5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J1o-9q-1PB" userLabel="5 View">
                                                                                         <subviews>
-                                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k1A-TL-Ckl" userLabel="5 Label" customClass="CustomLabel" customModule="Calculator" customModuleProvider="target">
+                                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k1A-TL-Ckl" userLabel="5 Label">
                                                                                                 <color key="backgroundColor" red="0.99215686270000003" green="0.52549019610000003" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -404,6 +427,8 @@
                                                                                             <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="boK-2L-JhZ" userLabel="5 Button">
                                                                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                 <connections>
+                                                                                                    <action selector="buttonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="MGb-x2-1MK"/>
+                                                                                                    <action selector="buttonTouchDragOutside:" destination="BYZ-38-t0r" eventType="touchDragOutside" id="ZMi-dN-cc1"/>
                                                                                                     <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="09F-Q9-VEc"/>
                                                                                                 </connections>
                                                                                             </button>
@@ -422,7 +447,7 @@
                                                                                     </view>
                                                                                     <view tag="6" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iUG-wO-Lvj" userLabel="6 View">
                                                                                         <subviews>
-                                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="6" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yp7-4d-9mD" userLabel="6 Label" customClass="CustomLabel" customModule="Calculator" customModuleProvider="target">
+                                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="6" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yp7-4d-9mD" userLabel="6 Label">
                                                                                                 <color key="backgroundColor" red="0.99215686270000003" green="0.52549019610000003" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -431,6 +456,8 @@
                                                                                             <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ufz-bb-rxb" userLabel="6 Button">
                                                                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                 <connections>
+                                                                                                    <action selector="buttonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="d3Z-MZ-Adj"/>
+                                                                                                    <action selector="buttonTouchDragOutside:" destination="BYZ-38-t0r" eventType="touchDragOutside" id="gK0-eh-y2d"/>
                                                                                                     <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7v7-sj-sdZ"/>
                                                                                                 </connections>
                                                                                             </button>
@@ -457,7 +484,7 @@
                                                                                 <subviews>
                                                                                     <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f0b-IS-I9A" userLabel="1 View">
                                                                                         <subviews>
-                                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HCN-pS-ggS" userLabel="1 Label" customClass="CustomLabel" customModule="Calculator" customModuleProvider="target">
+                                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HCN-pS-ggS" userLabel="1 Label">
                                                                                                 <color key="backgroundColor" red="0.99215686270000003" green="0.52549019610000003" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -467,6 +494,7 @@
                                                                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                 <connections>
                                                                                                     <action selector="buttonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="Tdd-3T-CKE"/>
+                                                                                                    <action selector="buttonTouchDragOutside:" destination="BYZ-38-t0r" eventType="touchDragOutside" id="eao-Oh-cDX"/>
                                                                                                     <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DWu-XF-GqD"/>
                                                                                                 </connections>
                                                                                             </button>
@@ -486,7 +514,7 @@
                                                                                     </view>
                                                                                     <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ao6-9m-hLa" userLabel="2 View">
                                                                                         <subviews>
-                                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I3r-Iw-07Y" userLabel="2 Label" customClass="CustomLabel" customModule="Calculator" customModuleProvider="target">
+                                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I3r-Iw-07Y" userLabel="2 Label">
                                                                                                 <color key="backgroundColor" red="0.99215686270000003" green="0.52549019610000003" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -495,6 +523,8 @@
                                                                                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s47-k6-xih" userLabel="2 Button">
                                                                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                 <connections>
+                                                                                                    <action selector="buttonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="ZYu-iC-jXu"/>
+                                                                                                    <action selector="buttonTouchDragOutside:" destination="BYZ-38-t0r" eventType="touchDragOutside" id="RX6-Sa-PYD"/>
                                                                                                     <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0RS-mD-Ld2"/>
                                                                                                 </connections>
                                                                                             </button>
@@ -513,7 +543,7 @@
                                                                                     </view>
                                                                                     <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jyw-IO-eeE" userLabel="3 View">
                                                                                         <subviews>
-                                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iLU-6Y-FgA" userLabel="3 Label" customClass="CustomLabel" customModule="Calculator" customModuleProvider="target">
+                                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iLU-6Y-FgA" userLabel="3 Label">
                                                                                                 <color key="backgroundColor" red="0.99215686270000003" green="0.52549019610000003" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -522,6 +552,8 @@
                                                                                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3by-Cs-N4u" userLabel="3 Button">
                                                                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                 <connections>
+                                                                                                    <action selector="buttonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="20O-WP-2gT"/>
+                                                                                                    <action selector="buttonTouchDragOutside:" destination="BYZ-38-t0r" eventType="touchDragOutside" id="6gY-iZ-3LX"/>
                                                                                                     <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="d6F-rn-97o"/>
                                                                                                 </connections>
                                                                                             </button>
@@ -548,7 +580,7 @@
                                                                                 <subviews>
                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="73c-SE-6O2" userLabel="0 View">
                                                                                         <subviews>
-                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pym-x1-Exx" userLabel="0 Label" customClass="CustomLabel" customModule="Calculator" customModuleProvider="target">
+                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pym-x1-Exx" userLabel="0 Label">
                                                                                                 <color key="backgroundColor" red="0.99215686270000003" green="0.52549019610000003" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -558,6 +590,7 @@
                                                                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                 <connections>
                                                                                                     <action selector="buttonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="0xw-3C-hRu"/>
+                                                                                                    <action selector="buttonTouchDragOutside:" destination="BYZ-38-t0r" eventType="touchDragOutside" id="byE-Ji-fCf"/>
                                                                                                     <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fZ5-TE-7Ib"/>
                                                                                                 </connections>
                                                                                             </button>
@@ -576,7 +609,7 @@
                                                                                     </view>
                                                                                     <view tag="10" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tu2-Ya-lcP" userLabel="Decimal View">
                                                                                         <subviews>
-                                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="10" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ris-oh-9sQ" userLabel="Decimal Label" customClass="CustomLabel" customModule="Calculator" customModuleProvider="target">
+                                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="10" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ris-oh-9sQ" userLabel="Decimal Label">
                                                                                                 <color key="backgroundColor" red="0.99215686270000003" green="0.52549019610000003" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -585,6 +618,8 @@
                                                                                             <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="So2-Bi-zPY" userLabel="Decimal Button">
                                                                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                 <connections>
+                                                                                                    <action selector="buttonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="Fjo-Nf-bZ6"/>
+                                                                                                    <action selector="buttonTouchDragOutside:" destination="BYZ-38-t0r" eventType="touchDragOutside" id="Vki-hs-KIi"/>
                                                                                                     <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8UR-5S-gSi"/>
                                                                                                 </connections>
                                                                                             </button>
@@ -612,7 +647,7 @@
                                                                         <subviews>
                                                                             <view tag="22" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yvo-Kk-sTh" userLabel="Subtraction View">
                                                                                 <subviews>
-                                                                                    <label opaque="NO" userInteractionEnabled="NO" tag="22" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="–" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="88c-53-uZ1" userLabel="Subtraction Label" customClass="CustomLabel" customModule="Calculator" customModuleProvider="target">
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" tag="22" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="–" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="88c-53-uZ1" userLabel="Subtraction Label">
                                                                                         <color key="backgroundColor" red="0.99215686270000003" green="0.52549019610000003" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -621,6 +656,8 @@
                                                                                     <button opaque="NO" tag="22" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2pj-xd-iJX" userLabel="Subtraction Button">
                                                                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                         <connections>
+                                                                                            <action selector="buttonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="4cP-iO-mWk"/>
+                                                                                            <action selector="buttonTouchDragOutside:" destination="BYZ-38-t0r" eventType="touchDragOutside" id="rAX-i5-0xd"/>
                                                                                             <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iUI-3s-t7N"/>
                                                                                         </connections>
                                                                                     </button>
@@ -640,7 +677,7 @@
                                                                             </view>
                                                                             <view tag="21" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l8G-i3-RY2" userLabel="Addition View">
                                                                                 <subviews>
-                                                                                    <label opaque="NO" userInteractionEnabled="NO" tag="21" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ggj-wV-ql2" userLabel="Addition Label" customClass="CustomLabel" customModule="Calculator" customModuleProvider="target">
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" tag="21" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ggj-wV-ql2" userLabel="Addition Label">
                                                                                         <color key="backgroundColor" red="0.99215686270000003" green="0.52549019610000003" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -649,6 +686,8 @@
                                                                                     <button opaque="NO" tag="21" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MxF-60-htC" userLabel="Addition Button">
                                                                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                         <connections>
+                                                                                            <action selector="buttonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="djw-Im-Dcg"/>
+                                                                                            <action selector="buttonTouchDragOutside:" destination="BYZ-38-t0r" eventType="touchDragOutside" id="rld-EX-IbG"/>
                                                                                             <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CgF-DI-YRG"/>
                                                                                         </connections>
                                                                                     </button>
@@ -668,7 +707,7 @@
                                                                             </view>
                                                                             <view tag="20" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aa6-HZ-pE3" userLabel="Equals View">
                                                                                 <subviews>
-                                                                                    <label opaque="NO" userInteractionEnabled="NO" tag="20" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="=" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QOn-EM-fqe" userLabel="Equals Label" customClass="CustomLabel" customModule="Calculator" customModuleProvider="target">
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" tag="20" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="=" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QOn-EM-fqe" userLabel="Equals Label">
                                                                                         <color key="backgroundColor" red="0.99215686270000003" green="0.52549019610000003" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -677,6 +716,8 @@
                                                                                     <button opaque="NO" tag="20" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JdH-IL-cn5" userLabel="Equals Button">
                                                                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                         <connections>
+                                                                                            <action selector="buttonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="oDB-JU-eq9"/>
+                                                                                            <action selector="buttonTouchDragOutside:" destination="BYZ-38-t0r" eventType="touchDragOutside" id="K6O-HK-3cd"/>
                                                                                             <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VyJ-do-bhP"/>
                                                                                         </connections>
                                                                                     </button>
@@ -737,7 +778,7 @@
                                 <frame key="frameInset" minX="10" minY="24" width="394" height="115"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" tag="50" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="1234567890" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ID-Ss-rRh">
-                                        <frame key="frameInset" minX="16" minY="42" width="364" height="59"/>
+                                        <frame key="frameInset" minY="40" width="364" height="59"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="OwX-W3-MFg"/>
                                         </constraints>
@@ -767,8 +808,9 @@
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
-                        <outlet property="borderView" destination="lzh-Ms-2og" id="z82-eR-9P7"/>
-                        <outlet property="outputLbl" destination="1ID-Ss-rRh" id="4RF-qV-Bi1"/>
+                        <outlet property="clearLabel" destination="FBg-St-OgH" id="QpX-LN-Gbj"/>
+                        <outlet property="outputLabel" destination="1ID-Ss-rRh" id="Yha-Ro-oEn"/>
+                        <outlet property="reverseSignLabel" destination="wzD-hT-KNr" id="ROO-xc-lGf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
