@@ -81,10 +81,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var clearLabel: UILabel!
     @IBOutlet weak var reverseSignLabel: UILabel!
     @IBOutlet weak var outputView: UIView!
-    @IBOutlet weak var leftBar: UIView!
-    @IBOutlet weak var bottomBar: UIView!
-    @IBOutlet weak var mrView: UIView!
-    @IBOutlet weak var barAndButtonsStack: UIStackView!
+    @IBOutlet weak var megaView: UIView!
     
     var labelArray = [UILabel]()
     var buttonArray = [UIButton]()
@@ -105,16 +102,10 @@ class ViewController: UIViewController {
         labelArray = getLabelsInView(self.view)
         buttonArray = getButtonsInView(self.view)
         formatLabels()
-//        leftBar.layoutIfNeeded()
-//        leftBar.roundCorners(corners: [.topLeft], radius: 13)
-//        bottomBar.layoutIfNeeded()
-//        bottomBar.roundCorners(corners: [.bottomRight], radius: 13)
         outputView.layoutIfNeeded()
-        outputView.roundCorners(corners: [.allCorners], radius: 13)
-//        mrView.layoutIfNeeded()
-//        mrView.roundCorners(corners: [.topRight], radius: 13)
-        barAndButtonsStack.layoutIfNeeded()
-        barAndButtonsStack.roundCorners(corners: [.topLeft, .topRight, .bottomRight], radius: 13)
+        outputView.roundCorners(corners: [.allCorners], radius: 10)
+        megaView.layoutIfNeeded()
+        megaView.roundCorners(corners: [.topLeft, .topRight, .bottomRight], radius: 10)
     }
     
     override func viewWillAppear(_ animated: Bool) {
