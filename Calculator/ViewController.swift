@@ -72,7 +72,7 @@ class ViewController: UIViewController {
     }
     
     
-    @IBAction func buttonTouchDown(sender: AnyObject) {
+    @IBAction func buttonTouchDown(_ sender: AnyObject) {
         for label in labelArray {
             if label.tag == sender.tag {
                 label.fadeOut()
@@ -80,16 +80,19 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func buttonTouchUp(sender: AnyObject) {
+    @IBAction func buttonTouchUp(_ sender: AnyObject) {
         for label in labelArray {
             if label.tag == sender.tag {
+                label.fadeOut()
                 label.fadeIn()
             }
         }
     }
     
     
-    func getLabelsInView(view: UIView) -> [UILabel] {
+    
+    
+    func getLabelsInView(_ view: UIView) -> [UILabel] {
         var results = [UILabel]()
         for subview in view.subviews as [UIView] {
             if let labelView = subview as? UILabel {
@@ -112,7 +115,7 @@ class ViewController: UIViewController {
         let BUTTON_TEXT_FONT = "FinalFrontierOldStyle"
         //let BUTTON_TEXT_FONT = "Helvetica-Bold"
         let BUTTON_TEXT_SIZE = 28 as CGFloat
-        let BUTTON_TEXT_COLOR = UIColor.blackColor()
+        let BUTTON_TEXT_COLOR = UIColor.black
         
         for label in labelArray {
             label.textColor = BUTTON_TEXT_COLOR
@@ -129,14 +132,14 @@ class ViewController: UIViewController {
                     label.backgroundColor = COLOR_PURPLE
                 } else {
                     label.font = UIFont(name: BUTTON_TEXT_FONT, size: BUTTON_TEXT_SIZE * 2.0)
-                    label.backgroundColor = UIColor.clearColor()
+                    label.backgroundColor = UIColor.clear
                 }
             }
         }
     }
     
     
-    func getButtonsInView(view: UIView) -> [UIButton] {
+    func getButtonsInView(_ view: UIView) -> [UIButton] {
         var results = [UIButton]()
         for subview in view.subviews as [UIView] {
             if let buttonView = subview as? UIButton {
@@ -149,15 +152,15 @@ class ViewController: UIViewController {
     }
     
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBarHidden = true
-        let defaults = NSUserDefaults.standardUserDefaults()
-        defaults.setDouble(0.0, forKey: "memoryDouble")
+        self.navigationController?.isNavigationBarHidden = true
+        let defaults = UserDefaults.standard
+        defaults.set(0.0, forKey: "memoryDouble")
         resetCalc()
     }
     
@@ -183,7 +186,7 @@ class ViewController: UIViewController {
 //        clearBtn.setTitle("AC", forState: .Normal)
     }
     
-    @IBAction func clearPressed(sender: AnyObject) {
+    @IBAction func clearPressed(_ sender: AnyObject) {
         
 //        if clearBtn.titleLabel?.text == "AC" {
 //            resetCalc()
@@ -194,7 +197,7 @@ class ViewController: UIViewController {
 //        }
     }
     
-    @IBAction func numberPressed(sender: UIButton) {
+    @IBAction func numberPressed(_ sender: UIButton) {
         
         if resetOutput {
             resetCalc()
@@ -217,7 +220,7 @@ class ViewController: UIViewController {
         outputLbl.text = formatOutputText(runningNumber)
     }
     
-    @IBAction func decimalPressed(sender: AnyObject) {
+    @IBAction func decimalPressed(_ sender: AnyObject) {
         
         if !decimalPressed {
             
@@ -236,7 +239,7 @@ class ViewController: UIViewController {
     }
     
     
-    @IBAction func operationPressed(sender: AnyObject) {
+    @IBAction func operationPressed(_ sender: AnyObject) {
         
         print("operationPressed()")
         print("runningNumber = \(runningNumber)")
@@ -260,7 +263,7 @@ class ViewController: UIViewController {
     }
     
     
-    @IBAction func equalsPressed(sender: AnyObject) {
+    @IBAction func equalsPressed(_ sender: AnyObject) {
         
         decimalPressed = false
         
@@ -274,7 +277,7 @@ class ViewController: UIViewController {
     }
     
     
-    @IBAction func reverseSignPressed(sender: AnyObject) {
+    @IBAction func reverseSignPressed(_ sender: AnyObject) {
         
         if outputLbl.text != "0" {
             if Double(outputLbl.text!)! == runningNumber {
@@ -317,29 +320,29 @@ class ViewController: UIViewController {
     }
     
     
-    @IBAction func memoryPressed(sender: AnyObject) {
+    @IBAction func memoryPressed(_ sender: AnyObject) {
         
         resetOutput = true
         currentOperation = 0
         
-        let defaults = NSUserDefaults.standardUserDefaults()
+        let defaults = UserDefaults.standard
         
         
         if sender.tag == 1 {
             
-            defaults.setDouble(0.0, forKey: "memoryDouble")
+            defaults.set(0.0, forKey: "memoryDouble")
             
         } else {
             
-            var savedDouble = defaults.doubleForKey("memoryDouble")
+            var savedDouble = defaults.double(forKey: "memoryDouble")
             
             if sender.tag == 2 {
                 savedDouble += Double(outputLbl.text!)!
-                defaults.setDouble(savedDouble, forKey: "memoryDouble")
+                defaults.set(savedDouble, forKey: "memoryDouble")
             }
             else if sender.tag == 3 {
                 savedDouble -= Double(outputLbl.text!)!
-                defaults.setDouble(savedDouble, forKey: "memoryDouble")
+                defaults.set(savedDouble, forKey: "memoryDouble")
             }
             else {
                 runningNumber = savedDouble
@@ -355,11 +358,11 @@ class ViewController: UIViewController {
     }
     
     
-    func formatOutputText(inputDouble: Double) -> String {
+    func formatOutputText(_ inputDouble: Double) -> String {
         
         var outputString = String()
         
-        if inputDouble % 1 == 0 {
+        if inputDouble.truncatingRemainder(dividingBy: 1) == 0 {
             
             outputString = String(Int(inputDouble))
             
@@ -376,9 +379,9 @@ class ViewController: UIViewController {
     
     
     
-    func isInt(double: Double) -> Bool {
+    func isInt(_ double: Double) -> Bool {
         
-        let isInteger = double % 1 == 0
+        let isInteger = double.truncatingRemainder(dividingBy: 1) == 0
         return isInteger
     }
     
