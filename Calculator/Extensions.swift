@@ -9,21 +9,6 @@
 import Foundation
 import UIKit
 
-extension UIView {
-    
-    func fadeOut() {
-        UIView.animate(withDuration: 0.2, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
-            self.alpha = 0.0
-            }, completion: nil)
-    }
-    
-    func fadeIn() {
-        UIView.animate(withDuration: 0.4, delay: 0.0, options: UIViewAnimationOptions.curveEaseIn, animations: {
-            self.alpha = 1.0
-            }, completion: nil)
-    }
-}
-
 
 
 

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		420296851D870CC70061AC8B /* LeftBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420296841D870CC70061AC8B /* LeftBar.swift */; };
 		42122EA81D8857A600B180D8 /* FinalFrontierOldStyle.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 42122EA71D8857A600B180D8 /* FinalFrontierOldStyle.TTF */; };
 		422C47081D70C92E008CDFCB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422C47071D70C92E008CDFCB /* AppDelegate.swift */; };
 		422C470A1D70C92E008CDFCB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422C47091D70C92E008CDFCB /* ViewController.swift */; };
@@ -37,7 +36,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		420296841D870CC70061AC8B /* LeftBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftBar.swift; sourceTree = "<group>"; };
 		42122EA71D8857A600B180D8 /* FinalFrontierOldStyle.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = FinalFrontierOldStyle.TTF; sourceTree = "<group>"; };
 		422C47041D70C92E008CDFCB /* Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		422C47071D70C92E008CDFCB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -107,7 +105,6 @@
 				422C470B1D70C92E008CDFCB /* Main.storyboard */,
 				422C47091D70C92E008CDFCB /* ViewController.swift */,
 				425643861D8982AC000D5D83 /* Extensions.swift */,
-				420296841D870CC70061AC8B /* LeftBar.swift */,
 				422C47071D70C92E008CDFCB /* AppDelegate.swift */,
 				422C47111D70C92E008CDFCB /* Assets.xcassets */,
 				422C47131D70C92E008CDFCB /* LaunchScreen.storyboard */,
@@ -202,6 +199,7 @@
 				TargetAttributes = {
 					422C47031D70C92E008CDFCB = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = ATN7UULDN9;
 						LastSwiftMigration = 0800;
 					};
 					422C471A1D70C92E008CDFCB = {
@@ -269,7 +267,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				420296851D870CC70061AC8B /* LeftBar.swift in Sources */,
 				422C470A1D70C92E008CDFCB /* ViewController.swift in Sources */,
 				422C47081D70C92E008CDFCB /* AppDelegate.swift in Sources */,
 				425643871D8982AC000D5D83 /* Extensions.swift in Sources */,
@@ -421,6 +418,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = ATN7UULDN9;
 				INFOPLIST_FILE = Calculator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.austinwood.Calculator;
@@ -433,6 +431,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = ATN7UULDN9;
 				INFOPLIST_FILE = Calculator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.austinwood.Calculator;

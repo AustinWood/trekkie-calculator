@@ -28,7 +28,7 @@
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xzt-G3-fb0" userLabel="barAndButtons">
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BfP-wN-A03" userLabel="leftBar" customClass="LeftBar" customModule="Calculator" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BfP-wN-A03" userLabel="leftBar">
                                                 <color key="backgroundColor" red="0.52941176470588236" green="0.52156862745098043" blue="0.75294117647058822" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="13" id="bUR-YD-zom"/>
@@ -808,8 +808,13 @@
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
+                        <outlet property="barAndButtonsStack" destination="Xzt-G3-fb0" id="sKw-Nz-h48"/>
+                        <outlet property="bottomBar" destination="REk-HF-Ne9" id="rC1-n8-Moz"/>
                         <outlet property="clearLabel" destination="FBg-St-OgH" id="QpX-LN-Gbj"/>
+                        <outlet property="leftBar" destination="BfP-wN-A03" id="V6x-9D-n1j"/>
+                        <outlet property="mrView" destination="N0T-to-vRI" id="dJ6-hz-56n"/>
                         <outlet property="outputLabel" destination="1ID-Ss-rRh" id="Yha-Ro-oEn"/>
+                        <outlet property="outputView" destination="lGg-pz-aQW" id="9an-Mr-77D"/>
                         <outlet property="reverseSignLabel" destination="wzD-hT-KNr" id="ROO-xc-lGf"/>
                     </connections>
                 </viewController>

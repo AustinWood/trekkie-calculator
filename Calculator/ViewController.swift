@@ -21,6 +21,11 @@
 // Register hardware keyboard presses
 // Add second label that shows previous operations
 // Add slide in animation to new numbers: http://www.andrewcbancroft.com/2014/09/24/slide-in-animation-in-swift/
+// Adjust layout if Personal Hotspot, etc is turned on
+// Add sound effects
+// Create app icon
+// Create launch screen
+// Create info/about screen?
 
 /////////////////////////////////////////////////
 ///// TAG REFERENCES for BUTTONS and LABELS /////
@@ -75,6 +80,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var outputLabel: UILabel!
     @IBOutlet weak var clearLabel: UILabel!
     @IBOutlet weak var reverseSignLabel: UILabel!
+    @IBOutlet weak var outputView: UIView!
+    @IBOutlet weak var leftBar: UIView!
+    @IBOutlet weak var bottomBar: UIView!
+    @IBOutlet weak var mrView: UIView!
+    @IBOutlet weak var barAndButtonsStack: UIStackView!
     
     var labelArray = [UILabel]()
     var buttonArray = [UIButton]()
@@ -95,6 +105,16 @@ class ViewController: UIViewController {
         labelArray = getLabelsInView(self.view)
         buttonArray = getButtonsInView(self.view)
         formatLabels()
+//        leftBar.layoutIfNeeded()
+//        leftBar.roundCorners(corners: [.topLeft], radius: 13)
+//        bottomBar.layoutIfNeeded()
+//        bottomBar.roundCorners(corners: [.bottomRight], radius: 13)
+        outputView.layoutIfNeeded()
+        outputView.roundCorners(corners: [.allCorners], radius: 13)
+//        mrView.layoutIfNeeded()
+//        mrView.roundCorners(corners: [.topRight], radius: 13)
+        barAndButtonsStack.layoutIfNeeded()
+        barAndButtonsStack.roundCorners(corners: [.topLeft, .topRight, .bottomRight], radius: 13)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -107,6 +127,10 @@ class ViewController: UIViewController {
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return UIStatusBarStyle.lightContent
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .all
     }
     
     func getLabelsInView(_ view: UIView) -> [UILabel] {
@@ -400,6 +424,33 @@ class ViewController: UIViewController {
         
         let isInteger = double.truncatingRemainder(dividingBy: 1) == 0
         return isInteger
+    }
+    
+}
+
+//////////////////////
+///// EXTENSIONS /////
+//////////////////////
+
+extension UIView {
+    
+    func fadeOut() {
+        UIView.animate(withDuration: 0.2, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+            self.alpha = 0.0
+            }, completion: nil)
+    }
+    
+    func fadeIn() {
+        UIView.animate(withDuration: 0.4, delay: 0.0, options: UIViewAnimationOptions.curveEaseIn, animations: {
+            self.alpha = 1.0
+            }, completion: nil)
+    }
+    
+    func roundCorners(corners:UIRectCorner, radius: CGFloat) {
+        let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        let mask = CAShapeLayer()
+        mask.path = path.cgPath
+        self.layer.mask = mask
     }
     
 }
