@@ -241,16 +241,6 @@ class ViewController: UIViewController {
     var leftString = Double()
     var rightString = Double()
     
-    enum operation {
-        case none
-        case add
-        case subtract
-        case multiply
-        case divide
-    }
-    
-    var currentOperation: operation = .none
-    
     var resetOutput = false
     var decimalPressed = false
     
@@ -311,6 +301,42 @@ class ViewController: UIViewController {
         updateOutputLabel(runningNumber)
     }
     
+    @IBAction func reverseSignPressed(_ sender: AnyObject) {
+        if outputLabel.text != "0" {
+            if Double(outputLabel.text!)! == runningNumber {
+                runningNumber = runningNumber * -1
+                updateOutputLabel(runningNumber)
+            } else {
+                leftString = leftString * -1
+                updateOutputLabel(leftString)
+            }
+        }
+    }
+    
+    @IBAction func equalsPressed(_ sender: AnyObject) {
+        decimalPressed = false
+        if !resetOutput && currentOperation != .none {
+            resetOutput = true
+            rightString = runningNumber
+            runningNumber = 0.0
+        }
+        processOperation()
+    }
+    
+    //////////////////////
+    ///// OPERATIONS /////
+    //////////////////////
+    
+    enum operation {
+        case none
+        case add
+        case subtract
+        case multiply
+        case divide
+    }
+    
+    var currentOperation: operation = .none
+    
     @IBAction func addPressed(_ sender: AnyObject) {
         operationPressed()
         currentOperation = .add
@@ -346,29 +372,6 @@ class ViewController: UIViewController {
         runningNumber = 0.0
     }
     
-    @IBAction func equalsPressed(_ sender: AnyObject) {
-        decimalPressed = false
-        if !resetOutput && currentOperation != .none {
-            resetOutput = true
-            rightString = runningNumber
-            runningNumber = 0.0
-        }
-        processOperation()
-    }
-    
-    @IBAction func reverseSignPressed(_ sender: AnyObject) {
-        
-        if outputLabel.text != "0" {
-            if Double(outputLabel.text!)! == runningNumber {
-                runningNumber = runningNumber * -1
-                updateOutputLabel(runningNumber)
-            } else {
-                leftString = leftString * -1
-                updateOutputLabel(leftString)
-            }
-        }
-    }
-    
     func processOperation() {
         var calculation = Double()
         switch currentOperation {
@@ -386,6 +389,10 @@ class ViewController: UIViewController {
         leftString = calculation
         updateOutputLabel(leftString)
     }
+    
+    //////////////////
+    ///// MEMORY /////
+    //////////////////
     
     @IBAction func memoryPressed(_ sender: AnyObject) {
         resetOutput = true
@@ -412,6 +419,10 @@ class ViewController: UIViewController {
             print("runningNumber = \(runningNumber)")
         }
     }
+    
+    ///////////////////////////////////
+    ///// MISCELLANEOUS FUNCTIONS /////
+    ///////////////////////////////////
     
     func updateOutputLabel(_ inputDouble: Double) {
         var outputString = String()
