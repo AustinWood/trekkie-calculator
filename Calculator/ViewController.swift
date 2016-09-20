@@ -15,6 +15,7 @@
 // Reconsider color scheme
 
 // Programmatically set outputLabel.fontSize so 9 digits fit snugly
+// Rename leftString and rightString -- they're no longer strings!
 // Add animation/styling for operation depressed (for example, Apple iPhone calc app has black border)
 // Add animation to outputLabel when numberPressed() and String is too long
 // Long decimals and big numbers cut off with "..."
@@ -200,6 +201,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func buttonTouchDown(_ sender: AnyObject) {
+        print("----------")
         touchDownArray.append(sender.tag)
         animateLabel(senderTag: sender.tag, animationType: .fadeOut)
     }
@@ -257,6 +259,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func clearPressed(_ sender: AnyObject) {
+        print("func clearPressed()")
         if clearLabel.text == "AC" {
             resetCalc()
         } else {
@@ -283,8 +286,9 @@ class ViewController: UIViewController {
                 tempRunningNumber = Double(String(runningNumber) + String(number))!
             }
         }
-        if isTooBig(tempRunningNumber) {
+        if doubleToString(tempRunningNumber).characters.count > 9 {
             // Animate outputLabel
+            print("String too long")
         } else {
             runningNumber = tempRunningNumber
             updateOutputLabel(runningNumber)
@@ -292,6 +296,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func decimalPressed(_ sender: AnyObject) {
+        print("func decimalPressed()")
         if !decimalPressed {
             if resetOutput {
                 resetCalc()
@@ -302,6 +307,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func reverseSignPressed(_ sender: AnyObject) {
+        print("func reverseSignPressed()")
         if outputLabel.text != "0" {
             if Double(outputLabel.text!)! == runningNumber {
                 runningNumber = runningNumber * -1
@@ -314,6 +320,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func equalsPressed(_ sender: AnyObject) {
+        print("func equalsPressed()")
         decimalPressed = false
         if !resetOutput && currentOperation != .none {
             resetOutput = true
@@ -338,56 +345,69 @@ class ViewController: UIViewController {
     var currentOperation: operation = .none
     
     @IBAction func addPressed(_ sender: AnyObject) {
+        print("func addPressed()")
         operationPressed()
         currentOperation = .add
     }
     
     @IBAction func subtractPressed(_ sender: AnyObject) {
+        print("func subtractPressed()")
         operationPressed()
         currentOperation = .subtract
     }
     
     @IBAction func multiplyPressed(_ sender: AnyObject) {
+        print("func multiplyPressed()")
         operationPressed()
         currentOperation = .multiply
     }
     
     @IBAction func dividePressed(_ sender: AnyObject) {
+        print("func dividePressed()")
         operationPressed()
         currentOperation = .divide
     }
     
     func operationPressed() {
         print("func operationPressed()")
-        print("runningNumber = \(runningNumber)")
-        print("currentOperation = \(currentOperation)")
+        print("resetOutput = \(resetOutput)")
         decimalPressed = false
-        resetOutput = false
         if currentOperation == .none {
             leftString = runningNumber
-        } else {
+        } else if !resetOutput {
             rightString = runningNumber
             processOperation()
         }
         runningNumber = 0.0
+        resetOutput = false
     }
     
     func processOperation() {
+        print("func processOperation(\(currentOperation))")
         var calculation = Double()
         switch currentOperation {
         case .none:
             calculation = runningNumber
         case .add:
             calculation = leftString + rightString
+            print("\(leftString) + \(rightString) = \(calculation)")
         case .subtract:
             calculation = leftString - rightString
+            print("\(leftString) - \(rightString) = \(calculation)")
         case .multiply:
             calculation = leftString * rightString
+            print("\(leftString) * \(rightString) = \(calculation)")
         case .divide:
             calculation = leftString / rightString
+            print("\(leftString) / \(rightString) = \(calculation)")
         }
-        leftString = calculation
-        updateOutputLabel(leftString)
+        if isTooBig(calculation) {
+            resetCalc()
+            outputLabel.text = "Error"
+        } else {
+            leftString = calculation
+            updateOutputLabel(leftString)
+        }
     }
     
     //////////////////
@@ -415,8 +435,6 @@ class ViewController: UIViewController {
                 updateOutputLabel(runningNumber)
             }
             runningNumber = Double(outputLabel.text!)!
-            print("memoryPressed()")
-            print("runningNumber = \(runningNumber)")
         }
     }
     
@@ -424,9 +442,9 @@ class ViewController: UIViewController {
     ///// MISCELLANEOUS FUNCTIONS /////
     ///////////////////////////////////
     
-    func updateOutputLabel(_ inputDouble: Double) {
+    func doubleToString(_ inputDouble: Double) -> String {
         var outputString = String()
-        if inputDouble.truncatingRemainder(dividingBy: 1) == 0 {
+        if isInt(inputDouble) {
             outputString = String(Int(inputDouble))
             if decimalPressed {
                 outputString = outputString + "."
@@ -434,7 +452,11 @@ class ViewController: UIViewController {
         } else {
             outputString = String(inputDouble)
         }
-        outputLabel.text = outputString
+        return outputString
+    }
+    
+    func updateOutputLabel(_ inputDouble: Double) {
+        outputLabel.text = doubleToString(inputDouble)
     }
     
     func isInt(_ double: Double) -> Bool {
