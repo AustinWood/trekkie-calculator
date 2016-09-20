@@ -58,6 +58,7 @@
                                                                                             <action selector="buttonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="DDm-s9-08x"/>
                                                                                             <action selector="buttonTouchDragOutside:" destination="BYZ-38-t0r" eventType="touchDragOutside" id="iq8-hj-7nh"/>
                                                                                             <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gH0-yq-mLt"/>
+                                                                                            <action selector="memoryPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fwp-cB-PRt"/>
                                                                                         </connections>
                                                                                     </button>
                                                                                 </subviews>
@@ -87,6 +88,7 @@
                                                                                             <action selector="buttonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="Q6R-wV-vfq"/>
                                                                                             <action selector="buttonTouchDragOutside:" destination="BYZ-38-t0r" eventType="touchDragOutside" id="jGn-Eh-njc"/>
                                                                                             <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IKW-B5-VTf"/>
+                                                                                            <action selector="memoryPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1YY-Bb-OQs"/>
                                                                                         </connections>
                                                                                     </button>
                                                                                 </subviews>
@@ -116,6 +118,7 @@
                                                                                             <action selector="buttonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="rR8-KV-SF5"/>
                                                                                             <action selector="buttonTouchDragOutside:" destination="BYZ-38-t0r" eventType="touchDragOutside" id="VjC-NG-4g7"/>
                                                                                             <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Qh-HI-j3J"/>
+                                                                                            <action selector="memoryPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="z7z-lc-lZ1"/>
                                                                                         </connections>
                                                                                     </button>
                                                                                 </subviews>
@@ -145,6 +148,7 @@
                                                                                             <action selector="buttonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="gMX-hz-Brp"/>
                                                                                             <action selector="buttonTouchDragOutside:" destination="BYZ-38-t0r" eventType="touchDragOutside" id="gxX-bB-eBJ"/>
                                                                                             <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nmZ-Tw-Bjr"/>
+                                                                                            <action selector="memoryPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8Sy-P6-C8P"/>
                                                                                         </connections>
                                                                                     </button>
                                                                                 </subviews>
@@ -182,6 +186,7 @@
                                                                                             <action selector="buttonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="ekl-uF-ueP"/>
                                                                                             <action selector="buttonTouchDragOutside:" destination="BYZ-38-t0r" eventType="touchDragOutside" id="ux5-8z-eQx"/>
                                                                                             <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sue-Fh-Paw"/>
+                                                                                            <action selector="clearPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="24X-Az-noY"/>
                                                                                         </connections>
                                                                                     </button>
                                                                                 </subviews>
@@ -211,6 +216,7 @@
                                                                                             <action selector="buttonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="IsZ-eW-MCO"/>
                                                                                             <action selector="buttonTouchDragOutside:" destination="BYZ-38-t0r" eventType="touchDragOutside" id="A2g-Kb-ZuD"/>
                                                                                             <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2Kb-tk-88V"/>
+                                                                                            <action selector="reverseSignPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="djb-EX-aFR"/>
                                                                                         </connections>
                                                                                     </button>
                                                                                 </subviews>
@@ -240,6 +246,7 @@
                                                                                             <action selector="buttonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="And-hL-4eL"/>
                                                                                             <action selector="buttonTouchDragOutside:" destination="BYZ-38-t0r" eventType="touchDragOutside" id="wbv-md-bcx"/>
                                                                                             <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4ul-1l-5Jv"/>
+                                                                                            <action selector="dividePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PNL-1m-uhY"/>
                                                                                         </connections>
                                                                                     </button>
                                                                                 </subviews>
@@ -269,6 +276,7 @@
                                                                                             <action selector="buttonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="xJJ-25-ERo"/>
                                                                                             <action selector="buttonTouchDragOutside:" destination="BYZ-38-t0r" eventType="touchDragOutside" id="GhB-1n-jSf"/>
                                                                                             <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Di-KO-Qz0"/>
+                                                                                            <action selector="multiplyPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wi7-cH-Xve"/>
                                                                                         </connections>
                                                                                     </button>
                                                                                 </subviews>
@@ -310,6 +318,7 @@
                                                                                                             <action selector="buttonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="f1n-hB-iP8"/>
                                                                                                             <action selector="buttonTouchDragOutside:" destination="BYZ-38-t0r" eventType="touchDragOutside" id="F2T-7c-cSt"/>
                                                                                                             <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NEk-C5-yHh"/>
+                                                                                                            <action selector="numberPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gwM-k3-IzX"/>
                                                                                                         </connections>
                                                                                                     </button>
                                                                                                 </subviews>
@@ -339,6 +348,7 @@
                                                                                                             <action selector="buttonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="M9j-Sn-dFj"/>
                                                                                                             <action selector="buttonTouchDragOutside:" destination="BYZ-38-t0r" eventType="touchDragOutside" id="yVs-SY-IbT"/>
                                                                                                             <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="znM-NO-AC8"/>
+                                                                                                            <action selector="numberPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ed8-ip-z4n"/>
                                                                                                         </connections>
                                                                                                     </button>
                                                                                                 </subviews>
@@ -368,6 +378,7 @@
                                                                                                             <action selector="buttonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="WlF-Ma-ySz"/>
                                                                                                             <action selector="buttonTouchDragOutside:" destination="BYZ-38-t0r" eventType="touchDragOutside" id="Y5r-XC-cMU"/>
                                                                                                             <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vul-8f-Zzm"/>
+                                                                                                            <action selector="numberPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="O2D-0b-nSM"/>
                                                                                                         </connections>
                                                                                                     </button>
                                                                                                 </subviews>
@@ -405,6 +416,7 @@
                                                                                                             <action selector="buttonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="or7-HW-57K"/>
                                                                                                             <action selector="buttonTouchDragOutside:" destination="BYZ-38-t0r" eventType="touchDragOutside" id="hnA-re-JTd"/>
                                                                                                             <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Sok-a5-jv2"/>
+                                                                                                            <action selector="numberPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="39s-4D-KPs"/>
                                                                                                         </connections>
                                                                                                     </button>
                                                                                                 </subviews>
@@ -434,6 +446,7 @@
                                                                                                             <action selector="buttonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="MGb-x2-1MK"/>
                                                                                                             <action selector="buttonTouchDragOutside:" destination="BYZ-38-t0r" eventType="touchDragOutside" id="ZMi-dN-cc1"/>
                                                                                                             <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="09F-Q9-VEc"/>
+                                                                                                            <action selector="numberPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JuV-Dy-8ik"/>
                                                                                                         </connections>
                                                                                                     </button>
                                                                                                 </subviews>
@@ -463,6 +476,7 @@
                                                                                                             <action selector="buttonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="d3Z-MZ-Adj"/>
                                                                                                             <action selector="buttonTouchDragOutside:" destination="BYZ-38-t0r" eventType="touchDragOutside" id="gK0-eh-y2d"/>
                                                                                                             <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7v7-sj-sdZ"/>
+                                                                                                            <action selector="numberPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="K5l-Ys-IQq"/>
                                                                                                         </connections>
                                                                                                     </button>
                                                                                                 </subviews>
@@ -500,6 +514,7 @@
                                                                                                             <action selector="buttonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="Tdd-3T-CKE"/>
                                                                                                             <action selector="buttonTouchDragOutside:" destination="BYZ-38-t0r" eventType="touchDragOutside" id="eao-Oh-cDX"/>
                                                                                                             <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DWu-XF-GqD"/>
+                                                                                                            <action selector="numberPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FY5-00-eFF"/>
                                                                                                         </connections>
                                                                                                     </button>
                                                                                                 </subviews>
@@ -530,6 +545,7 @@
                                                                                                             <action selector="buttonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="ZYu-iC-jXu"/>
                                                                                                             <action selector="buttonTouchDragOutside:" destination="BYZ-38-t0r" eventType="touchDragOutside" id="RX6-Sa-PYD"/>
                                                                                                             <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0RS-mD-Ld2"/>
+                                                                                                            <action selector="numberPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="O6i-LM-NrC"/>
                                                                                                         </connections>
                                                                                                     </button>
                                                                                                 </subviews>
@@ -559,6 +575,7 @@
                                                                                                             <action selector="buttonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="20O-WP-2gT"/>
                                                                                                             <action selector="buttonTouchDragOutside:" destination="BYZ-38-t0r" eventType="touchDragOutside" id="6gY-iZ-3LX"/>
                                                                                                             <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="d6F-rn-97o"/>
+                                                                                                            <action selector="numberPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="98g-MG-GLh"/>
                                                                                                         </connections>
                                                                                                     </button>
                                                                                                 </subviews>
@@ -596,6 +613,7 @@
                                                                                                             <action selector="buttonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="0xw-3C-hRu"/>
                                                                                                             <action selector="buttonTouchDragOutside:" destination="BYZ-38-t0r" eventType="touchDragOutside" id="byE-Ji-fCf"/>
                                                                                                             <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fZ5-TE-7Ib"/>
+                                                                                                            <action selector="numberPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="duF-81-zuJ"/>
                                                                                                         </connections>
                                                                                                     </button>
                                                                                                 </subviews>
@@ -625,6 +643,7 @@
                                                                                                             <action selector="buttonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="Fjo-Nf-bZ6"/>
                                                                                                             <action selector="buttonTouchDragOutside:" destination="BYZ-38-t0r" eventType="touchDragOutside" id="Vki-hs-KIi"/>
                                                                                                             <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8UR-5S-gSi"/>
+                                                                                                            <action selector="decimalPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PBx-Zg-Vl8"/>
                                                                                                         </connections>
                                                                                                     </button>
                                                                                                 </subviews>
@@ -663,6 +682,7 @@
                                                                                                     <action selector="buttonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="4cP-iO-mWk"/>
                                                                                                     <action selector="buttonTouchDragOutside:" destination="BYZ-38-t0r" eventType="touchDragOutside" id="rAX-i5-0xd"/>
                                                                                                     <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iUI-3s-t7N"/>
+                                                                                                    <action selector="subtractPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wz7-l1-vMY"/>
                                                                                                 </connections>
                                                                                             </button>
                                                                                         </subviews>
@@ -690,6 +710,7 @@
                                                                                             <button opaque="NO" tag="21" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MxF-60-htC" userLabel="Addition Button">
                                                                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                 <connections>
+                                                                                                    <action selector="addPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SDj-77-nEy"/>
                                                                                                     <action selector="buttonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="djw-Im-Dcg"/>
                                                                                                     <action selector="buttonTouchDragOutside:" destination="BYZ-38-t0r" eventType="touchDragOutside" id="rld-EX-IbG"/>
                                                                                                     <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CgF-DI-YRG"/>
@@ -723,6 +744,7 @@
                                                                                                     <action selector="buttonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="oDB-JU-eq9"/>
                                                                                                     <action selector="buttonTouchDragOutside:" destination="BYZ-38-t0r" eventType="touchDragOutside" id="K6O-HK-3cd"/>
                                                                                                     <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VyJ-do-bhP"/>
+                                                                                                    <action selector="equalsPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Um6-3V-lng"/>
                                                                                                 </connections>
                                                                                             </button>
                                                                                         </subviews>
