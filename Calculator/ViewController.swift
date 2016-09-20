@@ -10,19 +10,14 @@
 /////////////// TO DO ///////////////
 /////////////////////////////////////
 
-// Clean up CALCULATOR LOGIC code
-// Reconnect all buttons to their original functions
-// Reconsider color scheme
-
+// Review MEMORY logic, consider ENUMN
 // Programmatically set outputLabel.fontSize so 9 digits fit snugly
-// Rename leftString and rightString -- they're no longer strings!
+// Center outputLabel vertically in outputView
 // Add animation/styling for operation depressed (for example, Apple iPhone calc app has black border)
 // Add animation to outputLabel when numberPressed() and String is too long
-// Long decimals and big numbers cut off with "..."
-// Put colors in a separate file
-// C vs AC
-// Make Memory buttons a SWITCH statement
-// Make currentOperation a SWITCH statement
+// Verify that C vs AC works as it should
+// Verify layout on all device sizes
+
 // Register hardware keyboard presses
 // Add second label that shows previous operations
 // Add slide in animation to new numbers: http://www.andrewcbancroft.com/2014/09/24/slide-in-animation-in-swift/
@@ -31,7 +26,6 @@
 // Create app icon
 // Create launch screen
 // Create info/about screen?
-// Make iPhone only (no iPad)
 
 /////////////////////////////////////////////////
 ///// TAG REFERENCES for BUTTONS and LABELS /////
@@ -240,8 +234,8 @@ class ViewController: UIViewController {
     ////////////////////////////
     
     var runningNumber = Double()
-    var leftString = Double()
-    var rightString = Double()
+    var leftNumber = Double()
+    var rightNumber = Double()
     
     var resetOutput = false
     var decimalPressed = false
@@ -249,8 +243,8 @@ class ViewController: UIViewController {
     func resetCalc() {
         print("func resetCalc()")
         runningNumber = 0.0
-        leftString = 0.0
-        rightString = 0.0
+        leftNumber = 0.0
+        rightNumber = 0.0
         currentOperation = .none
         resetOutput = false
         decimalPressed = false
@@ -313,8 +307,8 @@ class ViewController: UIViewController {
                 runningNumber = runningNumber * -1
                 updateOutputLabel(runningNumber)
             } else {
-                leftString = leftString * -1
-                updateOutputLabel(leftString)
+                leftNumber = leftNumber * -1
+                updateOutputLabel(leftNumber)
             }
         }
     }
@@ -324,7 +318,7 @@ class ViewController: UIViewController {
         decimalPressed = false
         if !resetOutput && currentOperation != .none {
             resetOutput = true
-            rightString = runningNumber
+            rightNumber = runningNumber
             runningNumber = 0.0
         }
         processOperation()
@@ -373,9 +367,9 @@ class ViewController: UIViewController {
         print("resetOutput = \(resetOutput)")
         decimalPressed = false
         if currentOperation == .none {
-            leftString = runningNumber
+            leftNumber = runningNumber
         } else if !resetOutput {
-            rightString = runningNumber
+            rightNumber = runningNumber
             processOperation()
         }
         runningNumber = 0.0
@@ -389,24 +383,24 @@ class ViewController: UIViewController {
         case .none:
             calculation = runningNumber
         case .add:
-            calculation = leftString + rightString
-            print("\(leftString) + \(rightString) = \(calculation)")
+            calculation = leftNumber + rightNumber
+            print("\(leftNumber) + \(rightNumber) = \(calculation)")
         case .subtract:
-            calculation = leftString - rightString
-            print("\(leftString) - \(rightString) = \(calculation)")
+            calculation = leftNumber - rightNumber
+            print("\(leftNumber) - \(rightNumber) = \(calculation)")
         case .multiply:
-            calculation = leftString * rightString
-            print("\(leftString) * \(rightString) = \(calculation)")
+            calculation = leftNumber * rightNumber
+            print("\(leftNumber) * \(rightNumber) = \(calculation)")
         case .divide:
-            calculation = leftString / rightString
-            print("\(leftString) / \(rightString) = \(calculation)")
+            calculation = leftNumber / rightNumber
+            print("\(leftNumber) / \(rightNumber) = \(calculation)")
         }
         if isTooBig(calculation) {
             resetCalc()
             outputLabel.text = "Error"
         } else {
-            leftString = calculation
-            updateOutputLabel(leftString)
+            leftNumber = calculation
+            updateOutputLabel(leftNumber)
         }
     }
     
