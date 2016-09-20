@@ -14,6 +14,7 @@
 // Reconnect all buttons to their original functions
 // Reconsider color scheme
 
+// Programmatically set outputLabel.fontSize so 9 digits fit snugly
 // Add animation/styling for operation depressed (for example, Apple iPhone calc app has black border)
 // Add animation to outputLabel when numberPressed() and String is too long
 // Long decimals and big numbers cut off with "..."
@@ -153,6 +154,9 @@ class ViewController: UIViewController {
                 label.font = UIFont(name: TEXT_FONT, size: TEXT_SIZE * 1.5)
             } else if label.tag == 50 {
                 label.font = UIFont(name: TEXT_FONT, size: TEXT_SIZE * 2.0)
+                // let labelWidth = outputLabel.frame.width
+                // let textSize = outputLabel.text!.size(attributes: [NSFontAttributeName: outputLabel.font])
+                // let textWidth: CGFloat = textSize.width
             } else {
                 label.font = UIFont(name: TEXT_FONT, size: TEXT_SIZE * 1.0)
             }
@@ -233,7 +237,6 @@ class ViewController: UIViewController {
     ///// CALCULATOR LOGIC /////
     ////////////////////////////
     
-    
     var runningNumber = Double()
     var leftString = Double()
     var rightString = Double()
@@ -274,29 +277,27 @@ class ViewController: UIViewController {
     }
     
     @IBAction func numberPressed(_ sender: UIButton) {
+        print("func numberPressed(\(sender.tag))")
         if resetOutput {
             resetCalc()
+        }
+        clearLabel.text = "C"
+        let number = sender.tag
+        var tempRunningNumber = runningNumber
+        if !decimalPressed {
+            tempRunningNumber = Double(String(Int(runningNumber)) + String(number))!
         } else {
-            let labelWidth = outputLabel.frame.width
-            let textSize = outputLabel.text!.size(attributes: [NSFontAttributeName: outputLabel.font])
-            let textWidth: CGFloat = textSize.width
-            if textWidth / labelWidth < 0.90 {
-                clearLabel.text = "C"
-                let number = sender.tag
-                
-                if !decimalPressed {
-                    runningNumber = Double(String(Int(runningNumber)) + String(number))!
-                } else {
-                    if isInt(runningNumber) {
-                        runningNumber = Double(String(Int(runningNumber)) + "." + String(number))!
-                    } else {
-                        runningNumber = Double(String(runningNumber) + String(number))!
-                    }
-                }
-                updateOutputLabel(runningNumber)
+            if isInt(runningNumber) {
+                tempRunningNumber = Double(String(Int(runningNumber)) + "." + String(number))!
             } else {
-                // Animate outputLabel
+                tempRunningNumber = Double(String(runningNumber) + String(number))!
             }
+        }
+        if isTooBig(tempRunningNumber) {
+            // Animate outputLabel
+        } else {
+            runningNumber = tempRunningNumber
+            updateOutputLabel(runningNumber)
         }
     }
     
@@ -331,35 +332,27 @@ class ViewController: UIViewController {
     }
     
     func operationPressed() {
-        
         print("func operationPressed()")
         print("runningNumber = \(runningNumber)")
         print("currentOperation = \(currentOperation)")
-        
         decimalPressed = false
         resetOutput = false
-        
         if currentOperation == .none {
             leftString = runningNumber
         } else {
             rightString = runningNumber
             processOperation()
         }
-        
         runningNumber = 0.0
     }
     
-    
     @IBAction func equalsPressed(_ sender: AnyObject) {
-        
         decimalPressed = false
-        
         if !resetOutput && currentOperation != .none {
             resetOutput = true
             rightString = runningNumber
             runningNumber = 0.0
         }
-        
         processOperation()
     }
     
@@ -377,12 +370,9 @@ class ViewController: UIViewController {
     }
     
     func processOperation() {
-        
         var calculation = Double()
-        
         switch currentOperation {
         case .none:
-            // Is this ever called?
             calculation = runningNumber
         case .add:
             calculation = leftString + rightString
@@ -393,27 +383,18 @@ class ViewController: UIViewController {
         case .divide:
             calculation = leftString / rightString
         }
-        
         leftString = calculation
         updateOutputLabel(leftString)
     }
     
     @IBAction func memoryPressed(_ sender: AnyObject) {
-        
         resetOutput = true
         currentOperation = .none
-        
         let defaults = UserDefaults.standard
-        
-        
         if sender.tag == 1 {
-            
             defaults.set(0.0, forKey: "memoryDouble")
-            
         } else {
-            
             var savedDouble = defaults.double(forKey: "memoryDouble")
-            
             if sender.tag == 2 {
                 savedDouble += Double(outputLabel.text!)!
                 defaults.set(savedDouble, forKey: "memoryDouble")
@@ -426,39 +407,37 @@ class ViewController: UIViewController {
                 runningNumber = savedDouble
                 updateOutputLabel(runningNumber)
             }
-            
             runningNumber = Double(outputLabel.text!)!
-            
             print("memoryPressed()")
             print("runningNumber = \(runningNumber)")
         }
     }
     
     func updateOutputLabel(_ inputDouble: Double) {
-        
         var outputString = String()
-        
         if inputDouble.truncatingRemainder(dividingBy: 1) == 0 {
-            
             outputString = String(Int(inputDouble))
-            
             if decimalPressed {
                 outputString = outputString + "."
             }
-                
         } else {
             outputString = String(inputDouble)
         }
-        
         outputLabel.text = outputString
     }
     
     func isInt(_ double: Double) -> Bool {
-        
         let isInteger = double.truncatingRemainder(dividingBy: 1) == 0
         return isInteger
     }
     
+    func isTooBig(_ double: Double) -> Bool {
+        if double < 1000000000 {
+            return false
+        } else {
+            return true
+        }
+    }
 }
 
 ///////////////////////////////////////////////////////
@@ -495,7 +474,6 @@ extension UILabel {
             }, completion: {(finished: Bool) -> Void in
         })
     }
-    
 }
 
 extension UIView {
@@ -506,5 +484,4 @@ extension UIView {
         mask.path = path.cgPath
         self.layer.mask = mask
     }
-    
 }
