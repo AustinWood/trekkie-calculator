@@ -248,6 +248,7 @@ class ViewController: UIViewController {
         print("func resetCalc()")
         leftNumber = 0.0
         rightNumber = 0.0
+        trailingZeros = 0
         currentOperation = .none
         resetOutput = false
         decimalPressed = false
@@ -260,12 +261,13 @@ class ViewController: UIViewController {
         if clearLabel.text == "AC" {
             resetCalc()
         } else {
+            trailingZeros = 0
             rightNumber = 0.0
+            decimalPressed = false
             outputLabel.text = "0"
             clearLabel.text = "AC"
             if resetOutput {
                 currentOperation = .none
-                trailingZeros = 0
                 if resetOperation {
                     leftNumber = 0.0
                 }
@@ -277,7 +279,6 @@ class ViewController: UIViewController {
         print("func numberPressed(\(sender.tag))")
         if resetOutput {
             rightNumber = 0.0
-            trailingZeros = 0
             resetOutput = false
         }
         if resetOperation {
@@ -338,6 +339,7 @@ class ViewController: UIViewController {
         decimalPressed = false
         resetOutput = true
         resetOperation = true
+        trailingZeros = 0
         processOperation()
     }
     
@@ -382,6 +384,7 @@ class ViewController: UIViewController {
     func operationPressed() {
         print("func operationPressed()")
         resetOperation = false
+        trailingZeros = 0
         if !resetOutput {
             processOperation()
         }
