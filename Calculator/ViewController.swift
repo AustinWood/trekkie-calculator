@@ -242,6 +242,7 @@ class ViewController: UIViewController {
         print("func resetCalc()")
         runningNumber = 0.0
         leftNumber = 0.0
+        print("leftNumber = \(leftNumber)")
         rightNumber = 0.0
         currentOperation = .none
         resetOutput = false
@@ -280,7 +281,7 @@ class ViewController: UIViewController {
         }
         if doubleToString(tempRunningNumber).characters.count > 9 {
             // Animate outputLabel
-            print("String too long")
+            print("String too long") // DO I STILL NEED THIS??? // TO DO
         } else {
             runningNumber = tempRunningNumber
             updateOutputLabel(runningNumber)
@@ -300,7 +301,7 @@ class ViewController: UIViewController {
     
     @IBAction func reverseSignPressed(_ sender: AnyObject) {
         print("func reverseSignPressed()")
-        if outputLabel.text != "0" {
+        if outputLabel.text != "0" && Int(outputLabel.text!) != nil {
             if Double(outputLabel.text!)! == runningNumber {
                 runningNumber = runningNumber * -1
                 updateOutputLabel(runningNumber)
@@ -362,7 +363,6 @@ class ViewController: UIViewController {
     
     func operationPressed() {
         print("func operationPressed()")
-        print("resetOutput = \(resetOutput)")
         decimalPressed = false
         if currentOperation == .none {
             leftNumber = runningNumber
@@ -393,14 +393,8 @@ class ViewController: UIViewController {
             calculation = leftNumber / rightNumber
             print("\(leftNumber) / \(rightNumber) = \(calculation)")
         }
-        if isTooBig(calculation) {
-            resetCalc()
-            outputLabel.text = "Error"
-        } else {
-            leftNumber = calculation
-            print(leftNumber)
-            updateOutputLabel(leftNumber)
-        }
+        leftNumber = calculation
+        updateOutputLabel(leftNumber)
     }
     
     //////////////////
@@ -408,26 +402,53 @@ class ViewController: UIViewController {
     //////////////////
     
     @IBAction func memoryPressed(_ sender: AnyObject) {
+        
+        // Maybe these should only go under 40 & 43?
         resetOutput = true
-        currentOperation = .none
+        //currentOperation = .none
+        
         let defaults = UserDefaults.standard
+        
+        
         if sender.tag == 40 {
+            print("func memoryPressed(MC)")
             defaults.set(0.0, forKey: "memoryDouble")
+            
+            
+            
         } else {
             var savedDouble = defaults.double(forKey: "memoryDouble")
-            if sender.tag == 41 {
-                savedDouble += Double(outputLabel.text!)!
-                defaults.set(savedDouble, forKey: "memoryDouble")
-            }
-            else if sender.tag == 42 {
-                savedDouble -= Double(outputLabel.text!)!
-                defaults.set(savedDouble, forKey: "memoryDouble")
-            }
-            else {
+            
+            
+            if sender.tag == 43 {
+                print("func memoryPressed(MR)")
                 runningNumber = savedDouble
                 updateOutputLabel(runningNumber)
             }
-            runningNumber = Double(outputLabel.text!)!
+        
+                
+            
+            else {
+                if sender.tag == 41 {
+                    print("func memoryPressed(M+)")
+                    savedDouble += Double(outputLabel.text!)!
+                }
+                    
+                    
+                else {
+                    print("func memoryPressed(M-)")
+                    savedDouble -= Double(outputLabel.text!)!
+                }
+                
+                
+                if isTooBig(savedDouble) {
+                    resetCalc()
+                    defaults.set(0.0, forKey: "memoryDouble")
+                    outputLabel.text = "That's big!"
+                } else {
+                    defaults.set(savedDouble, forKey: "memoryDouble")
+                }
+            }
         }
     }
     
@@ -436,7 +457,9 @@ class ViewController: UIViewController {
     ///////////////////////////////////
     
     func doubleToString(_ inputDouble: Double) -> String {
-        if inputDouble >= 1000000000 {
+        if isTooBig(inputDouble) {
+            return "That's big!"
+        } else if abs(inputDouble) >= 1000000000 {
             let val = inputDouble as NSNumber
             let numberFormatter = NumberFormatter()
             numberFormatter.numberStyle = NumberFormatter.Style.scientific
@@ -445,7 +468,7 @@ class ViewController: UIViewController {
             if let stringFromNumber = numberFormatter.string(from: val) {
                 return(stringFromNumber)
             } else {
-                return("Error")
+                return "Error"
             }
         } else {
             var outputString = String()
@@ -471,7 +494,7 @@ class ViewController: UIViewController {
     }
     
     func isTooBig(_ inputDouble: Double) -> Bool {
-        if inputDouble > Double(Int.max) {
+        if abs(inputDouble) > Double(Int.max) {
             return true
         } else {
             return false

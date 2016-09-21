@@ -24,11 +24,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lGg-pz-aQW" userLabel="outputView">
+                                <frame key="frameInset" minX="10" minY="24" width="397" height="99"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" tag="50" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="1234567890" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ID-Ss-rRh">
+                                        <frame key="frameInset" minX="8" minY="20" width="381" height="59"/>
+                                        <fontDescription key="fontDescription" name="FinalFrontierOldStyle" family="Final Frontier Old Style" pointSize="72"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.99215686274509807" green="0.75686274509803919" blue="0.52941176470588236" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="1ID-Ss-rRh" secondAttribute="bottom" constant="16" id="001-MA-E71"/>
+                                    <constraint firstAttribute="trailing" secondItem="1ID-Ss-rRh" secondAttribute="trailing" constant="16" id="2pe-CY-3yt"/>
+                                    <constraint firstItem="1ID-Ss-rRh" firstAttribute="leading" secondItem="lGg-pz-aQW" secondAttribute="leading" constant="16" id="bsp-Ob-vOL"/>
+                                    <constraint firstItem="1ID-Ss-rRh" firstAttribute="top" secondItem="lGg-pz-aQW" secondAttribute="top" constant="16" id="x6j-Nq-aqn"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xLB-Uj-v4z" userLabel="megaView">
-                                <frame key="frameInset" minX="11" minY="131" width="353" height="528"/>
+                                <frame key="frameInset" minX="4" minY="128" width="410" height="603"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gis-gy-n90" userLabel="megaStackView">
-                                        <frame key="frameInset" minY="1" width="394" height="584"/>
+                                        <frame key="frameInset" minY="1" width="406" height="602"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xzt-G3-fb0" userLabel="barAndButtons">
                                                 <subviews>
@@ -809,34 +827,16 @@
                                     <constraint firstItem="gis-gy-n90" firstAttribute="top" secondItem="xLB-Uj-v4z" secondAttribute="top" id="zNp-FW-jtG"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lGg-pz-aQW" userLabel="outputView">
-                                <frame key="frameInset" minX="10" minY="24" width="397" height="99"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" tag="50" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="1234567890" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ID-Ss-rRh">
-                                        <frame key="frameInset" minX="8" minY="20" width="381" height="59"/>
-                                        <fontDescription key="fontDescription" name="FinalFrontierOldStyle" family="Final Frontier Old Style" pointSize="72"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="0.99215686274509807" green="0.75686274509803919" blue="0.52941176470588236" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="1ID-Ss-rRh" secondAttribute="bottom" constant="16" id="001-MA-E71"/>
-                                    <constraint firstAttribute="trailing" secondItem="1ID-Ss-rRh" secondAttribute="trailing" constant="16" id="2pe-CY-3yt"/>
-                                    <constraint firstItem="1ID-Ss-rRh" firstAttribute="leading" secondItem="lGg-pz-aQW" secondAttribute="leading" constant="16" id="bsp-Ob-vOL"/>
-                                    <constraint firstItem="1ID-Ss-rRh" firstAttribute="top" secondItem="lGg-pz-aQW" secondAttribute="top" constant="16" id="x6j-Nq-aqn"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="lGg-pz-aQW" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="22" id="Ffp-rq-49O"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="xLB-Uj-v4z" secondAttribute="bottom" constant="10" id="LDV-U3-k8o"/>
-                            <constraint firstItem="lGg-pz-aQW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="10" id="LYK-rN-dd9"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="xLB-Uj-v4z" secondAttribute="bottom" constant="4" id="LDV-U3-k8o"/>
+                            <constraint firstItem="lGg-pz-aQW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="4" id="LYK-rN-dd9"/>
                             <constraint firstItem="xLB-Uj-v4z" firstAttribute="top" secondItem="lGg-pz-aQW" secondAttribute="bottom" constant="4" id="aFc-nx-Jpe"/>
-                            <constraint firstItem="xLB-Uj-v4z" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="10" id="bmz-iE-TSJ"/>
-                            <constraint firstAttribute="trailing" secondItem="lGg-pz-aQW" secondAttribute="trailing" constant="10" id="cdi-6h-N0K"/>
-                            <constraint firstAttribute="trailing" secondItem="xLB-Uj-v4z" secondAttribute="trailing" constant="10" id="hQF-LO-sBC"/>
+                            <constraint firstItem="xLB-Uj-v4z" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="4" id="bmz-iE-TSJ"/>
+                            <constraint firstAttribute="trailing" secondItem="lGg-pz-aQW" secondAttribute="trailing" constant="4" id="cdi-6h-N0K"/>
+                            <constraint firstAttribute="trailing" secondItem="xLB-Uj-v4z" secondAttribute="trailing" constant="4" id="hQF-LO-sBC"/>
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
