@@ -12,6 +12,7 @@
 
 // Review MEMORY logic, consider ENUMN
 // Add animation/styling for operation depressed (for example, Apple iPhone calc app has black border)
+// outputLabel.text = Inf for infity
 // Verify that C vs AC works as it should
 // Programmatically set outputLabel.fontSize so 9 digits fit snugly
 // Center outputLabel vertically in outputView
@@ -231,18 +232,16 @@ class ViewController: UIViewController {
     ///// CALCULATOR LOGIC /////
     ////////////////////////////
     
-    var runningNumber = Double()
     var leftNumber = Double()
     var rightNumber = Double()
     
     var resetOutput = false
+    var resetOperation = false
     var decimalPressed = false
     
     func resetCalc() {
         print("func resetCalc()")
-        runningNumber = 0.0
         leftNumber = 0.0
-        print("leftNumber = \(leftNumber)")
         rightNumber = 0.0
         currentOperation = .none
         resetOutput = false
@@ -256,36 +255,36 @@ class ViewController: UIViewController {
         if clearLabel.text == "AC" {
             resetCalc()
         } else {
-            runningNumber = 0.0
+            rightNumber = 0.0
             outputLabel.text = "0"
             clearLabel.text = "AC"
+            if resetOutput {
+                currentOperation = .none
+            }
         }
     }
     
     @IBAction func numberPressed(_ sender: UIButton) {
         print("func numberPressed(\(sender.tag))")
         if resetOutput {
-            resetCalc()
+            rightNumber = 0.0
+            resetOutput = false
+        }
+        if resetOperation {
+            currentOperation = .none
         }
         clearLabel.text = "C"
         let number = sender.tag
-        var tempRunningNumber = runningNumber
         if !decimalPressed {
-            tempRunningNumber = Double(String(Int(runningNumber)) + String(number))!
+            rightNumber = Double(String(Int(rightNumber)) + String(number))!
         } else {
-            if isInt(runningNumber) {
-                tempRunningNumber = Double(String(Int(runningNumber)) + "." + String(number))!
+            if isInt(rightNumber) {
+                rightNumber = Double(String(Int(rightNumber)) + "." + String(number))!
             } else {
-                tempRunningNumber = Double(String(runningNumber) + String(number))!
+                rightNumber = Double(String(rightNumber) + String(number))!
             }
         }
-        if doubleToString(tempRunningNumber).characters.count > 9 {
-            // Animate outputLabel
-            print("String too long") // DO I STILL NEED THIS??? // TO DO
-        } else {
-            runningNumber = tempRunningNumber
-            updateOutputLabel(runningNumber)
-        }
+        updateOutputLabel(rightNumber)
     }
     
     @IBAction func decimalPressed(_ sender: AnyObject) {
@@ -296,30 +295,38 @@ class ViewController: UIViewController {
             }
             decimalPressed = true
         }
-        updateOutputLabel(runningNumber)
+        updateOutputLabel(rightNumber)
     }
     
     @IBAction func reverseSignPressed(_ sender: AnyObject) {
         print("func reverseSignPressed()")
-        if outputLabel.text != "0" && Int(outputLabel.text!) != nil {
-            if Double(outputLabel.text!)! == runningNumber {
-                runningNumber = runningNumber * -1
-                updateOutputLabel(runningNumber)
-            } else {
-                leftNumber = leftNumber * -1
-                updateOutputLabel(leftNumber)
-            }
-        }
+//        if outputLabel.text != "0" && Int(outputLabel.text!) != nil {
+//            if Double(outputLabel.text!)! == runningNumber {
+//                runningNumber = runningNumber * -1
+//                updateOutputLabel(runningNumber)
+//            } else {
+//                leftNumber = leftNumber * -1
+//                updateOutputLabel(leftNumber)
+//            }
+//        }
     }
     
     @IBAction func equalsPressed(_ sender: AnyObject) {
         print("func equalsPressed()")
         decimalPressed = false
-        if !resetOutput && currentOperation != .none {
-            resetOutput = true
-            rightNumber = runningNumber
-            runningNumber = 0.0
-        }
+        
+        resetOutput = true
+        resetOperation = true
+        
+//        if currentOperation != .none {
+//            
+//        }
+        
+//        if !resetOutput && currentOperation != .none {
+//            resetOutput = true
+//            rightNumber = runningNumber
+//            runningNumber = 0.0
+//        }
         processOperation()
     }
     
@@ -363,15 +370,10 @@ class ViewController: UIViewController {
     
     func operationPressed() {
         print("func operationPressed()")
-        decimalPressed = false
-        if currentOperation == .none {
-            leftNumber = runningNumber
-        } else if !resetOutput {
-            rightNumber = runningNumber
+        resetOperation = false
+        if !resetOutput {
             processOperation()
         }
-        runningNumber = 0.0
-        resetOutput = false
     }
     
     func processOperation() {
@@ -379,7 +381,7 @@ class ViewController: UIViewController {
         var calculation = Double()
         switch currentOperation {
         case .none:
-            calculation = runningNumber
+            calculation = rightNumber
         case .add:
             calculation = leftNumber + rightNumber
             print("\(leftNumber) + \(rightNumber) = \(calculation)")
@@ -395,6 +397,8 @@ class ViewController: UIViewController {
         }
         leftNumber = calculation
         updateOutputLabel(leftNumber)
+        resetOutput = true
+        decimalPressed = false
     }
     
     //////////////////
@@ -402,54 +406,35 @@ class ViewController: UIViewController {
     //////////////////
     
     @IBAction func memoryPressed(_ sender: AnyObject) {
-        
-        // Maybe these should only go under 40 & 43?
-        resetOutput = true
-        //currentOperation = .none
-        
-        let defaults = UserDefaults.standard
-        
-        
-        if sender.tag == 40 {
-            print("func memoryPressed(MC)")
-            defaults.set(0.0, forKey: "memoryDouble")
-            
-            
-            
-        } else {
-            var savedDouble = defaults.double(forKey: "memoryDouble")
-            
-            
-            if sender.tag == 43 {
-                print("func memoryPressed(MR)")
-                runningNumber = savedDouble
-                updateOutputLabel(runningNumber)
-            }
-        
-                
-            
-            else {
-                if sender.tag == 41 {
-                    print("func memoryPressed(M+)")
-                    savedDouble += Double(outputLabel.text!)!
-                }
-                    
-                    
-                else {
-                    print("func memoryPressed(M-)")
-                    savedDouble -= Double(outputLabel.text!)!
-                }
-                
-                
-                if isTooBig(savedDouble) {
-                    resetCalc()
-                    defaults.set(0.0, forKey: "memoryDouble")
-                    outputLabel.text = "That's big!"
-                } else {
-                    defaults.set(savedDouble, forKey: "memoryDouble")
-                }
-            }
-        }
+//        resetOutput = true
+//        currentOperation = .none
+//        let defaults = UserDefaults.standard
+//        if sender.tag == 40 {
+//            print("func memoryPressed(MC)")
+//            defaults.set(0.0, forKey: "memoryDouble")
+//        } else {
+//            var savedDouble = defaults.double(forKey: "memoryDouble")
+//            if sender.tag == 43 {
+//                print("func memoryPressed(MR)")
+//                runningNumber = savedDouble
+//                updateOutputLabel(runningNumber)
+//            } else {
+//                if sender.tag == 41 {
+//                    print("func memoryPressed(M+)")
+//                    savedDouble += Double(outputLabel.text!)!
+//                } else {
+//                    print("func memoryPressed(M-)")
+//                    savedDouble -= Double(outputLabel.text!)!
+//                }
+//                if isTooBig(savedDouble) {
+//                    resetCalc()
+//                    defaults.set(0.0, forKey: "memoryDouble")
+//                    outputLabel.text = "That's big!"
+//                } else {
+//                    defaults.set(savedDouble, forKey: "memoryDouble")
+//                }
+//            }
+//        }
     }
     
     ///////////////////////////////////
