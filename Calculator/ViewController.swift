@@ -13,6 +13,7 @@
 // Review MEMORY logic, consider ENUMN
 // Programmatically set outputLabel.fontSize so 9 digits fit snugly
 // Center outputLabel vertically in outputView
+// Fix DRY violations in the animations extensions
 // Add animation/styling for operation depressed (for example, Apple iPhone calc app has black border)
 // Add animation to outputLabel when numberPressed() and String is too long
 // Verify that C vs AC works as it should
@@ -188,43 +189,33 @@ class ViewController: UIViewController {
     
     var touchDownArray = [Int]()
     
-    enum animationType {
-        case fadeOut
-        case fadeCancel
-        case fadeIn
-    }
-    
     @IBAction func buttonTouchDown(_ sender: AnyObject) {
         print("----------")
         touchDownArray.append(sender.tag)
-        animateLabel(senderTag: sender.tag, animationType: .fadeOut)
+        animateLabel(senderTag: sender.tag, duration: 0.25, textColor: UIColor.white, backgroundFinal: false)
     }
     
     @IBAction func buttonTouchDragOutside(_ sender: AnyObject) {
         if touchDownArray.contains(sender.tag) {
             touchDownArray = touchDownArray.filter { $0 != sender.tag }
-            animateLabel(senderTag: sender.tag, animationType: .fadeCancel)
+            animateLabel(senderTag: sender.tag, duration: 0.25, textColor: UIColor.black, backgroundFinal: false)
         }
     }
     
     @IBAction func buttonTouchUp(_ sender: AnyObject) {
         touchDownArray = touchDownArray.filter { $0 != sender.tag }
-        animateLabel(senderTag: sender.tag, animationType: .fadeIn)
+        animateLabel(senderTag: sender.tag, duration: 0.4, textColor: UIColor.black, backgroundFinal: true)
     }
     
-    func animateLabel(senderTag: Int, animationType: animationType) {
-        let labelBackgroundColor = getLabelBackgroundColor(labelTag: senderTag)
+    func animateLabel(senderTag: Int, duration: TimeInterval, textColor: UIColor, backgroundFinal: Bool) {
         for label in labelArray {
             if label.tag == senderTag {
-                switch animationType {
-                case .fadeOut:
-                    label.fadeOut()
-                case .fadeCancel:
-                    label.fadeCancel(labelBackgroundColor: labelBackgroundColor)
-                case .fadeIn:
-                    label.fadeIn(labelBackgroundColor: labelBackgroundColor)
+                let labelColor = getLabelBackgroundColor(labelTag: senderTag)
+                var backgroundColor = UIColor.black
+                if backgroundFinal {
+                    backgroundColor = labelColor
                 }
-                break
+                label.animate(duration: duration, textColor: textColor, backgroundColor: backgroundColor, labelColor: labelColor)
             }
         }
     }
@@ -473,32 +464,14 @@ class ViewController: UIViewController {
 
 extension UILabel {
     
-    func fadeOut() {
-        UILabel.transition(with: self, duration: 0.25, options: .transitionCrossDissolve, animations: {() -> Void in
-            self.textColor = UIColor.white
-            self.backgroundColor = UIColor.black
+    func animate(duration: TimeInterval, textColor: UIColor, backgroundColor: UIColor, labelColor: UIColor) {
+        UILabel.transition(with: self, duration: duration, options: .transitionCrossDissolve, animations: {() -> Void in
+            self.textColor = textColor
+            self.backgroundColor = backgroundColor
             }, completion: {(finished: Bool) -> Void in
-        })
-    }
-    
-    func fadeCancel(labelBackgroundColor: UIColor) {
-        UILabel.transition(with: self, duration: 0.25, options: .transitionCrossDissolve, animations: {() -> Void in
-            self.textColor = UIColor.black
-            self.backgroundColor = UIColor.black
-            }, completion: {(finished: Bool) -> Void in
-                UILabel.transition(with: self, duration: 0.5, options: .transitionCrossDissolve, animations: {() -> Void in
-                    self.textColor = UIColor.black
-                    self.backgroundColor = labelBackgroundColor
-                    }, completion: {(finished: Bool) -> Void in
-                })
-        })
-    }
-    
-    func fadeIn(labelBackgroundColor: UIColor) {
-        UILabel.transition(with: self, duration: 0.4, options: .transitionCrossDissolve, animations: {() -> Void in
-            self.textColor = UIColor.black
-            self.backgroundColor = labelBackgroundColor
-            }, completion: {(finished: Bool) -> Void in
+                if textColor == backgroundColor {
+                    self.animate(duration: 0.5, textColor: UIColor.black, backgroundColor: labelColor, labelColor: labelColor)
+                }
         })
     }
 }
