@@ -8,25 +8,32 @@
 
 /////////////////////////////////////
 /////////////// TO DO ///////////////
-/////////////////////////////////////
+/////////////////////////////////////    Before submission to David for code review:
 
 // Review MEMORY logic, consider ENUMN
+// Add animation/styling for operation depressed (for example, Apple iPhone calc app has black border)
+// Verify that C vs AC works as it should
 // Programmatically set outputLabel.fontSize so 9 digits fit snugly
 // Center outputLabel vertically in outputView
-// Fix DRY violations in the animations extensions
-// Add animation/styling for operation depressed (for example, Apple iPhone calc app has black border)
 // Add animation to outputLabel when numberPressed() and String is too long
-// Verify that C vs AC works as it should
 // Verify layout on all device sizes
 
-// Register hardware keyboard presses
-// Add second label that shows previous operations
-// Add slide in animation to new numbers: http://www.andrewcbancroft.com/2014/09/24/slide-in-animation-in-swift/
-// Adjust layout if Personal Hotspot, etc is turned on
+/////////////////////////
+///// BEFORE LAUNCH /////
+/////////////////////////
+
 // Add sound effects
 // Create app icon
 // Create launch screen
-// Create info/about screen?
+
+//////////////
+///// v2 /////
+//////////////
+
+// Register hardware keyboard presses
+// Add second label that shows previous operations
+// Add slide in animation to outputLabel: http://www.andrewcbancroft.com/2014/09/24/slide-in-animation-in-swift/
+// Adjust layout if Personal Hotspot, etc is turned on
 
 /////////////////////////////////////////////////
 ///// TAG REFERENCES for BUTTONS and LABELS /////
@@ -391,6 +398,7 @@ class ViewController: UIViewController {
             outputLabel.text = "Error"
         } else {
             leftNumber = calculation
+            print(leftNumber)
             updateOutputLabel(leftNumber)
         }
     }
@@ -403,15 +411,15 @@ class ViewController: UIViewController {
         resetOutput = true
         currentOperation = .none
         let defaults = UserDefaults.standard
-        if sender.tag == 1 {
+        if sender.tag == 40 {
             defaults.set(0.0, forKey: "memoryDouble")
         } else {
             var savedDouble = defaults.double(forKey: "memoryDouble")
-            if sender.tag == 2 {
+            if sender.tag == 41 {
                 savedDouble += Double(outputLabel.text!)!
                 defaults.set(savedDouble, forKey: "memoryDouble")
             }
-            else if sender.tag == 3 {
+            else if sender.tag == 42 {
                 savedDouble -= Double(outputLabel.text!)!
                 defaults.set(savedDouble, forKey: "memoryDouble")
             }
@@ -428,16 +436,29 @@ class ViewController: UIViewController {
     ///////////////////////////////////
     
     func doubleToString(_ inputDouble: Double) -> String {
-        var outputString = String()
-        if isInt(inputDouble) {
-            outputString = String(Int(inputDouble))
-            if decimalPressed {
-                outputString = outputString + "."
+        if inputDouble >= 1000000000 {
+            let val = inputDouble as NSNumber
+            let numberFormatter = NumberFormatter()
+            numberFormatter.numberStyle = NumberFormatter.Style.scientific
+            numberFormatter.positiveFormat = "0.###E+0"
+            numberFormatter.exponentSymbol = "e"
+            if let stringFromNumber = numberFormatter.string(from: val) {
+                return(stringFromNumber)
+            } else {
+                return("Error")
             }
         } else {
-            outputString = String(inputDouble)
+            var outputString = String()
+            if isInt(inputDouble) {
+                outputString = String(Int(inputDouble))
+                if decimalPressed {
+                    outputString = outputString + "."
+                }
+            } else {
+                outputString = String(inputDouble)
+            }
+            return outputString
         }
-        return outputString
     }
     
     func updateOutputLabel(_ inputDouble: Double) {
@@ -449,11 +470,11 @@ class ViewController: UIViewController {
         return isInteger
     }
     
-    func isTooBig(_ double: Double) -> Bool {
-        if double < 1000000000 {
-            return false
-        } else {
+    func isTooBig(_ inputDouble: Double) -> Bool {
+        if inputDouble > Double(Int.max) {
             return true
+        } else {
+            return false
         }
     }
 }
