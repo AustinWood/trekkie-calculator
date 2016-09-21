@@ -10,8 +10,9 @@
 /////////////// TO DO ///////////////
 /////////////////////////////////////    Before submission to David for code review:
 
-// Review MEMORY logic, consider ENUMN
 // Add animation/styling for operation depressed (for example, Apple iPhone calc app has black border)
+// Trailing zeros acting funky
+// Bug: Pressing Clear after Equals, then Operation, then a Number, does not consider 0 to be the Left number
 // outputLabel.text = Inf for infity
 // Verify that C vs AC works as it should
 // Programmatically set outputLabel.fontSize so 9 digits fit snugly
@@ -23,6 +24,8 @@
 ///// BEFORE LAUNCH /////
 /////////////////////////
 
+// Set . vs , for decimal based on phone settings
+// Thousands separaters
 // Add sound effects
 // Create app icon
 // Create launch screen
@@ -31,6 +34,7 @@
 ///// v2 /////
 //////////////
 
+// Make isTooBig() dependent on Bool.max, not Int.max
 // Register hardware keyboard presses
 // Add second label that shows previous operations
 // Add slide in animation to outputLabel: http://www.andrewcbancroft.com/2014/09/24/slide-in-animation-in-swift/
@@ -238,6 +242,7 @@ class ViewController: UIViewController {
     var resetOutput = false
     var resetOperation = false
     var decimalPressed = false
+    var outputTextIsRightNum = true
     
     func resetCalc() {
         print("func resetCalc()")
@@ -260,6 +265,10 @@ class ViewController: UIViewController {
             clearLabel.text = "AC"
             if resetOutput {
                 currentOperation = .none
+                trailingZeros = 0
+                if resetOperation {
+                    leftNumber = 0.0
+                }
             }
         }
     }
@@ -268,6 +277,7 @@ class ViewController: UIViewController {
         print("func numberPressed(\(sender.tag))")
         if resetOutput {
             rightNumber = 0.0
+            trailingZeros = 0
             resetOutput = false
         }
         if resetOperation {
@@ -278,20 +288,34 @@ class ViewController: UIViewController {
         if !decimalPressed {
             rightNumber = Double(String(Int(rightNumber)) + String(number))!
         } else {
-            if isInt(rightNumber) {
+            if isInt(rightNumber) && trailingZeros == 0 {
                 rightNumber = Double(String(Int(rightNumber)) + "." + String(number))!
             } else {
-                rightNumber = Double(String(rightNumber) + String(number))!
+                var rightString = String(rightNumber)
+                print(rightString)
+                rightString = addTrailingZeros(inputString: rightString)
+                print(rightString)
+                rightString = rightString + String(number)
+                rightNumber = Double(rightString)!
+            }
+            if sender.tag == 0 {
+                trailingZeros += 1
+            } else {
+                trailingZeros = 0
             }
         }
         updateOutputLabel(rightNumber)
     }
     
+    var trailingZeros = 0
+    
     @IBAction func decimalPressed(_ sender: AnyObject) {
         print("func decimalPressed()")
         if !decimalPressed {
             if resetOutput {
-                resetCalc()
+                rightNumber = 0.0
+                trailingZeros = 0
+                resetOutput = false
             }
             decimalPressed = true
         }
@@ -300,33 +324,20 @@ class ViewController: UIViewController {
     
     @IBAction func reverseSignPressed(_ sender: AnyObject) {
         print("func reverseSignPressed()")
-//        if outputLabel.text != "0" && Int(outputLabel.text!) != nil {
-//            if Double(outputLabel.text!)! == runningNumber {
-//                runningNumber = runningNumber * -1
-//                updateOutputLabel(runningNumber)
-//            } else {
-//                leftNumber = leftNumber * -1
-//                updateOutputLabel(leftNumber)
-//            }
-//        }
+        if outputTextIsRightNum {
+            rightNumber = rightNumber * -1
+            updateOutputLabel(rightNumber)
+        } else {
+            leftNumber = leftNumber * -1
+            updateOutputLabel(leftNumber)
+        }
     }
     
     @IBAction func equalsPressed(_ sender: AnyObject) {
         print("func equalsPressed()")
         decimalPressed = false
-        
         resetOutput = true
         resetOperation = true
-        
-//        if currentOperation != .none {
-//            
-//        }
-        
-//        if !resetOutput && currentOperation != .none {
-//            resetOutput = true
-//            rightNumber = runningNumber
-//            runningNumber = 0.0
-//        }
         processOperation()
     }
     
@@ -406,35 +417,39 @@ class ViewController: UIViewController {
     //////////////////
     
     @IBAction func memoryPressed(_ sender: AnyObject) {
-//        resetOutput = true
-//        currentOperation = .none
-//        let defaults = UserDefaults.standard
-//        if sender.tag == 40 {
-//            print("func memoryPressed(MC)")
-//            defaults.set(0.0, forKey: "memoryDouble")
-//        } else {
-//            var savedDouble = defaults.double(forKey: "memoryDouble")
-//            if sender.tag == 43 {
-//                print("func memoryPressed(MR)")
-//                runningNumber = savedDouble
-//                updateOutputLabel(runningNumber)
-//            } else {
-//                if sender.tag == 41 {
-//                    print("func memoryPressed(M+)")
-//                    savedDouble += Double(outputLabel.text!)!
-//                } else {
-//                    print("func memoryPressed(M-)")
-//                    savedDouble -= Double(outputLabel.text!)!
-//                }
-//                if isTooBig(savedDouble) {
-//                    resetCalc()
-//                    defaults.set(0.0, forKey: "memoryDouble")
-//                    outputLabel.text = "That's big!"
-//                } else {
-//                    defaults.set(savedDouble, forKey: "memoryDouble")
-//                }
-//            }
-//        }
+        resetOutput = true
+        currentOperation = .none
+        let defaults = UserDefaults.standard
+        if sender.tag == 40 {
+            print("func memoryPressed(MC)")
+            defaults.set(0.0, forKey: "memoryDouble")
+        } else {
+            var savedDouble = defaults.double(forKey: "memoryDouble")
+            if sender.tag == 43 {
+                print("func memoryPressed(MR)")
+                leftNumber = savedDouble
+                updateOutputLabel(leftNumber)
+            } else {
+                var displayedNumber = leftNumber
+                if outputTextIsRightNum {
+                    displayedNumber = rightNumber
+                }
+                if sender.tag == 41 {
+                    print("func memoryPressed(M+)")
+                    savedDouble += displayedNumber
+                } else {
+                    print("func memoryPressed(M-)")
+                    savedDouble -= displayedNumber
+                }
+                if isTooBig(savedDouble) {
+                    resetCalc()
+                    defaults.set(0.0, forKey: "memoryDouble")
+                    outputLabel.text = "That's big!"
+                } else {
+                    defaults.set(savedDouble, forKey: "memoryDouble")
+                }
+            }
+        }
     }
     
     ///////////////////////////////////
@@ -465,12 +480,28 @@ class ViewController: UIViewController {
             } else {
                 outputString = String(inputDouble)
             }
+            outputString = addTrailingZeros(inputString: outputString)
             return outputString
         }
     }
     
     func updateOutputLabel(_ inputDouble: Double) {
+        if inputDouble == rightNumber {
+            outputTextIsRightNum = true
+        } else {
+            outputTextIsRightNum = false
+        }
         outputLabel.text = doubleToString(inputDouble)
+    }
+    
+    func addTrailingZeros(inputString: String) -> String {
+        var mutableString = inputString
+        if trailingZeros > 0 {
+            for _ in 1...trailingZeros {
+                mutableString += "0"
+            }
+        }
+        return mutableString
     }
     
     func isInt(_ double: Double) -> Bool {
