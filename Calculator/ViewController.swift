@@ -323,9 +323,7 @@ class ViewController: UIViewController {
                         trailingZeros -= 1
                     }
                     var rightString = String(rightNumber)
-                    print(rightString)
                     rightString = addTrailingZeros(inputString: rightString)
-                    print(rightString)
                     rightString = rightString + String(number)
                     rightNumber = Double(rightString)!
                 }
@@ -352,8 +350,8 @@ class ViewController: UIViewController {
                 resetOutput = false
             }
             decimalPressed = true
+            updateOutputLabel(rightNumber)
         }
-        updateOutputLabel(rightNumber)
     }
     
     @IBAction func reverseSignPressed(_ sender: AnyObject) {
@@ -482,14 +480,20 @@ class ViewController: UIViewController {
         }
     }
     
-    ///////////////////////////////////
-    ///// MISCELLANEOUS FUNCTIONS /////
-    ///////////////////////////////////
+    /////////////////////////////
+    ///// NUMBER FORMATTING /////
+    /////////////////////////////
     
     func doubleToString(_ inputDouble: Double) -> String {
-        if abs(inputDouble) >= 1000000000 {
-            let val = inputDouble as NSNumber
-            let numberFormatter = NumberFormatter()
+        print("func doubleToString")
+        let val = inputDouble as NSNumber
+        let numberFormatter = NumberFormatter()
+        numberFormatter.minimumIntegerDigits = 1
+        numberFormatter.decimalSeparator = "."
+        
+        // SCIENTIFIC NOTATION for really big/small numbers
+        if abs(inputDouble) >= 1000000000 || (abs(inputDouble) <= 0.0000001 && inputDouble != 0.0) {
+            print("SCIENTIFIC NOTATION")
             numberFormatter.numberStyle = NumberFormatter.Style.scientific
             numberFormatter.positiveFormat = "0.###E+0"
             numberFormatter.negativeFormat = "0.###E-0"
@@ -499,18 +503,25 @@ class ViewController: UIViewController {
             } else {
                 return "Error"
             }
-        } else {
-            var outputString = String()
-            if isInt(inputDouble) {
-                outputString = String(Int(inputDouble))
-                if decimalPressed {
-                    outputString = outputString + "."
-                }
-            } else {
-                outputString = String(inputDouble)
+        }
+        
+        // STANDARD NOTATION for all other numbers
+        else {
+            print("STANDARD NOTATION")
+            if decimalPressed {
+                numberFormatter.alwaysShowsDecimalSeparator = true
             }
-            outputString = addTrailingZeros(inputString: outputString)
-            return outputString
+            var integerDigits = 1
+            if abs(inputDouble) >= 1 {
+                integerDigits = Int(log10(abs(inputDouble))) + 1
+            }
+            numberFormatter.maximumFractionDigits = 12 - integerDigits
+            if let stringFromNumber = numberFormatter.string(from: val) {
+                let outputString = addTrailingZeros(inputString: stringFromNumber)
+                return outputString
+            } else {
+                return "Error"
+            }
         }
     }
     
@@ -536,6 +547,11 @@ class ViewController: UIViewController {
     func isInt(_ double: Double) -> Bool {
         let isInteger = double.truncatingRemainder(dividingBy: 1) == 0
         return isInteger
+    }
+    
+    func replaceCommaWithPeriod(inputString: String) -> String {
+        let outputString = inputString.replacingOccurrences(of: ",", with: ".")
+        return outputString
     }
 }
 
