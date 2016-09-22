@@ -10,14 +10,10 @@
 /////////////// TO DO ///////////////
 /////////////////////////////////////    Before submission to David for code review:
 
-// Add animation/styling for operation depressed (for example, Apple iPhone calc app has black border)
-// Trailing zeros acting funky
-// Bug: Pressing Clear after Equals, then Operation, then a Number, does not consider 0 to be the Left number
-// outputLabel.text = Inf for infity
-// Verify that C vs AC works as it should
-// Programmatically set outputLabel.fontSize so 9 digits fit snugly
-// Center outputLabel vertically in outputView
 // Add animation to outputLabel when numberPressed() and String is too long
+// Add correct outputLabelBackground COLOR to vars
+// Center outputLabel vertically in outputView
+// Fix animation DRY
 // Verify layout on all device sizes
 
 ///////////////////////////
@@ -25,7 +21,6 @@
 ///////////////////////////
 
 // KNOWN LIMITATIONS AND BUGS:
-
 // You can only inut a number up to 1e+10 (90% of Int.max), since the func numberPressed() works on a sequence of casting Int to String to Double. In a future version, I'd like to remove this limitation. The calculations, however, can go up to 1e+308 before displaying +∞.
 
 /////////////////////////
@@ -69,6 +64,7 @@
 // 43: MR
 //
 // 50: Output label
+// 51: Output background label
 
 import UIKit
 
@@ -183,6 +179,8 @@ class ViewController: UIViewController {
         var labelBackgroundColor = COLOR_SALMON
         if labelTag == 50 {
             labelBackgroundColor = UIColor.clear
+        } else if labelTag == 51 {
+            labelBackgroundColor = COLOR_SALMON
         } else if labelTag == 20 {
             labelBackgroundColor = COLOR_ORANGE
         } else if labelTag >= 21 && labelTag <= 31 {
@@ -334,7 +332,9 @@ class ViewController: UIViewController {
                 }
             }
         } else {
-            // Animate outputLabel
+            print("SHOULD ANIMATE")
+            outputLabel.animateOutputLabel(duration: 0.5, textColor: UIColor.white)
+            getLabel(senderTag: 51).animateOutputBackground(duration: 0.5, backgroundColor: UIColor.black)
         }
         updateOutputLabel(rightNumber)
     }
@@ -561,6 +561,28 @@ class ViewController: UIViewController {
 ///////////////////////////////////////////////////////
 
 extension UILabel {
+    
+    func animateOutputLabel(duration: TimeInterval, textColor: UIColor) {
+        print("IS ANIMATING OUTPUT LABEL")
+        UILabel.transition(with: self, duration: duration, options: .transitionCrossDissolve, animations: {() -> Void in
+            self.textColor = textColor
+            }, completion: {(finished: Bool) -> Void in
+                if self.textColor == UIColor.white {
+                    self.animateOutputLabel(duration: 0.25, textColor: UIColor.black)
+                }
+        })
+    }
+    
+    func animateOutputBackground(duration: TimeInterval, backgroundColor: UIColor) {
+        print("IS ANIMATING OUTPUT BACKGROUND")
+        UILabel.transition(with: self, duration: duration, options: .transitionCrossDissolve, animations: {() -> Void in
+            self.backgroundColor = backgroundColor
+            }, completion: {(finished: Bool) -> Void in
+                if self.backgroundColor == UIColor.black {
+                    self.animateOutputBackground(duration: 0.25, backgroundColor: COLOR_SALMON)
+                }
+        })
+    }
     
     func animate(duration: TimeInterval, textColor: UIColor, backgroundColor: UIColor, labelColor: UIColor) {
         UILabel.transition(with: self, duration: duration, options: .transitionCrossDissolve, animations: {() -> Void in
