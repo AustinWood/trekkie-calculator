@@ -231,21 +231,21 @@
                                                                                     <constraint firstAttribute="trailing" secondItem="FBg-St-OgH" secondAttribute="trailing" id="xL3-xU-Lr9"/>
                                                                                 </constraints>
                                                                             </view>
-                                                                            <view tag="31" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WSG-6h-2ZS" userLabel="Reverse View">
+                                                                            <view tag="31" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WSG-6h-2ZS" userLabel="Invert View">
                                                                                 <subviews>
-                                                                                    <label opaque="NO" userInteractionEnabled="NO" tag="31" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+/–" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wzD-hT-KNr" userLabel="Reverse Label">
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" tag="31" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+/–" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wzD-hT-KNr" userLabel="Invert Label">
                                                                                         <color key="backgroundColor" red="0.99215686270000003" green="0.52549019610000003" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
-                                                                                    <button opaque="NO" tag="31" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n9Q-IA-pjI" userLabel="Reverse Button">
+                                                                                    <button opaque="NO" tag="31" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n9Q-IA-pjI" userLabel="Invert Button">
                                                                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                         <connections>
                                                                                             <action selector="buttonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="IsZ-eW-MCO"/>
                                                                                             <action selector="buttonTouchDragOutside:" destination="BYZ-38-t0r" eventType="touchDragOutside" id="A2g-Kb-ZuD"/>
                                                                                             <action selector="buttonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2Kb-tk-88V"/>
-                                                                                            <action selector="reverseSignPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="djb-EX-aFR"/>
+                                                                                            <action selector="invertSignPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DmJ-UE-KHL"/>
                                                                                         </connections>
                                                                                     </button>
                                                                                 </subviews>
@@ -858,11 +858,11 @@
                     <connections>
                         <outlet property="bottomBar" destination="REk-HF-Ne9" id="GZg-W0-4fh"/>
                         <outlet property="clearLabel" destination="FBg-St-OgH" id="QpX-LN-Gbj"/>
+                        <outlet property="invertSignLabel" destination="wzD-hT-KNr" id="t5x-x6-Z8i"/>
                         <outlet property="leftBar" destination="BfP-wN-A03" id="gYO-yM-sHi"/>
                         <outlet property="megaView" destination="xLB-Uj-v4z" id="CBw-PJ-4X4"/>
                         <outlet property="outputLabel" destination="1ID-Ss-rRh" id="Yha-Ro-oEn"/>
                         <outlet property="outputView" destination="lGg-pz-aQW" id="9an-Mr-77D"/>
-                        <outlet property="reverseSignLabel" destination="wzD-hT-KNr" id="ROO-xc-lGf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

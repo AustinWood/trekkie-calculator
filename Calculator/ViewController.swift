@@ -32,6 +32,7 @@
 ////////////////////////
 
 // Register hardware keyboard presses
+// Remove Int.max limit on input numbers
 // Add second label that shows previous operations?
 // Add slide in animation to outputLabel: http://www.andrewcbancroft.com/2014/09/24/slide-in-animation-in-swift/
 
@@ -49,7 +50,7 @@
 // 24: Division
 //
 // 30: Clear
-// 31: Reverse sign
+// 31: Invert sign
 //
 // 40: MC
 // 41: M+
@@ -89,7 +90,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var outputLabel: UILabel!
     @IBOutlet weak var clearLabel: UILabel!
-    @IBOutlet weak var reverseSignLabel: UILabel!
+    @IBOutlet weak var invertSignLabel: UILabel!
     
     @IBOutlet weak var outputView: UIView!
     @IBOutlet weak var megaView: UIView!
@@ -166,14 +167,11 @@ class ViewController: UIViewController {
                 label.font = UIFont(name: TEXT_FONT, size: TEXT_SIZE * 1.5)
             } else if label.tag == 50 {
                 label.font = UIFont(name: TEXT_FONT, size: TEXT_SIZE * 2.0)
-                // let labelWidth = outputLabel.frame.width
-                // let textSize = outputLabel.text!.size(attributes: [NSFontAttributeName: outputLabel.font])
-                // let textWidth: CGFloat = textSize.width
             } else {
                 label.font = UIFont(name: TEXT_FONT, size: TEXT_SIZE * 1.0)
             }
         }
-        stylizeReverseSignLabel()
+        stylizeInvertSignLabel()
     }
     
     func getLabelBackgroundColor(labelTag: Int) -> UIColor {
@@ -192,13 +190,13 @@ class ViewController: UIViewController {
         return labelBackgroundColor
     }
 
-    func stylizeReverseSignLabel() {
+    func stylizeInvertSignLabel() {
         let font: UIFont? = UIFont(name: TEXT_FONT, size: TEXT_SIZE)
         let fontSuper: UIFont? = UIFont(name: TEXT_FONT, size: TEXT_SIZE / 1.5)
         let attString: NSMutableAttributedString = NSMutableAttributedString(string: "+/–", attributes: [NSFontAttributeName: font!])
         attString.setAttributes([NSFontAttributeName: fontSuper!, NSBaselineOffsetAttributeName: 10], range: NSRange(location:0,length:1))
         attString.setAttributes([NSFontAttributeName: fontSuper!, NSBaselineOffsetAttributeName: 2], range: NSRange(location:2,length:1))
-        reverseSignLabel.attributedText = attString
+        invertSignLabel.attributedText = attString
     }
     
     //////////////////////
@@ -334,18 +332,6 @@ class ViewController: UIViewController {
                     trailingZeros = 0
                 }
             }
-//            if !decimalPressed {
-//                rightNumber = Double(String(Int(rightNumber)) + String(number))!
-//            } else {
-//                var rightString = standardNotationString(rightNumber)
-//                rightString += String(number)
-//                rightNumber = Double(rightString)!
-//                if sender.tag == 0 {
-//                    trailingZeros += 1
-//                } else {
-//                    trailingZeros = 0
-//                }
-//            }
         } else {
             animateOutputLabel()
         }
@@ -367,8 +353,8 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func reverseSignPressed(_ sender: AnyObject) {
-        print("func reverseSignPressed()")
+    @IBAction func invertSignPressed(_ sender: AnyObject) {
+        print("func invertSignPressed()")
         if outputTextIsRightNum {
             rightNumber = rightNumber * -1
             updateOutputLabel(rightNumber)
