@@ -50,7 +50,7 @@
                                     <constraint firstAttribute="bottom" secondItem="8AO-EJ-b4N" secondAttribute="bottom" id="ZbH-oW-Pb2"/>
                                     <constraint firstItem="1ID-Ss-rRh" firstAttribute="leading" secondItem="lGg-pz-aQW" secondAttribute="leading" constant="16" id="bsp-Ob-vOL"/>
                                     <constraint firstItem="8AO-EJ-b4N" firstAttribute="leading" secondItem="lGg-pz-aQW" secondAttribute="leading" id="cek-7K-fA9"/>
-                                    <constraint firstItem="1ID-Ss-rRh" firstAttribute="top" secondItem="lGg-pz-aQW" secondAttribute="top" id="os5-ea-wf2"/>
+                                    <constraint firstItem="1ID-Ss-rRh" firstAttribute="top" secondItem="lGg-pz-aQW" secondAttribute="top" constant="6" id="os5-ea-wf2"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xLB-Uj-v4z" userLabel="megaView">

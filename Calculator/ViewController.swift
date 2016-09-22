@@ -25,7 +25,9 @@
 
 // Set . vs , for decimal based on phone settings (most countries, other than US and UK, use comma for decimal and period for thousands separater)
 // Thousands separaters
-// Add sound effects
+// Press and hold on outputLabel copies output to clipboard
+// Adjust layout if enlarged status bar due to Personal Hotspot, GPS, Phone, etc
+// Add sound effects?
 // Create app icon
 // Create launch screen
 
