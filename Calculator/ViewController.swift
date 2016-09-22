@@ -10,24 +10,21 @@
 /////////////// TO DO ///////////////
 /////////////////////////////////////    Before submission to David for code review:
 
-// Add animation to outputLabel when numberPressed() and String is too long
-// Add correct outputLabelBackground COLOR to vars
 // Center outputLabel vertically in outputView
-// Fix animation DRY
 // Verify layout on all device sizes
 
 ///////////////////////////
 ///// NOTES FOR DAVID /////
 ///////////////////////////
 
-// KNOWN LIMITATIONS AND BUGS:
 // You can only inut a number up to 1e+10 (90% of Int.max), since the func numberPressed() works on a sequence of casting Int to String to Double. In a future version, I'd like to remove this limitation. The calculations, however, can go up to 1e+308 before displaying +∞.
+// I know there are lots of DRY violations with the animations. If you have any insight on how to write the animation code more efficiently that would be awesome. Trying to make the animation code more efficient is probably the thing that I've spent the most time on that doesn't actually make any difference to the end-user experience, haha.
 
 /////////////////////////
 ///// BEFORE LAUNCH /////
 /////////////////////////
 
-// Set . vs , for decimal based on phone settings
+// Set . vs , for decimal based on phone settings (most countries, other than US and UK, use comma for decimal and period for thousands separater)
 // Thousands separaters
 // Add sound effects
 // Create app icon
@@ -72,6 +69,7 @@ import UIKit
 ///// COLORS /////
 //////////////////
 
+let COLOR_TAN = UIColor(red:0.996, green:0.796, blue:0.612, alpha:1.00)
 let COLOR_SALMON = UIColor(red:0.992, green:0.600, blue:0.420, alpha:1.00)
 let COLOR_PINK = UIColor(red:0.796, green:0.604, blue:0.796, alpha:1.00)
 let COLOR_PURPLE = UIColor(red:0.600, green:0.604, blue:0.792, alpha:1.00)
@@ -85,6 +83,8 @@ let TEXT_FONT = "FinalFrontierOldStyle" // or "Helvetica-Bold" ?
 let TEXT_SIZE = 28 as CGFloat
 let TEXT_COLOR = UIColor.black
 
+var isAnimatingOutputLabel = false
+
 class ViewController: UIViewController {
     
     ////////////////////////////
@@ -97,6 +97,9 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var outputView: UIView!
     @IBOutlet weak var megaView: UIView!
+    
+    @IBOutlet weak var leftBar: UIView!
+    @IBOutlet weak var bottomBar: UIView!
     
     var labelArray = [UILabel]()
     var buttonArray = [UIButton]()
@@ -114,6 +117,8 @@ class ViewController: UIViewController {
         outputView.roundCorners(corners: [.allCorners], radius: 10)
         megaView.layoutIfNeeded()
         megaView.roundCorners(corners: [.topLeft, .topRight, .bottomRight], radius: 10)
+        leftBar.backgroundColor = COLOR_PURPLE
+        bottomBar.backgroundColor = COLOR_PURPLE
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -180,7 +185,7 @@ class ViewController: UIViewController {
         if labelTag == 50 {
             labelBackgroundColor = UIColor.clear
         } else if labelTag == 51 {
-            labelBackgroundColor = COLOR_SALMON
+            labelBackgroundColor = COLOR_TAN
         } else if labelTag == 20 {
             labelBackgroundColor = COLOR_ORANGE
         } else if labelTag >= 21 && labelTag <= 31 {
@@ -332,9 +337,10 @@ class ViewController: UIViewController {
                 }
             }
         } else {
-            print("SHOULD ANIMATE")
-            outputLabel.animateOutputLabel(duration: 0.5, textColor: UIColor.white)
-            getLabel(senderTag: 51).animateOutputBackground(duration: 0.5, backgroundColor: UIColor.black)
+            if !isAnimatingOutputLabel {
+                outputLabel.animateOutputLabel(duration: 0.4, textColor: UIColor.white)
+                getLabel(senderTag: 51).animateOutputBackground(duration: 0.4, backgroundColor: UIColor.black)
+            }
         }
         updateOutputLabel(rightNumber)
     }
@@ -564,11 +570,14 @@ extension UILabel {
     
     func animateOutputLabel(duration: TimeInterval, textColor: UIColor) {
         print("IS ANIMATING OUTPUT LABEL")
+        isAnimatingOutputLabel = true
         UILabel.transition(with: self, duration: duration, options: .transitionCrossDissolve, animations: {() -> Void in
             self.textColor = textColor
             }, completion: {(finished: Bool) -> Void in
                 if self.textColor == UIColor.white {
-                    self.animateOutputLabel(duration: 0.25, textColor: UIColor.black)
+                    self.animateOutputLabel(duration: 0.35, textColor: UIColor.black)
+                } else {
+                    isAnimatingOutputLabel = false
                 }
         })
     }
@@ -579,7 +588,7 @@ extension UILabel {
             self.backgroundColor = backgroundColor
             }, completion: {(finished: Bool) -> Void in
                 if self.backgroundColor == UIColor.black {
-                    self.animateOutputBackground(duration: 0.25, backgroundColor: COLOR_SALMON)
+                    self.animateOutputBackground(duration: 0.35, backgroundColor: COLOR_TAN)
                 }
         })
     }

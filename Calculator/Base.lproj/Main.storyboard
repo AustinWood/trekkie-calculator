@@ -852,7 +852,9 @@
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
+                        <outlet property="bottomBar" destination="REk-HF-Ne9" id="GZg-W0-4fh"/>
                         <outlet property="clearLabel" destination="FBg-St-OgH" id="QpX-LN-Gbj"/>
+                        <outlet property="leftBar" destination="BfP-wN-A03" id="gYO-yM-sHi"/>
                         <outlet property="megaView" destination="xLB-Uj-v4z" id="CBw-PJ-4X4"/>
                         <outlet property="outputLabel" destination="1ID-Ss-rRh" id="Yha-Ro-oEn"/>
                         <outlet property="outputView" destination="lGg-pz-aQW" id="9an-Mr-77D"/>
