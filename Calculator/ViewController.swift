@@ -441,9 +441,11 @@ class ViewController: UIViewController {
             print("\(leftNumber) / \(rightNumber) = \(calculation)")
         }
         leftNumber = calculation
-        updateOutputLabel(leftNumber)
         resetOutput = true
         decimalPressed = false
+        if currentOperation != .none {
+            updateOutputLabel(leftNumber)
+        }
     }
     
     //////////////////
@@ -451,8 +453,6 @@ class ViewController: UIViewController {
     //////////////////
     
     @IBAction func memoryPressed(_ sender: AnyObject) {
-        resetOutput = true
-        currentOperation = .none
         let defaults = UserDefaults.standard
         if sender.tag == 40 {
             print("func memoryPressed(MC)")
@@ -461,6 +461,8 @@ class ViewController: UIViewController {
             var savedDouble = defaults.double(forKey: "memoryDouble")
             if sender.tag == 43 {
                 print("func memoryPressed(MR)")
+                resetOutput = true
+                currentOperation = .none
                 leftNumber = savedDouble
                 updateOutputLabel(leftNumber)
             } else {
@@ -485,7 +487,6 @@ class ViewController: UIViewController {
     /////////////////////////////
     
     func doubleToString(_ inputDouble: Double) -> String {
-        print("func doubleToString")
         let val = inputDouble as NSNumber
         let numberFormatter = NumberFormatter()
         numberFormatter.minimumIntegerDigits = 1
@@ -493,7 +494,7 @@ class ViewController: UIViewController {
         
         // SCIENTIFIC NOTATION for really big/small numbers
         if abs(inputDouble) >= 1000000000 || (abs(inputDouble) <= 0.0000001 && inputDouble != 0.0) {
-            print("SCIENTIFIC NOTATION")
+            print("func doubleToString(scientificNotation)")
             numberFormatter.numberStyle = NumberFormatter.Style.scientific
             numberFormatter.positiveFormat = "0.###E+0"
             numberFormatter.negativeFormat = "0.###E-0"
@@ -507,7 +508,7 @@ class ViewController: UIViewController {
         
         // STANDARD NOTATION for all other numbers
         else {
-            print("STANDARD NOTATION")
+            print("func doubleToString(standardNotation)")
             if decimalPressed {
                 numberFormatter.alwaysShowsDecimalSeparator = true
             }
