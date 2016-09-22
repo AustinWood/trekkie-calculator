@@ -535,7 +535,11 @@ class ViewController: UIViewController {
             outputTextIsRightNum = false
         }
         if abs(inputDouble) >= 1000000000 || (abs(inputDouble) <= 0.00000000001 && inputDouble != 0.0) {
-            outputLabel.text = scientificNotationString(inputDouble)
+            let outputText = scientificNotationString(inputDouble)
+            outputLabel.text = outputText
+            if outputText.contains("∞") {
+                animateOutputLabel()
+            }
         } else {
             outputLabel.text = standardNotationString(inputDouble)
         }
