@@ -20,6 +20,14 @@
 // Add animation to outputLabel when numberPressed() and String is too long
 // Verify layout on all device sizes
 
+///////////////////////////
+///// NOTES FOR DAVID /////
+///////////////////////////
+
+// KNOWN LIMITATIONS AND BUGS:
+
+// You can only inut a number up to 1e+10 (90% of Int.max), since the func numberPressed() works on a sequence of casting Int to String to Double. In a future version, I'd like to remove this limitation. The calculations, however, can go up to 1e+308 before displaying +∞.
+
 /////////////////////////
 ///// BEFORE LAUNCH /////
 /////////////////////////
@@ -34,7 +42,6 @@
 ///// v2 /////
 //////////////
 
-// Make isTooBig() dependent on Bool.max, not Int.max
 // Register hardware keyboard presses
 // Add second label that shows previous operations
 // Add slide in animation to outputLabel: http://www.andrewcbancroft.com/2014/09/24/slide-in-animation-in-swift/
@@ -204,32 +211,51 @@ class ViewController: UIViewController {
     @IBAction func buttonTouchDown(_ sender: AnyObject) {
         print("----------")
         touchDownArray.append(sender.tag)
-        animateLabel(senderTag: sender.tag, duration: 0.25, textColor: UIColor.white, backgroundFinal: false)
+        let label = getLabel(senderTag: sender.tag)
+        let labelColor = getLabelBackgroundColor(labelTag: sender.tag)
+        label.animate(duration: 0.25, textColor: UIColor.white, backgroundColor: UIColor.black, labelColor: labelColor)
     }
     
     @IBAction func buttonTouchDragOutside(_ sender: AnyObject) {
         if touchDownArray.contains(sender.tag) {
             touchDownArray = touchDownArray.filter { $0 != sender.tag }
-            animateLabel(senderTag: sender.tag, duration: 0.25, textColor: UIColor.black, backgroundFinal: false)
+            let label = getLabel(senderTag: sender.tag)
+            let labelColor = getLabelBackgroundColor(labelTag: sender.tag)
+            label.animate(duration: 0.25, textColor: UIColor.black, backgroundColor: UIColor.black, labelColor: labelColor)
         }
     }
     
     @IBAction func buttonTouchUp(_ sender: AnyObject) {
         touchDownArray = touchDownArray.filter { $0 != sender.tag }
-        animateLabel(senderTag: sender.tag, duration: 0.4, textColor: UIColor.black, backgroundFinal: true)
+        let label = getLabel(senderTag: sender.tag)
+        let labelColor = getLabelBackgroundColor(labelTag: sender.tag)
+        if sender.tag == 20 || (sender.tag == 30 && getLabel(senderTag: 30).text == "AC") {
+            resetOperationColors()
+        }
+        if sender.tag >= 21 && sender.tag <= 24 {
+            resetOperationColors()
+            label.animate(duration: 0.4, textColor: UIColor.black, backgroundColor: UIColor.white, labelColor: labelColor)
+        } else {
+            label.animate(duration: 0.4, textColor: UIColor.black, backgroundColor: labelColor, labelColor: labelColor)
+        }
     }
     
-    func animateLabel(senderTag: Int, duration: TimeInterval, textColor: UIColor, backgroundFinal: Bool) {
+    func resetOperationColors() {
+        for operationLabel in 21...24 {
+            let label = getLabel(senderTag: operationLabel)
+            let labelColor = getLabelBackgroundColor(labelTag: operationLabel)
+            label.animate(duration: 0.4, textColor: UIColor.black, backgroundColor: labelColor, labelColor: labelColor)
+        }
+    }
+    
+    func getLabel(senderTag: Int) -> UILabel {
+        var theLabel = UILabel()
         for label in labelArray {
             if label.tag == senderTag {
-                let labelColor = getLabelBackgroundColor(labelTag: senderTag)
-                var backgroundColor = UIColor.black
-                if backgroundFinal {
-                    backgroundColor = labelColor
-                }
-                label.animate(duration: duration, textColor: textColor, backgroundColor: backgroundColor, labelColor: labelColor)
+                theLabel = label
             }
         }
+        return theLabel
     }
     
     ////////////////////////////
@@ -285,25 +311,32 @@ class ViewController: UIViewController {
             currentOperation = .none
         }
         clearLabel.text = "C"
-        let number = sender.tag
-        if !decimalPressed {
-            rightNumber = Double(String(Int(rightNumber)) + String(number))!
+        if rightNumber < Double(Int.max) * 0.9 {
+            let number = sender.tag
+            if !decimalPressed {
+                rightNumber = Double(String(Int(rightNumber)) + String(number))!
+            } else {
+                if isInt(rightNumber) && trailingZeros == 0 {
+                    rightNumber = Double(String(Int(rightNumber)) + "." + String(number))!
+                } else {
+                    if sender.tag != 0 && isInt(rightNumber) {
+                        trailingZeros -= 1
+                    }
+                    var rightString = String(rightNumber)
+                    print(rightString)
+                    rightString = addTrailingZeros(inputString: rightString)
+                    print(rightString)
+                    rightString = rightString + String(number)
+                    rightNumber = Double(rightString)!
+                }
+                if sender.tag == 0 {
+                    trailingZeros += 1
+                } else {
+                    trailingZeros = 0
+                }
+            }
         } else {
-            if isInt(rightNumber) && trailingZeros == 0 {
-                rightNumber = Double(String(Int(rightNumber)) + "." + String(number))!
-            } else {
-                var rightString = String(rightNumber)
-                print(rightString)
-                rightString = addTrailingZeros(inputString: rightString)
-                print(rightString)
-                rightString = rightString + String(number)
-                rightNumber = Double(rightString)!
-            }
-            if sender.tag == 0 {
-                trailingZeros += 1
-            } else {
-                trailingZeros = 0
-            }
+            // Animate outputLabel
         }
         updateOutputLabel(rightNumber)
     }
@@ -444,13 +477,7 @@ class ViewController: UIViewController {
                     print("func memoryPressed(M-)")
                     savedDouble -= displayedNumber
                 }
-                if isTooBig(savedDouble) {
-                    resetCalc()
-                    defaults.set(0.0, forKey: "memoryDouble")
-                    outputLabel.text = "That's big!"
-                } else {
-                    defaults.set(savedDouble, forKey: "memoryDouble")
-                }
+                defaults.set(savedDouble, forKey: "memoryDouble")
             }
         }
     }
@@ -460,13 +487,12 @@ class ViewController: UIViewController {
     ///////////////////////////////////
     
     func doubleToString(_ inputDouble: Double) -> String {
-        if isTooBig(inputDouble) {
-            return "That's big!"
-        } else if abs(inputDouble) >= 1000000000 {
+        if abs(inputDouble) >= 1000000000 {
             let val = inputDouble as NSNumber
             let numberFormatter = NumberFormatter()
             numberFormatter.numberStyle = NumberFormatter.Style.scientific
             numberFormatter.positiveFormat = "0.###E+0"
+            numberFormatter.negativeFormat = "0.###E-0"
             numberFormatter.exponentSymbol = "e"
             if let stringFromNumber = numberFormatter.string(from: val) {
                 return(stringFromNumber)
@@ -510,14 +536,6 @@ class ViewController: UIViewController {
     func isInt(_ double: Double) -> Bool {
         let isInteger = double.truncatingRemainder(dividingBy: 1) == 0
         return isInteger
-    }
-    
-    func isTooBig(_ inputDouble: Double) -> Bool {
-        if abs(inputDouble) > Double(Int.max) {
-            return true
-        } else {
-            return false
-        }
     }
 }
 
