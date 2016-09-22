@@ -16,7 +16,7 @@
 ///// NOTES FOR DAVID /////
 ///////////////////////////
 
-// You can only inut a number up to 1e+10 (90% of Int.max), since the func numberPressed() works on a sequence of casting Int to String to Double. In a future version, I'd like to remove this limitation. The calculations, however, can go up to 1e+308 before displaying Infinity.
+// You can only inut a number up to roughly 7.8e+19 (90% of Int.max), since the func numberPressed() works on a sequence of casting Int to String to Double. In a future version, I'd like to remove this limitation. The calculations, however, can go up to 1e+308 before displaying Infinity.
 // I know there are lots of DRY violations with the animations. If you have any insight on how to write the animation code more efficiently that would be awesome. Trying to make the animation code more efficient is probably the thing that I've spent the most time on that doesn't actually make any difference to the end-user experience.
 
 /////////////////////////
@@ -242,6 +242,13 @@ class ViewController: UIViewController {
         }
     }
     
+    func animateOutputLabel() {
+        if !isAnimatingOutputLabel {
+            outputLabel.animateOutputLabel(duration: 0.4, textColor: UIColor.white)
+            getLabel(senderTag: 51).animateOutputBackground(duration: 0.4, backgroundColor: UIColor.black)
+        }
+    }
+    
     func resetOperationColors() {
         for operationLabel in 21...24 {
             let label = getLabel(senderTag: operationLabel)
@@ -305,15 +312,20 @@ class ViewController: UIViewController {
     
     @IBAction func numberPressed(_ sender: UIButton) {
         print("func numberPressed(\(sender.tag))")
+        var proceedWithInput = true
         if resetOutput {
             rightNumber = 0.0
             resetOutput = false
+        } else {
+            if rightNumber >= Double(Int.max) * 0.9 || (outputLabel.text?.characters.count)! >= 13 {
+                proceedWithInput = false
+            }
         }
         if resetOperation {
             currentOperation = .none
         }
         clearLabel.text = "C"
-        if rightNumber < Double(Int.max) * 0.9 {
+        if proceedWithInput {
             let number = sender.tag
             if !decimalPressed {
                 rightNumber = Double(String(Int(rightNumber)) + String(number))!
@@ -336,10 +348,7 @@ class ViewController: UIViewController {
                 }
             }
         } else {
-            if !isAnimatingOutputLabel {
-                outputLabel.animateOutputLabel(duration: 0.4, textColor: UIColor.white)
-                getLabel(senderTag: 51).animateOutputBackground(duration: 0.4, backgroundColor: UIColor.black)
-            }
+            animateOutputLabel()
         }
         updateOutputLabel(rightNumber)
     }
