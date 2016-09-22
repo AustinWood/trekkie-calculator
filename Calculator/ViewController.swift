@@ -329,26 +329,28 @@ class ViewController: UIViewController {
         clearLabel.text = "C"
         if proceedWithInput {
             let number = sender.tag
-            if !decimalPressed {
-                rightNumber = Double(String(Int(rightNumber)) + String(number))!
-            } else {
-                if isInt(rightNumber) && trailingZeros == 0 {
-                    rightNumber = Double(String(Int(rightNumber)) + "." + String(number))!
-                } else {
-                    if sender.tag != 0 && isInt(rightNumber) {
-                        trailingZeros -= 1
-                    }
-                    var rightString = String(rightNumber)
-                    rightString = addTrailingZeros(inputString: rightString)
-                    rightString = rightString + String(number)
-                    rightNumber = Double(rightString)!
-                }
+            var rightString = standardNotationString(rightNumber)
+            rightString += String(number)
+            rightNumber = Double(rightString)!
+            if decimalPressed {
                 if sender.tag == 0 {
                     trailingZeros += 1
                 } else {
                     trailingZeros = 0
                 }
             }
+//            if !decimalPressed {
+//                rightNumber = Double(String(Int(rightNumber)) + String(number))!
+//            } else {
+//                var rightString = standardNotationString(rightNumber)
+//                rightString += String(number)
+//                rightNumber = Double(rightString)!
+//                if sender.tag == 0 {
+//                    trailingZeros += 1
+//                } else {
+//                    trailingZeros = 0
+//                }
+//            }
         } else {
             animateOutputLabel()
         }
@@ -502,56 +504,64 @@ class ViewController: UIViewController {
     ///// NUMBER FORMATTING /////
     /////////////////////////////
     
-    func doubleToString(_ inputDouble: Double) -> String {
+    func scientificNotationString(_ inputDouble: Double) -> String {
+        print("func scientificNotationString()")
         let val = inputDouble as NSNumber
         let numberFormatter = NumberFormatter()
         numberFormatter.minimumIntegerDigits = 1
         numberFormatter.decimalSeparator = "."
-        
-        // SCIENTIFIC NOTATION for really big/small numbers
-        if abs(inputDouble) >= 1000000000 || (abs(inputDouble) <= 0.0000001 && inputDouble != 0.0) {
-            print("func doubleToString(scientificNotation)")
-            numberFormatter.numberStyle = NumberFormatter.Style.scientific
-            numberFormatter.positiveFormat = "0.###E+0"
-            numberFormatter.negativeFormat = "0.###E-0"
-            numberFormatter.exponentSymbol = "e"
-            if let stringFromNumber = numberFormatter.string(from: val) {
-                return(stringFromNumber)
-            } else {
-                return "Error"
-            }
+        numberFormatter.numberStyle = NumberFormatter.Style.scientific
+        numberFormatter.positiveFormat = "0.###E+0"
+        numberFormatter.negativeFormat = "0.###E-0"
+        numberFormatter.exponentSymbol = "e"
+        if let stringFromNumber = numberFormatter.string(from: val) {
+            return(stringFromNumber)
+        } else {
+            return "Error"
         }
-        
-        // STANDARD NOTATION for all other numbers
-        else {
-            print("func doubleToString(standardNotation)")
-            if decimalPressed {
-                numberFormatter.alwaysShowsDecimalSeparator = true
-            }
-            var integerDigits = 1
-            if abs(inputDouble) >= 1 {
-                integerDigits = Int(log10(abs(inputDouble))) + 1
-            }
-            numberFormatter.maximumFractionDigits = 12 - integerDigits
-            if let stringFromNumber = numberFormatter.string(from: val) {
-                let outputString = addTrailingZeros(inputString: stringFromNumber)
-                return outputString
-            } else {
-                return "Error"
-            }
+    }
+    
+    func standardNotationString(_ inputDouble: Double) -> String {
+        print("func standardNotationString()")
+        let val = inputDouble as NSNumber
+        let numberFormatter = NumberFormatter()
+        numberFormatter.minimumIntegerDigits = 1
+        numberFormatter.decimalSeparator = "."
+        if decimalPressed {
+            numberFormatter.alwaysShowsDecimalSeparator = true
+        }
+        var integerDigits = 1
+        if abs(inputDouble) >= 1 {
+            integerDigits = Int(log10(abs(inputDouble))) + 1
+        }
+        if inputDouble < 0 {
+            integerDigits += 1
+        }
+        numberFormatter.maximumFractionDigits = 12 - integerDigits
+        if let stringFromNumber = numberFormatter.string(from: val) {
+            let outputString = addTrailingZeros(inputString: stringFromNumber)
+            return outputString
+        } else {
+            return "Error"
         }
     }
     
     func updateOutputLabel(_ inputDouble: Double) {
+        print("func updateOutputLabel()")
         if inputDouble == rightNumber {
             outputTextIsRightNum = true
         } else {
             outputTextIsRightNum = false
         }
-        outputLabel.text = doubleToString(inputDouble)
+        if abs(inputDouble) >= 1000000000 || (abs(inputDouble) <= 0.00000000001 && inputDouble != 0.0) {
+            outputLabel.text = scientificNotationString(inputDouble)
+        } else {
+            outputLabel.text = standardNotationString(inputDouble)
+        }
     }
     
     func addTrailingZeros(inputString: String) -> String {
+        print("func addTrailingZeros()")
         var mutableString = inputString
         if trailingZeros > 0 {
             for _ in 1...trailingZeros {
@@ -565,11 +575,6 @@ class ViewController: UIViewController {
         let isInteger = double.truncatingRemainder(dividingBy: 1) == 0
         return isInteger
     }
-    
-    func replaceCommaWithPeriod(inputString: String) -> String {
-        let outputString = inputString.replacingOccurrences(of: ",", with: ".")
-        return outputString
-    }
 }
 
 ///////////////////////////////////////////////////////
@@ -579,7 +584,6 @@ class ViewController: UIViewController {
 extension UILabel {
     
     func animateOutputLabel(duration: TimeInterval, textColor: UIColor) {
-        print("IS ANIMATING OUTPUT LABEL")
         isAnimatingOutputLabel = true
         UILabel.transition(with: self, duration: duration, options: .transitionCrossDissolve, animations: {() -> Void in
             self.textColor = textColor
@@ -593,7 +597,6 @@ extension UILabel {
     }
     
     func animateOutputBackground(duration: TimeInterval, backgroundColor: UIColor) {
-        print("IS ANIMATING OUTPUT BACKGROUND")
         UILabel.transition(with: self, duration: duration, options: .transitionCrossDissolve, animations: {() -> Void in
             self.backgroundColor = backgroundColor
             }, completion: {(finished: Bool) -> Void in

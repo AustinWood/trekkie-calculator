@@ -57,7 +57,7 @@
                                 <frame key="frameInset" minX="4" minY="128" width="410" height="603"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gis-gy-n90" userLabel="megaStackView">
-                                        <frame key="frameInset" minY="1" width="406" height="602"/>
+                                        <frame key="frameInset" minY="1" width="406" height="596"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xzt-G3-fb0" userLabel="barAndButtons">
                                                 <subviews>
@@ -549,7 +549,7 @@
                                                                                                 </subviews>
                                                                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                 <constraints>
-                                                                                                    <constraint firstAttribute="width" secondItem="f0b-IS-I9A" secondAttribute="height" multiplier="1:1" id="DVi-0n-ZIH"/>
+                                                                                                    <constraint firstAttribute="width" secondItem="f0b-IS-I9A" secondAttribute="height" multiplier="1:1" constant="1" id="DVi-0n-ZIH"/>
                                                                                                     <constraint firstItem="mwg-rl-dJY" firstAttribute="leading" secondItem="f0b-IS-I9A" secondAttribute="leading" id="Dqn-tZ-wei"/>
                                                                                                     <constraint firstItem="HCN-pS-ggS" firstAttribute="top" secondItem="f0b-IS-I9A" secondAttribute="top" id="MhS-hc-n0X"/>
                                                                                                     <constraint firstItem="mwg-rl-dJY" firstAttribute="top" secondItem="f0b-IS-I9A" secondAttribute="top" id="Mi1-0B-dHb"/>
@@ -705,7 +705,8 @@
                                                                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                 <nil key="highlightedColor"/>
                                                                                             </label>
-                                                                                            <button opaque="NO" tag="22" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2pj-xd-iJX" userLabel="Subtraction Button">
+                                                                                            <button opaque="NO" tag="22" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2pj-xd-iJX" userLabel="Subtraction Button">
+                                                                                                <frame key="frameInset" width="94" height="90"/>
                                                                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                 <connections>
                                                                                                     <action selector="buttonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="4cP-iO-mWk"/>
@@ -718,7 +719,6 @@
                                                                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                         <constraints>
                                                                                             <constraint firstAttribute="trailing" secondItem="2pj-xd-iJX" secondAttribute="trailing" id="7Az-mx-9eZ"/>
-                                                                                            <constraint firstAttribute="width" secondItem="Yvo-Kk-sTh" secondAttribute="height" multiplier="1:1" id="7Cx-xR-1G4"/>
                                                                                             <constraint firstAttribute="bottom" secondItem="2pj-xd-iJX" secondAttribute="bottom" id="HFL-Wd-hDM"/>
                                                                                             <constraint firstItem="2pj-xd-iJX" firstAttribute="top" secondItem="Yvo-Kk-sTh" secondAttribute="top" id="LxD-8C-T8x"/>
                                                                                             <constraint firstAttribute="trailing" secondItem="88c-53-uZ1" secondAttribute="trailing" id="U6C-4J-kO3"/>
@@ -736,7 +736,8 @@
                                                                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                 <nil key="highlightedColor"/>
                                                                                             </label>
-                                                                                            <button opaque="NO" tag="21" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MxF-60-htC" userLabel="Addition Button">
+                                                                                            <button opaque="NO" tag="21" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MxF-60-htC" userLabel="Addition Button">
+                                                                                                <frame key="frameInset" width="94" height="91"/>
                                                                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                 <connections>
                                                                                                     <action selector="addPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SDj-77-nEy"/>
@@ -753,7 +754,6 @@
                                                                                             <constraint firstAttribute="bottom" secondItem="MxF-60-htC" secondAttribute="bottom" id="Ph3-eK-fgV"/>
                                                                                             <constraint firstItem="Ggj-wV-ql2" firstAttribute="leading" secondItem="l8G-i3-RY2" secondAttribute="leading" id="Pu1-Mu-V8a"/>
                                                                                             <constraint firstAttribute="trailing" secondItem="MxF-60-htC" secondAttribute="trailing" id="W8d-QU-Nxk"/>
-                                                                                            <constraint firstAttribute="width" secondItem="l8G-i3-RY2" secondAttribute="height" multiplier="1:1" id="gmm-OL-Oo3"/>
                                                                                             <constraint firstAttribute="bottom" secondItem="Ggj-wV-ql2" secondAttribute="bottom" id="hzP-9x-KfT"/>
                                                                                             <constraint firstItem="Ggj-wV-ql2" firstAttribute="top" secondItem="l8G-i3-RY2" secondAttribute="top" id="m6x-y1-DqP"/>
                                                                                             <constraint firstAttribute="trailing" secondItem="Ggj-wV-ql2" secondAttribute="trailing" id="nwA-QV-Omj"/>
@@ -761,13 +761,15 @@
                                                                                     </view>
                                                                                     <view tag="20" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aa6-HZ-pE3" userLabel="Equals View">
                                                                                         <subviews>
-                                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="20" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="=" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QOn-EM-fqe" userLabel="Equals Label">
+                                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="20" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="=" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QOn-EM-fqe" userLabel="Equals Label">
+                                                                                                <frame key="frameInset" width="94" height="184"/>
                                                                                                 <color key="backgroundColor" red="0.99215686270000003" green="0.52549019610000003" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                 <nil key="highlightedColor"/>
                                                                                             </label>
-                                                                                            <button opaque="NO" tag="20" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JdH-IL-cn5" userLabel="Equals Button">
+                                                                                            <button opaque="NO" tag="20" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JdH-IL-cn5" userLabel="Equals Button">
+                                                                                                <frame key="frameInset" width="86" height="184"/>
                                                                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                 <connections>
                                                                                                     <action selector="buttonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="oDB-JU-eq9"/>
@@ -794,8 +796,10 @@
                                                                         </subviews>
                                                                         <constraints>
                                                                             <constraint firstItem="dxv-oH-SgK" firstAttribute="width" secondItem="Ync-3Y-jHu" secondAttribute="width" id="3zo-gL-X5E"/>
+                                                                            <constraint firstItem="l8G-i3-RY2" firstAttribute="height" secondItem="f0b-IS-I9A" secondAttribute="height" id="KT5-mW-OAS"/>
                                                                             <constraint firstItem="bTR-QR-xFQ" firstAttribute="top" secondItem="3EP-BW-6Hy" secondAttribute="top" id="LW7-s1-uCI"/>
                                                                             <constraint firstItem="dxv-oH-SgK" firstAttribute="top" secondItem="3EP-BW-6Hy" secondAttribute="top" id="WzN-hr-y8j"/>
+                                                                            <constraint firstItem="Yvo-Kk-sTh" firstAttribute="height" secondItem="f0b-IS-I9A" secondAttribute="height" id="Zyd-it-Kyv"/>
                                                                             <constraint firstAttribute="bottom" secondItem="bTR-QR-xFQ" secondAttribute="bottom" id="cAM-Z4-jhK"/>
                                                                             <constraint firstAttribute="bottom" secondItem="dxv-oH-SgK" secondAttribute="bottom" id="vb1-C3-hmo"/>
                                                                         </constraints>
