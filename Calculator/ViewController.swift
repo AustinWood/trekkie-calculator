@@ -6,39 +6,34 @@
 //  Copyright © 2016 Austin Wood. All rights reserved.
 //
 
-/////////////////////////////////////
-/////////////// TO DO ///////////////
-/////////////////////////////////////    Before submission to David for code review:
-
-// Verify layout on all device sizes
-
 ///////////////////////////
 ///// NOTES FOR DAVID /////
 ///////////////////////////
 
-// You can only inut a number up to roughly 7.8e+19 (90% of Int.max), since the func numberPressed() works on a sequence of casting Int to String to Double. In a future version, I'd like to remove this limitation. The calculations, however, can go up to 1e+308 before displaying Infinity.
+// You can only input a number up to roughly 7.8e+19 (90% of Int.max), since the func numberPressed() works on a sequence of casting Int to String to Double. In a future version, I'd like to remove this limitation. The calculations, however, can go up to 1e+308 before displaying Infinity.
 // I know there are lots of DRY violations with the animations. If you have any insight on how to write the animation code more efficiently that would be awesome. Trying to make the animation code more efficient is probably the thing that I've spent the most time on that doesn't actually make any difference to the end-user experience.
 
-/////////////////////////
-///// BEFORE LAUNCH /////
-/////////////////////////
+//////////////////////////////////
+///// TO DO before v1 launch /////
+//////////////////////////////////
 
+// Can I make addTrailingZeros() more efficient by using NumberFormatter?
+// Adjust layout for iPad: Change ratio of "1 View" from 1:1 to 4:3 and everything magically works, learn about Xcode 8 adaptive layouts
 // Set . vs , for decimal based on phone settings (most countries, other than US and UK, use comma for decimal and period for thousands separater)
-// Thousands separaters
-// Press and hold on outputLabel copies output to clipboard
+// Thousands separater?
+// Press and hold on outputLabel copies to clipboard
 // Adjust layout if enlarged status bar due to Personal Hotspot, GPS, Phone, etc
 // Add sound effects?
 // Create app icon
 // Create launch screen
 
-//////////////
-///// v2 /////
-//////////////
+////////////////////////
+///// TO DO for v2 /////
+////////////////////////
 
 // Register hardware keyboard presses
-// Add second label that shows previous operations
+// Add second label that shows previous operations?
 // Add slide in animation to outputLabel: http://www.andrewcbancroft.com/2014/09/24/slide-in-animation-in-swift/
-// Adjust layout if Personal Hotspot, etc is turned on
 
 /////////////////////////////////////////////////
 ///// TAG REFERENCES for BUTTONS and LABELS /////
@@ -80,7 +75,7 @@ let COLOR_ORANGE = UIColor(red:0.992, green:0.596, blue:0.153, alpha:1.00)
 ///// TEXT /////
 ////////////////
 
-let TEXT_FONT = "FinalFrontierOldStyle" // or "Helvetica-Bold" ?
+let TEXT_FONT = "FinalFrontierOldStyle"
 let TEXT_SIZE = 28 as CGFloat
 let TEXT_COLOR = UIColor.black
 
