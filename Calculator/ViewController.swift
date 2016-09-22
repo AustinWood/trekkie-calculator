@@ -10,15 +10,14 @@
 /////////////// TO DO ///////////////
 /////////////////////////////////////    Before submission to David for code review:
 
-// Center outputLabel vertically in outputView
 // Verify layout on all device sizes
 
 ///////////////////////////
 ///// NOTES FOR DAVID /////
 ///////////////////////////
 
-// You can only inut a number up to 1e+10 (90% of Int.max), since the func numberPressed() works on a sequence of casting Int to String to Double. In a future version, I'd like to remove this limitation. The calculations, however, can go up to 1e+308 before displaying +∞.
-// I know there are lots of DRY violations with the animations. If you have any insight on how to write the animation code more efficiently that would be awesome. Trying to make the animation code more efficient is probably the thing that I've spent the most time on that doesn't actually make any difference to the end-user experience, haha.
+// You can only inut a number up to 1e+10 (90% of Int.max), since the func numberPressed() works on a sequence of casting Int to String to Double. In a future version, I'd like to remove this limitation. The calculations, however, can go up to 1e+308 before displaying Infinity.
+// I know there are lots of DRY violations with the animations. If you have any insight on how to write the animation code more efficiently that would be awesome. Trying to make the animation code more efficient is probably the thing that I've spent the most time on that doesn't actually make any difference to the end-user experience.
 
 /////////////////////////
 ///// BEFORE LAUNCH /////
