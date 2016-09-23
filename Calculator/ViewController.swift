@@ -40,6 +40,8 @@
 ///// TAG REFERENCES for BUTTONS and LABELS /////
 /////////////////////////////////////////////////
 
+// See my comments in `Button.swift`
+
 // 0-9: Numbers
 // 10: Decimal
 //
@@ -214,6 +216,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func buttonTouchDragOutside(_ sender: AnyObject) {
+        // This doesn't seem to be working for me? (I'm using the simulator rather than a real iPhone)
         if touchDownArray.contains(sender.tag) {
             touchDownArray = touchDownArray.filter { $0 != sender.tag }
             let label = getLabel(senderTag: sender.tag)
@@ -226,6 +229,7 @@ class ViewController: UIViewController {
         touchDownArray = touchDownArray.filter { $0 != sender.tag }
         let label = getLabel(senderTag: sender.tag)
         let labelColor = getLabelBackgroundColor(labelTag: sender.tag)
+        // See my comment in `Button.swift` -- I kept getting confused "Wait, what's special about 20, and which one was 30 again?"
         if sender.tag == 20 || (sender.tag == 30 && getLabel(senderTag: 30).text == "AC") {
             resetOperationColors()
         }

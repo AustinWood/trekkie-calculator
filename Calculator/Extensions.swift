@@ -10,9 +10,6 @@ import Foundation
 import UIKit
 
 
-
-
-
 //let COLOR_SALMON = UIColor(red:0.992, green:0.600, blue:0.420, alpha:1.00)
 //UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
 //    

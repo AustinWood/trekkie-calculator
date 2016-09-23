@@ -1,0 +1,36 @@
+
+Hey Austin,
+
+I have to laugh at the paradox of who you are as a coder -- being so interested in the end user with amazing animations, but also being so upset that you can only get up to 90% of Int.max (sorry, just funny to me!).
+
+Overall I'm quite impressed with this.  You've got a lot of complex stuff going on and it doesn't feel "hacky".  The majority of what I have to say should be taken with a grain of salt.  In addition to the considerations below, you'll can see comments/example code sprinkled throughout the project files.
+
+
+ - Check Out The MVC (Model View Controller) Design Pattern, and See How It Could Shape Your Code Design
+
+TLDR:  More files, more classes, smaller roles for each.
+
+Xcode sort of forces you to divide the View (Storyboard) and Controller (UIViewController).  The Model is the logic, the brains.  And it's nice to separate the logic from the view with the controller, rather than having the logic sprinkled in throughout the controller.  What this would look like for your project, move the logic into another class called `Calculator`, and then perhaps even making smaller classes like `SciNum` that would handle smaller and smaller roles.
+
+To see what apple says about MVC:  https://developer.apple.com/library/content/documentation/General/Conceptual/DevPedia-CocoaCore/MVC.html
+
+
+ - Enums / Static Structs Make Commented References and STANDALONE_CONSTANTS Obsolete
+
+Instead of having a list of what all the button tags refer to, make an enum of them all.  No more questions when you come back a week later, no more checking back because you've forgotten if it was 23 or 24.  I saw you used an enum for operations, but perhaps didn't know that you could use them with raw Int and String values.
+
+This next point is more debatable (but I'm a huge advocate).  Using structs with static variables rather than a list of CAPITALIZED_CONSTANTS.  I showed what it might look like in `CalcColors`.  This is really an opinion, but lists of capitalized constants just seem outdated, for lame languages that don't have this feature. (Also, it makes autocomplete more helpful)
+
+
+ - Extending Classes is Okay For Small Projects, But Making Your Own Keeps You From Wierd Bugs
+
+I noticed that you're extending UIView and UILabel, two of the most foundational UI components.  Anything that is based on these now has these extensions.  Probably not a huge deal, but you could make it more explicit by creating a new class that inherits from those other classes.  `class RoundedClickableLabel: UILabel {}`
+
+Then you can keep track of things within the label (such as default color, animation sequences, size/shape)
+
+ALSO you could add gesture handlers DIRECTLY ON THE LABEL (rather than having both a button and a label)
+http://stackoverflow.com/questions/4743457/how-to-customize-uilabel-clickable
+Having an invisible button over your labels seems a little hacky.
+
+
+ALSO WHERE THE HELL IS YOUR GITIGNORE FILE ??? haha.  This is very necessary for working with other users on git.  I added the standard swift gitignore for you, but some of it might be too late now
