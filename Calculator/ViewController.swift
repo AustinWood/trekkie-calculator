@@ -10,7 +10,6 @@
 ///// NOTES FOR DAVID /////
 ///////////////////////////
 
-// You can only input a number up to roughly 7.8e+19 (90% of Int.max), since the func numberPressed() works on a sequence of casting Int to String to Double. In a future version, I'd like to remove this limitation. The calculations, however, can go up to 1e+308 before displaying Infinity.
 // I know there are lots of DRY violations with the animations. If you have any insight on how to write the animation code more efficiently that would be awesome. Trying to make the animation code more efficient is probably the thing that I've spent the most time on that doesn't actually make any difference to the end-user experience.
 
 //////////////////////////////////
@@ -32,7 +31,6 @@
 ////////////////////////
 
 // Register hardware keyboard presses
-// Remove Int.max limit on input numbers
 // Add second label that shows previous operations?
 // Add slide in animation to outputLabel: http://www.andrewcbancroft.com/2014/09/24/slide-in-animation-in-swift/
 
@@ -312,7 +310,7 @@ class ViewController: UIViewController {
             rightNumber = 0.0
             resetOutput = false
         } else {
-            if rightNumber >= Double(Int.max) * 0.9 || (outputLabel.text?.characters.count)! >= 13 {
+            if (outputLabel.text?.characters.count)! >= 13 {
                 proceedWithInput = false
             }
         }
