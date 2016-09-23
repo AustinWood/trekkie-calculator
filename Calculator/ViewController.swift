@@ -309,10 +309,8 @@ class ViewController: UIViewController {
         if resetOutput {
             rightNumber = 0.0
             resetOutput = false
-        } else {
-            if (outputLabel.text?.characters.count)! >= 13 {
-                proceedWithInput = false
-            }
+        } else if abs(rightNumber) > pow(10, 40) || (outputLabel.text?.characters.count)! >= 13 {
+            proceedWithInput = false
         }
         if resetOperation {
             currentOperation = .none
@@ -321,8 +319,12 @@ class ViewController: UIViewController {
         if proceedWithInput {
             let number = sender.tag
             var rightString = standardNotationString(rightNumber)
+            print("old rightDouble: \(rightNumber)")
+            print("old rightString: \(rightString)")
             rightString += String(number)
+            print("new rightString: \(rightString)")
             rightNumber = Double(rightString)!
+            print("new rightDouble: \(rightNumber)")
             if decimalPressed {
                 if sender.tag == 0 {
                     trailingZeros += 1
@@ -330,10 +332,10 @@ class ViewController: UIViewController {
                     trailingZeros = 0
                 }
             }
+            updateOutputLabel(rightNumber)
         } else {
             animateOutputLabel()
         }
-        updateOutputLabel(rightNumber)
     }
     
     var trailingZeros = 0
@@ -513,7 +515,7 @@ class ViewController: UIViewController {
         if abs(inputDouble) >= 1 {
             integerDigits = Int(log10(abs(inputDouble))) + 1
         }
-        if inputDouble < 0 {
+        if inputDouble < 0 { // Account for the negative sign
             integerDigits += 1
         }
         numberFormatter.maximumFractionDigits = 12 - integerDigits
