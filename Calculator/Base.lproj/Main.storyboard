@@ -21,7 +21,7 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lGg-pz-aQW" userLabel="outputView">
@@ -45,6 +45,7 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="1ID-Ss-rRh" secondAttribute="trailing" constant="16" id="2pe-CY-3yt"/>
                                     <constraint firstAttribute="trailing" secondItem="8AO-EJ-b4N" secondAttribute="trailing" id="GqL-iE-5Zt"/>
+                                    <constraint firstAttribute="height" constant="99" id="N80-f4-ydN"/>
                                     <constraint firstAttribute="bottom" secondItem="1ID-Ss-rRh" secondAttribute="bottom" id="P9A-xA-J0K"/>
                                     <constraint firstItem="8AO-EJ-b4N" firstAttribute="top" secondItem="lGg-pz-aQW" secondAttribute="top" id="TWp-2d-Byn"/>
                                     <constraint firstAttribute="bottom" secondItem="8AO-EJ-b4N" secondAttribute="bottom" id="ZbH-oW-Pb2"/>
@@ -57,7 +58,7 @@
                                 <frame key="frameInset" minX="4" minY="128" width="410" height="603"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gis-gy-n90" userLabel="megaStackView">
-                                        <frame key="frameInset" minY="1" width="406" height="596"/>
+                                        <frame key="frameInset" minY="1" width="760" height="895"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xzt-G3-fb0" userLabel="barAndButtons">
                                                 <subviews>
@@ -549,7 +550,7 @@
                                                                                                 </subviews>
                                                                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                 <constraints>
-                                                                                                    <constraint firstAttribute="width" secondItem="f0b-IS-I9A" secondAttribute="height" multiplier="1:1" constant="1" id="DVi-0n-ZIH"/>
+                                                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" secondItem="f0b-IS-I9A" secondAttribute="height" multiplier="1:1" constant="1" id="DVi-0n-ZIH"/>
                                                                                                     <constraint firstItem="mwg-rl-dJY" firstAttribute="leading" secondItem="f0b-IS-I9A" secondAttribute="leading" id="Dqn-tZ-wei"/>
                                                                                                     <constraint firstItem="HCN-pS-ggS" firstAttribute="top" secondItem="f0b-IS-I9A" secondAttribute="top" id="MhS-hc-n0X"/>
                                                                                                     <constraint firstItem="mwg-rl-dJY" firstAttribute="top" secondItem="f0b-IS-I9A" secondAttribute="top" id="Mi1-0B-dHb"/>

@@ -16,6 +16,7 @@
 		422C47201D70C92E008CDFCB /* CalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422C471F1D70C92E008CDFCB /* CalculatorTests.swift */; };
 		422C472B1D70C92E008CDFCB /* CalculatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422C472A1D70C92E008CDFCB /* CalculatorUITests.swift */; };
 		425643871D8982AC000D5D83 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425643861D8982AC000D5D83 /* Extensions.swift */; };
+		428A6FB11D98141C008DFAAB /* CalcColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428A6FB01D98141C008DFAAB /* CalcColors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		422C472A1D70C92E008CDFCB /* CalculatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorUITests.swift; sourceTree = "<group>"; };
 		422C472C1D70C92E008CDFCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		425643861D8982AC000D5D83 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		428A6FB01D98141C008DFAAB /* CalcColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalcColors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				422C47111D70C92E008CDFCB /* Assets.xcassets */,
 				422C47131D70C92E008CDFCB /* LaunchScreen.storyboard */,
 				422C47161D70C92E008CDFCB /* Info.plist */,
+				428A6FB01D98141C008DFAAB /* CalcColors.swift */,
 			);
 			path = Calculator;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				428A6FB11D98141C008DFAAB /* CalcColors.swift in Sources */,
 				422C470A1D70C92E008CDFCB /* ViewController.swift in Sources */,
 				422C47081D70C92E008CDFCB /* AppDelegate.swift in Sources */,
 				425643871D8982AC000D5D83 /* Extensions.swift in Sources */,

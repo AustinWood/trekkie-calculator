@@ -6,12 +6,6 @@
 //  Copyright © 2016 Austin Wood. All rights reserved.
 //
 
-///////////////////////////
-///// NOTES FOR DAVID /////
-///////////////////////////
-
-// I know there are lots of DRY violations with the animations. If you have any insight on how to write the animation code more efficiently that would be awesome. Trying to make the animation code more efficient is probably the thing that I've spent the most time on that doesn't actually make any difference to the end-user experience.
-
 //////////////////////////////////
 ///// TO DO before v1 launch /////
 //////////////////////////////////
@@ -60,16 +54,6 @@
 
 import UIKit
 
-//////////////////
-///// COLORS /////
-//////////////////
-
-let COLOR_TAN = UIColor(red:0.996, green:0.796, blue:0.612, alpha:1.00)
-let COLOR_SALMON = UIColor(red:0.992, green:0.600, blue:0.420, alpha:1.00)
-let COLOR_PINK = UIColor(red:0.796, green:0.604, blue:0.796, alpha:1.00)
-let COLOR_PURPLE = UIColor(red:0.600, green:0.604, blue:0.792, alpha:1.00)
-let COLOR_ORANGE = UIColor(red:0.992, green:0.596, blue:0.153, alpha:1.00)
-
 ////////////////
 ///// TEXT /////
 ////////////////
@@ -112,8 +96,8 @@ class ViewController: UIViewController {
         outputView.roundCorners(corners: [.allCorners], radius: 10)
         megaView.layoutIfNeeded()
         megaView.roundCorners(corners: [.topLeft, .topRight, .bottomRight], radius: 10)
-        leftBar.backgroundColor = COLOR_PURPLE
-        bottomBar.backgroundColor = COLOR_PURPLE
+        leftBar.backgroundColor = CalcColor.purple
+        bottomBar.backgroundColor = CalcColor.purple
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -173,17 +157,17 @@ class ViewController: UIViewController {
     }
     
     func getLabelBackgroundColor(labelTag: Int) -> UIColor {
-        var labelBackgroundColor = COLOR_SALMON
+        var labelBackgroundColor = CalcColor.salmon
         if labelTag == 50 {
             labelBackgroundColor = UIColor.clear
         } else if labelTag == 51 {
-            labelBackgroundColor = COLOR_TAN
+            labelBackgroundColor = CalcColor.tan
         } else if labelTag == 20 {
-            labelBackgroundColor = COLOR_ORANGE
+            labelBackgroundColor = CalcColor.orange
         } else if labelTag >= 21 && labelTag <= 31 {
-            labelBackgroundColor = COLOR_PINK
+            labelBackgroundColor = CalcColor.pink
         } else if labelTag >= 40 && labelTag <= 43 {
-            labelBackgroundColor = COLOR_PURPLE
+            labelBackgroundColor = CalcColor.purple
         }
         return labelBackgroundColor
     }
@@ -586,7 +570,7 @@ extension UILabel {
             self.backgroundColor = backgroundColor
             }, completion: {(finished: Bool) -> Void in
                 if self.backgroundColor == UIColor.black {
-                    self.animateOutputBackground(duration: 0.35, backgroundColor: COLOR_TAN)
+                    self.animateOutputBackground(duration: 0.35, backgroundColor: CalcColor.tan)
                 }
         })
     }
