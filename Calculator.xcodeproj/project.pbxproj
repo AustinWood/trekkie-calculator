@@ -17,6 +17,7 @@
 		422C472B1D70C92E008CDFCB /* CalculatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422C472A1D70C92E008CDFCB /* CalculatorUITests.swift */; };
 		425643871D8982AC000D5D83 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425643861D8982AC000D5D83 /* Extensions.swift */; };
 		428A6FB11D98141C008DFAAB /* CalcColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428A6FB01D98141C008DFAAB /* CalcColors.swift */; };
+		428A6FB31D981679008DFAAB /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428A6FB21D981679008DFAAB /* RoundedView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		422C472C1D70C92E008CDFCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		425643861D8982AC000D5D83 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		428A6FB01D98141C008DFAAB /* CalcColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalcColors.swift; sourceTree = "<group>"; };
+		428A6FB21D981679008DFAAB /* RoundedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				422C47131D70C92E008CDFCB /* LaunchScreen.storyboard */,
 				422C47161D70C92E008CDFCB /* Info.plist */,
 				428A6FB01D98141C008DFAAB /* CalcColors.swift */,
+				428A6FB21D981679008DFAAB /* RoundedView.swift */,
 			);
 			path = Calculator;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				428A6FB11D98141C008DFAAB /* CalcColors.swift in Sources */,
 				422C470A1D70C92E008CDFCB /* ViewController.swift in Sources */,
 				422C47081D70C92E008CDFCB /* AppDelegate.swift in Sources */,
+				428A6FB31D981679008DFAAB /* RoundedView.swift in Sources */,
 				425643871D8982AC000D5D83 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -21,10 +21,10 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lGg-pz-aQW" userLabel="outputView">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lGg-pz-aQW" userLabel="outputView" customClass="RoundedView" customModule="Calculator" customModuleProvider="target">
                                 <frame key="frameInset" minX="10" minY="24" width="397" height="99"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" tag="51" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8AO-EJ-b4N" userLabel="Output BG Label">
@@ -54,11 +54,11 @@
                                     <constraint firstItem="1ID-Ss-rRh" firstAttribute="top" secondItem="lGg-pz-aQW" secondAttribute="top" constant="6" id="os5-ea-wf2"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xLB-Uj-v4z" userLabel="megaView">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xLB-Uj-v4z" userLabel="megaView" customClass="RoundedView" customModule="Calculator" customModuleProvider="target">
                                 <frame key="frameInset" minX="4" minY="128" width="410" height="603"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gis-gy-n90" userLabel="megaStackView">
-                                        <frame key="frameInset" minY="1" width="760" height="895"/>
+                                        <frame key="frameInset" minY="1" width="406" height="607"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xzt-G3-fb0" userLabel="barAndButtons">
                                                 <subviews>
@@ -861,9 +861,9 @@
                         <outlet property="clearLabel" destination="FBg-St-OgH" id="QpX-LN-Gbj"/>
                         <outlet property="invertSignLabel" destination="wzD-hT-KNr" id="t5x-x6-Z8i"/>
                         <outlet property="leftBar" destination="BfP-wN-A03" id="gYO-yM-sHi"/>
-                        <outlet property="megaView" destination="xLB-Uj-v4z" id="CBw-PJ-4X4"/>
+                        <outlet property="megaView" destination="xLB-Uj-v4z" id="iKI-Sp-rcp"/>
                         <outlet property="outputLabel" destination="1ID-Ss-rRh" id="Yha-Ro-oEn"/>
-                        <outlet property="outputView" destination="lGg-pz-aQW" id="9an-Mr-77D"/>
+                        <outlet property="outputView" destination="lGg-pz-aQW" id="JRO-Dm-Sym"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

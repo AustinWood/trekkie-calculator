@@ -74,8 +74,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var clearLabel: UILabel!
     @IBOutlet weak var invertSignLabel: UILabel!
     
-    @IBOutlet weak var outputView: UIView!
-    @IBOutlet weak var megaView: UIView!
+    @IBOutlet weak var outputView: RoundedView!
+    @IBOutlet weak var megaView: RoundedView!
     
     @IBOutlet weak var leftBar: UIView!
     @IBOutlet weak var bottomBar: UIView!
@@ -584,15 +584,5 @@ extension UILabel {
                     self.animate(duration: 0.5, textColor: UIColor.black, backgroundColor: labelColor, labelColor: labelColor)
                 }
         })
-    }
-}
-
-extension UIView {
-    
-    func roundCorners(corners:UIRectCorner, radius: CGFloat) {
-        let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
-        let mask = CAShapeLayer()
-        mask.path = path.cgPath
-        self.layer.mask = mask
     }
 }
