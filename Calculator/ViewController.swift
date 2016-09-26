@@ -289,12 +289,8 @@ class ViewController: UIViewController {
             let number = sender.tag
             let formatNumber = initializeFormatNumber(numberToFormat: rightNumber)
             var rightString = formatNumber.standardNotation()
-            print("old rightDouble: \(rightNumber)")
-            print("old rightString: \(rightString)")
             rightString += String(number)
-            print("new rightString: \(rightString)")
             rightNumber = Double(rightString)!
-            print("new rightDouble: \(rightNumber)")
             if decimalShown {
                 if sender.tag == 0 {
                     trailingZeros += 1
@@ -375,10 +371,14 @@ class ViewController: UIViewController {
     
     func operationPressed() {
         print("func operationPressed()")
+        print("rightNumber: \(rightNumber)")
+        print("leftNumber: \(leftNumber)")
         resetOperation = false
         trailingZeros = 0
         if !resetOutput {
             performOperation()
+        } else if outputTextIsRightNum {
+            leftNumber = rightNumber
         }
     }
     
@@ -406,6 +406,8 @@ class ViewController: UIViewController {
             var savedDouble = defaults.double(forKey: "memoryDouble")
             if button == .memoryRecall {
                 print("func memoryPressed(MR)")
+                //resetOutput = false
+                
                 rightNumber = savedDouble
                 updateOutputLabel(rightNumber)
             } else {
@@ -415,9 +417,11 @@ class ViewController: UIViewController {
                 }
                 if button == .memoryPlus {
                     print("func memoryPressed(M+)")
+                    print("\(savedDouble) + \(displayedNumber) = \(savedDouble + displayedNumber)")
                     savedDouble += displayedNumber
                 } else {
                     print("func memoryPressed(M-)")
+                    print("\(savedDouble) - \(displayedNumber) = \(savedDouble - displayedNumber)")
                     savedDouble -= displayedNumber
                 }
                 defaults.set(savedDouble, forKey: "memoryDouble")
@@ -436,6 +440,8 @@ class ViewController: UIViewController {
     
     func updateOutputLabel(_ inputDouble: Double) {
         print("func updateOutputLabel()")
+        print("rightNumber: \(rightNumber)")
+        print("leftNumber: \(leftNumber)")
         if inputDouble == rightNumber {
             outputTextIsRightNum = true
         } else {
