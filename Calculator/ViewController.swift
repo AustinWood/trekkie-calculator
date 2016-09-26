@@ -10,6 +10,7 @@
 ///// TO DO before v1 launch /////
 //////////////////////////////////
 
+// Inverse sign puts - on 0
 // Bug: MR can't be the right number in an operation
 // Programmatically determine how many digits can fit on the screen
 // Can I make addTrailingZeros() more efficient by using NumberFormatter?
@@ -327,11 +328,6 @@ class ViewController: UIViewController {
         }
     }
     
-    func initializeFormatNumber(numberToFormat: Double) -> FormatNumber {
-        let formatNumber = FormatNumber(numberToFormat: numberToFormat, decimalShown: decimalShown, trailingZeros: trailingZeros)
-        return formatNumber
-    }
-    
     var decimalShown = false
     
     @IBAction func decimalPressed(_ sender: AnyObject) {
@@ -364,20 +360,12 @@ class ViewController: UIViewController {
         resetOutput = true
         resetOperation = true
         trailingZeros = 0
-        processOperation()
+        performOperation()
     }
     
     //////////////////////
     ///// OPERATIONS /////
     //////////////////////
-    
-    enum operation {
-        case none
-        case add
-        case subtract
-        case multiply
-        case divide
-    }
     
     var currentOperation: operation = .none
     
@@ -410,30 +398,13 @@ class ViewController: UIViewController {
         resetOperation = false
         trailingZeros = 0
         if !resetOutput {
-            processOperation()
+            performOperation()
         }
     }
     
-    func processOperation() {
-        print("func processOperation(\(currentOperation))")
-        var calculation = Double()
-        switch currentOperation {
-        case .none:
-            calculation = rightNumber
-        case .add:
-            calculation = leftNumber + rightNumber
-            print("\(leftNumber) + \(rightNumber) = \(calculation)")
-        case .subtract:
-            calculation = leftNumber - rightNumber
-            print("\(leftNumber) - \(rightNumber) = \(calculation)")
-        case .multiply:
-            calculation = leftNumber * rightNumber
-            print("\(leftNumber) * \(rightNumber) = \(calculation)")
-        case .divide:
-            calculation = leftNumber / rightNumber
-            print("\(leftNumber) / \(rightNumber) = \(calculation)")
-        }
-        leftNumber = calculation
+    func performOperation() {
+        let operationHandler = OperationHandler(currentOperation: currentOperation, leftNumber: leftNumber, rightNumber: rightNumber)
+        leftNumber = operationHandler.processOperation()
         resetOutput = true
         decimalShown = false
         if currentOperation != .none {
@@ -479,6 +450,11 @@ class ViewController: UIViewController {
     ///// NUMBER FORMATTING /////
     /////////////////////////////
     
+    func initializeFormatNumber(numberToFormat: Double) -> FormatNumber {
+        let formatNumber = FormatNumber(numberToFormat: numberToFormat, decimalShown: decimalShown, trailingZeros: trailingZeros)
+        return formatNumber
+    }
+    
     func updateOutputLabel(_ inputDouble: Double) {
         print("func updateOutputLabel()")
         if inputDouble == rightNumber {
@@ -492,7 +468,6 @@ class ViewController: UIViewController {
         if outputText.contains("∞") {
             animateOutputLabel()
         }
-        
     }
     
 }
