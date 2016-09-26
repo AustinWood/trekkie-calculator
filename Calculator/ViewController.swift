@@ -10,7 +10,6 @@
 ///// TO DO before v1 launch /////
 //////////////////////////////////
 
-// View is layed out improperly when orientation (etc?) changes
 // Bug: MR can't be the right number in an operation
 // Press and hold on outputLabel copies to clipboard
 // Create app icon
@@ -22,6 +21,7 @@
 
 // Move CALCULATOR LOGIC to Model
 // Move MEMORY to Model
+// Add support for landscape
 // Add sound effects?
 // Adjust layout if enlarged status bar due to Personal Hotspot, GPS, Phone, etc
 // Programmatically determine how many digits can fit on the screen
@@ -406,10 +406,8 @@ class ViewController: UIViewController {
             var savedDouble = defaults.double(forKey: "memoryDouble")
             if button == .memoryRecall {
                 print("func memoryPressed(MR)")
-                resetOutput = true
-                currentOperation = .none
-                leftNumber = savedDouble
-                updateOutputLabel(leftNumber)
+                rightNumber = savedDouble
+                updateOutputLabel(rightNumber)
             } else {
                 var displayedNumber = leftNumber
                 if outputTextIsRightNum {
