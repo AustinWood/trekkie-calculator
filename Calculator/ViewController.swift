@@ -10,7 +10,6 @@
 ///// TO DO before v1 launch /////
 //////////////////////////////////
 
-// Bug: MR can't be the right number in an operation
 // Press and hold on outputLabel copies to clipboard
 // Create app icon
 // Create launch screen
@@ -227,6 +226,53 @@ class ViewController: UIViewController {
         return theLabel
     }
     
+    ///////////////////////
+    ///// COPY OUTPUT /////
+    ///////////////////////
+    
+//    @IBAction func copyPressed(_ sender: AnyObject) {
+//        print("func copyPressed()")
+//        UIPasteboard.general.string = outputLabel.text
+//        timer.invalidate()
+//        backgroundAlpha = 1
+//    }
+    
+    var keepAnimating = true
+    var outputAlpha: CGFloat = 1
+    var timer: Timer!
+    
+    @IBAction func copyTouchUp(_ sender: AnyObject) {
+        outputAlpha = 1
+        keepAnimating = true
+        updateOutputAlpha()
+    }
+    
+    @IBAction func copyTouchDown(_ sender: AnyObject) {
+        keepAnimating = true
+        timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(ViewController.copyAnimation), userInfo: nil, repeats: true)
+    }
+    
+    func copyAnimation() {
+        if keepAnimating {
+            if outputAlpha > 0 {
+                outputAlpha -= 0.01
+                print(outputAlpha)
+            } else {
+                print("copied!")
+                keepAnimating = false
+            }
+            updateOutputAlpha()
+        }
+    }
+    
+    func updateOutputAlpha() {
+        let outputBackground = getLabel(senderTag: 51)
+        let backgroundColor = getLabelBackgroundColor(labelTag: 51)
+        outputBackground.backgroundColor = backgroundColor.withAlphaComponent(outputAlpha)
+    }
+    
+    
+    
     ////////////////////////////
     ///// CALCULATOR LOGIC /////
     ////////////////////////////
@@ -371,8 +417,6 @@ class ViewController: UIViewController {
     
     func operationPressed() {
         print("func operationPressed()")
-        print("rightNumber: \(rightNumber)")
-        print("leftNumber: \(leftNumber)")
         resetOperation = false
         trailingZeros = 0
         if !resetOutput {
@@ -399,6 +443,7 @@ class ViewController: UIViewController {
     @IBAction func memoryPressed(_ sender: AnyObject) {
         let button = Button(rawValue: sender.tag)
         let defaults = UserDefaults.standard
+        resetOutput = true
         if button == .memoryClear {
             print("func memoryPressed(MC)")
             defaults.set(0.0, forKey: "memoryDouble")
@@ -406,8 +451,6 @@ class ViewController: UIViewController {
             var savedDouble = defaults.double(forKey: "memoryDouble")
             if button == .memoryRecall {
                 print("func memoryPressed(MR)")
-                //resetOutput = false
-                
                 rightNumber = savedDouble
                 updateOutputLabel(rightNumber)
             } else {
@@ -417,11 +460,9 @@ class ViewController: UIViewController {
                 }
                 if button == .memoryPlus {
                     print("func memoryPressed(M+)")
-                    print("\(savedDouble) + \(displayedNumber) = \(savedDouble + displayedNumber)")
                     savedDouble += displayedNumber
                 } else {
                     print("func memoryPressed(M-)")
-                    print("\(savedDouble) - \(displayedNumber) = \(savedDouble - displayedNumber)")
                     savedDouble -= displayedNumber
                 }
                 defaults.set(savedDouble, forKey: "memoryDouble")
@@ -440,8 +481,6 @@ class ViewController: UIViewController {
     
     func updateOutputLabel(_ inputDouble: Double) {
         print("func updateOutputLabel()")
-        print("rightNumber: \(rightNumber)")
-        print("leftNumber: \(leftNumber)")
         if inputDouble == rightNumber {
             outputTextIsRightNum = true
         } else {

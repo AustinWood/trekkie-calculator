@@ -40,6 +40,13 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nKk-AF-9mU" userLabel="Copy Button">
+                                        <frame key="frameInset" minY="3" width="397" height="96"/>
+                                        <connections>
+                                            <action selector="copyTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="w2s-OV-OXF"/>
+                                            <action selector="copyTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qly-zz-ETH"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -48,10 +55,14 @@
                                     <constraint firstAttribute="height" constant="99" id="N80-f4-ydN"/>
                                     <constraint firstAttribute="bottom" secondItem="1ID-Ss-rRh" secondAttribute="bottom" id="P9A-xA-J0K"/>
                                     <constraint firstItem="8AO-EJ-b4N" firstAttribute="top" secondItem="lGg-pz-aQW" secondAttribute="top" id="TWp-2d-Byn"/>
+                                    <constraint firstAttribute="trailing" secondItem="nKk-AF-9mU" secondAttribute="trailing" id="VHm-34-yGZ"/>
                                     <constraint firstAttribute="bottom" secondItem="8AO-EJ-b4N" secondAttribute="bottom" id="ZbH-oW-Pb2"/>
                                     <constraint firstItem="1ID-Ss-rRh" firstAttribute="leading" secondItem="lGg-pz-aQW" secondAttribute="leading" constant="16" id="bsp-Ob-vOL"/>
                                     <constraint firstItem="8AO-EJ-b4N" firstAttribute="leading" secondItem="lGg-pz-aQW" secondAttribute="leading" id="cek-7K-fA9"/>
+                                    <constraint firstItem="nKk-AF-9mU" firstAttribute="leading" secondItem="lGg-pz-aQW" secondAttribute="leading" id="ehm-ZL-Ojd"/>
+                                    <constraint firstAttribute="bottom" secondItem="nKk-AF-9mU" secondAttribute="bottom" id="ode-Be-KV6"/>
                                     <constraint firstItem="1ID-Ss-rRh" firstAttribute="top" secondItem="lGg-pz-aQW" secondAttribute="top" constant="6" id="os5-ea-wf2"/>
+                                    <constraint firstItem="nKk-AF-9mU" firstAttribute="top" secondItem="lGg-pz-aQW" secondAttribute="top" id="wyh-bB-sdy"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xLB-Uj-v4z" userLabel="megaView" customClass="RoundedView" customModule="Calculator" customModuleProvider="target">
