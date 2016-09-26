@@ -42,7 +42,10 @@ struct FormatNumber {
     
     func standardNotation() -> String {
         print("func standardNotation()")
-        let value = numberToFormat as NSNumber
+        var value = numberToFormat as NSNumber
+        if abs(numberToFormat) == 0.0 { // Prevents invertSignPressed() from adding negative sign to 0
+            value = 0 as NSNumber
+        }
         let numberFormatter = NumberFormatter()
         numberFormatter.minimumIntegerDigits = 1
         numberFormatter.decimalSeparator = "."
