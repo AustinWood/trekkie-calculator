@@ -10,6 +10,7 @@
 ///// TO DO before v1 launch /////
 //////////////////////////////////
 
+// Bug: MR can't be the right number in an operation
 // Programmatically determine how many digits can fit on the screen
 // Can I make addTrailingZeros() more efficient by using NumberFormatter?
 // Adjust layout for iPad: Change ratio of "1 View" from 1:1 to 4:3 and everything magically works, learn about Xcode 8 adaptive layouts
@@ -54,9 +55,6 @@
 // 51: Output background label
 
 import UIKit
-
-var decimalShown = false
-var trailingZeros = 0
 
 ////////////////
 ///// TEXT /////
@@ -291,6 +289,8 @@ class ViewController: UIViewController {
         }
     }
     
+    var trailingZeros = 0
+    
     @IBAction func numberPressed(_ sender: UIButton) {
         print("func numberPressed(\(sender.tag))")
         var proceedWithInput = true
@@ -306,7 +306,7 @@ class ViewController: UIViewController {
         clearLabel.text = "C"
         if proceedWithInput {
             let number = sender.tag
-            let formatNumber = FormatNumber(numberToFormat: rightNumber)
+            let formatNumber = initializeFormatNumber(numberToFormat: rightNumber)
             var rightString = formatNumber.standardNotation()
             print("old rightDouble: \(rightNumber)")
             print("old rightString: \(rightString)")
@@ -326,6 +326,13 @@ class ViewController: UIViewController {
             animateOutputLabel()
         }
     }
+    
+    func initializeFormatNumber(numberToFormat: Double) -> FormatNumber {
+        let formatNumber = FormatNumber(numberToFormat: numberToFormat, decimalShown: decimalShown, trailingZeros: trailingZeros)
+        return formatNumber
+    }
+    
+    var decimalShown = false
     
     @IBAction func decimalPressed(_ sender: AnyObject) {
         print("func decimalPressed()")
@@ -479,7 +486,7 @@ class ViewController: UIViewController {
         } else {
             outputTextIsRightNum = false
         }
-        let formatNumber = FormatNumber(numberToFormat: inputDouble)
+        let formatNumber = initializeFormatNumber(numberToFormat: inputDouble)
         let outputText = formatNumber.convertDoubleToString()
         outputLabel.text = outputText
         if outputText.contains("∞") {

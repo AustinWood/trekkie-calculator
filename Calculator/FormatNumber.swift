@@ -11,6 +11,8 @@ import Foundation
 struct FormatNumber {
     
     var numberToFormat: Double
+    var decimalShown = false
+    var trailingZeros = 0
     
     func convertDoubleToString() -> String {
         print("func convertDoubleToString()")
