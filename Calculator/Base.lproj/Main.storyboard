@@ -858,8 +858,8 @@
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="bottomBar" destination="REk-HF-Ne9" id="GZg-W0-4fh"/>
-                        <outlet property="clearLabel" destination="FBg-St-OgH" id="QpX-LN-Gbj"/>
-                        <outlet property="invertSignLabel" destination="wzD-hT-KNr" id="t5x-x6-Z8i"/>
+                        <outlet property="clearLabel" destination="FBg-St-OgH" id="rgt-ID-PhO"/>
+                        <outlet property="invertSignLabel" destination="wzD-hT-KNr" id="J7g-q2-jFM"/>
                         <outlet property="leftBar" destination="BfP-wN-A03" id="gYO-yM-sHi"/>
                         <outlet property="megaView" destination="xLB-Uj-v4z" id="iKI-Sp-rcp"/>
                         <outlet property="outputLabel" destination="1ID-Ss-rRh" id="YzD-dR-LrM"/>

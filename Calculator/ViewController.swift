@@ -10,7 +10,9 @@
 ///// TO DO before v1 launch /////
 //////////////////////////////////
 
-// Bug: reset label colors after multitasking swipe on iPad
+// View is layed out improperly when orientation (etc?) changes
+// Move CALCULATOR LOGIC to Model
+// Move MEMORY to Model
 // Inverse sign puts - on 0
 // Bug: MR can't be the right number in an operation
 // Programmatically determine how many digits can fit on the screen
@@ -28,9 +30,10 @@
 ///// TO DO for v2 /////
 ////////////////////////
 
+// Bug: reset label colors after multitasking swipe on iPad
 // Register hardware keyboard presses
 // Add second label that shows previous operations?
-// Add slide in animation to outputLabel: http://www.andrewcbancroft.com/2014/09/24/slide-in-animation-in-swift/
+// Add slide-in animation to outputLabel: http://www.andrewcbancroft.com/2014/09/24/slide-in-animation-in-swift/
 
 import UIKit
 
@@ -43,8 +46,8 @@ class ViewController: UIViewController {
     ////////////////////////////
     
     @IBOutlet weak var outputLabel: CustomLabel!
-    @IBOutlet weak var clearLabel: UILabel!
-    @IBOutlet weak var invertSignLabel: UILabel!
+    @IBOutlet weak var clearLabel: CustomLabel!
+    @IBOutlet weak var invertSignLabel: CustomLabel!
     
     @IBOutlet weak var outputView: RoundedView!
     @IBOutlet weak var megaView: RoundedView!
@@ -61,6 +64,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let notificationName = Notification.Name("applicationWillResignActive")
+        NotificationCenter.default.addObserver(self, selector: #selector(self.resetButtons), name: notificationName, object: nil)
         labelArray = getLabelsInView(self.view)
         buttonArray = getButtonsInView(self.view)
         formatLabels()
@@ -130,7 +135,7 @@ class ViewController: UIViewController {
     
     func getLabelBackgroundColor(labelTag: Int) -> UIColor {
         let button = Button(rawValue: labelTag)
-        var labelBackgroundColor = CalcColor.salmon // Default color, for numbers 0-9 and decimal
+        var labelBackgroundColor = CalcColor.salmon // Numbers 0-9 and decimal
         if button == .outputLabel {
             labelBackgroundColor = UIColor.clear
         } else if button == .outputBackground {
@@ -152,6 +157,13 @@ class ViewController: UIViewController {
         attString.setAttributes([NSFontAttributeName: fontSuper!, NSBaselineOffsetAttributeName: 10], range: NSRange(location:0,length:1))
         attString.setAttributes([NSFontAttributeName: fontSuper!, NSBaselineOffsetAttributeName: 2], range: NSRange(location:2,length:1))
         invertSignLabel.attributedText = attString
+    }
+    
+    // Called on applicationWillResignActive()
+    // Prevents depressed buttons from remaining darkened after a four-finger app-switching swipe on iPad
+    func resetButtons() {
+        touchDownArray = []
+        formatLabels()
     }
     
     //////////////////////
