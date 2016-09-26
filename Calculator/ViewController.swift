@@ -73,7 +73,8 @@ class ViewController: UIViewController {
     ///// OUTLETS and VARS /////
     ////////////////////////////
     
-    @IBOutlet weak var outputLabel: UILabel!
+    
+    @IBOutlet weak var outputLabel: CustomLabel!
     @IBOutlet weak var clearLabel: UILabel!
     @IBOutlet weak var invertSignLabel: UILabel!
     
@@ -83,7 +84,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var leftBar: UIView!
     @IBOutlet weak var bottomBar: UIView!
     
-    var labelArray = [UILabel]()
+    var labelArray = [CustomLabel]()
     var buttonArray = [UIButton]()
     
     ///////////////////
@@ -119,10 +120,10 @@ class ViewController: UIViewController {
         return .all
     }
     
-    func getLabelsInView(_ view: UIView) -> [UILabel] {
-        var results = [UILabel]()
+    func getLabelsInView(_ view: UIView) -> [CustomLabel] {
+        var results = [CustomLabel]()
         for subview in view.subviews as [UIView] {
-            if let labelView = subview as? UILabel {
+            if let labelView = subview as? CustomLabel {
                 results += [labelView]
             } else {
                 results += getLabelsInView(subview)
@@ -237,8 +238,8 @@ class ViewController: UIViewController {
         }
     }
     
-    func getLabel(senderTag: Int) -> UILabel {
-        var theLabel = UILabel()
+    func getLabel(senderTag: Int) -> CustomLabel {
+        var theLabel = CustomLabel()
         for label in labelArray {
             if label.tag == senderTag {
                 theLabel = label
@@ -470,45 +471,4 @@ class ViewController: UIViewController {
         }
     }
     
-}
-
-///////////////////////////////////////////////////////
-///// EXTENSIONS (ANIMATIONS and CORNER ROUNDING) /////
-///////////////////////////////////////////////////////
-
-extension UILabel {
-    
-    func animateOutputLabel(duration: TimeInterval, textColor: UIColor) {
-        isAnimatingOutputLabel = true
-        UILabel.transition(with: self, duration: duration, options: .transitionCrossDissolve, animations: {() -> Void in
-            self.textColor = textColor
-            }, completion: {(finished: Bool) -> Void in
-                if self.textColor == UIColor.white {
-                    self.animateOutputLabel(duration: 0.35, textColor: UIColor.black)
-                } else {
-                    isAnimatingOutputLabel = false
-                }
-        })
-    }
-    
-    func animateOutputBackground(duration: TimeInterval, backgroundColor: UIColor) {
-        UILabel.transition(with: self, duration: duration, options: .transitionCrossDissolve, animations: {() -> Void in
-            self.backgroundColor = backgroundColor
-            }, completion: {(finished: Bool) -> Void in
-                if self.backgroundColor == UIColor.black {
-                    self.animateOutputBackground(duration: 0.35, backgroundColor: CalcColor.tan)
-                }
-        })
-    }
-    
-    func animate(duration: TimeInterval, textColor: UIColor, backgroundColor: UIColor, labelColor: UIColor) {
-        UILabel.transition(with: self, duration: duration, options: .transitionCrossDissolve, animations: {() -> Void in
-            self.textColor = textColor
-            self.backgroundColor = backgroundColor
-            }, completion: {(finished: Bool) -> Void in
-                if textColor == backgroundColor {
-                    self.animate(duration: 0.5, textColor: UIColor.black, backgroundColor: labelColor, labelColor: labelColor)
-                }
-        })
-    }
 }
