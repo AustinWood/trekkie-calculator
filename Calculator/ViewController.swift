@@ -32,39 +32,7 @@
 // Add second label that shows previous operations?
 // Add slide in animation to outputLabel: http://www.andrewcbancroft.com/2014/09/24/slide-in-animation-in-swift/
 
-/////////////////////////////////////////////////
-///// TAG REFERENCES for BUTTONS and LABELS /////
-/////////////////////////////////////////////////
-
-// 0-9: Numbers
-// 10: Decimal
-//
-// 20: Equals
-// 21: Addition
-// 22: Subtraction
-// 23: Multiplication
-// 24: Division
-//
-// 30: Clear
-// 31: Invert sign
-//
-// 40: MC
-// 41: M+
-// 42: M-
-// 43: MR
-//
-// 50: Output label
-// 51: Output background label
-
 import UIKit
-
-////////////////
-///// TEXT /////
-////////////////
-
-let TEXT_FONT = "FinalFrontierOldStyle"
-let TEXT_SIZE = 28 as CGFloat
-let TEXT_COLOR = UIColor.black
 
 var isAnimatingOutputLabel = false
 
@@ -73,7 +41,6 @@ class ViewController: UIViewController {
     ////////////////////////////
     ///// OUTLETS and VARS /////
     ////////////////////////////
-    
     
     @IBOutlet weak var outputLabel: CustomLabel!
     @IBOutlet weak var clearLabel: UILabel!
@@ -147,39 +114,40 @@ class ViewController: UIViewController {
     
     func formatLabels() {
         for label in labelArray {
-            label.textColor = TEXT_COLOR
+            label.textColor = CalcText.color
             let backgroundColor = getLabelBackgroundColor(labelTag: label.tag)
             label.backgroundColor = backgroundColor
             if label.tag <= 10 {
-                label.font = UIFont(name: TEXT_FONT, size: TEXT_SIZE * 1.5)
+                label.font = UIFont(name: CalcText.font, size: CalcText.size * 1.5)
             } else if label.tag == 50 {
-                label.font = UIFont(name: TEXT_FONT, size: TEXT_SIZE * 2.0)
+                label.font = UIFont(name: CalcText.font, size: CalcText.size * 2.0)
             } else {
-                label.font = UIFont(name: TEXT_FONT, size: TEXT_SIZE * 1.0)
+                label.font = UIFont(name: CalcText.font, size: CalcText.size * 1.0)
             }
         }
         stylizeInvertSignLabel()
     }
     
     func getLabelBackgroundColor(labelTag: Int) -> UIColor {
-        var labelBackgroundColor = CalcColor.salmon
-        if labelTag == 50 {
+        let button = Button(rawValue: labelTag)
+        var labelBackgroundColor = CalcColor.salmon // Default color, for numbers 0-9 and decimal
+        if button == .outputLabel {
             labelBackgroundColor = UIColor.clear
-        } else if labelTag == 51 {
+        } else if button == .outputBackground {
             labelBackgroundColor = CalcColor.tan
-        } else if labelTag == 20 {
+        } else if button == .equals {
             labelBackgroundColor = CalcColor.orange
-        } else if labelTag >= 21 && labelTag <= 31 {
+        } else if labelTag >= 21 && labelTag <= 31 { // Addition, subtraction, multiplication, division, invert sign, and clear
             labelBackgroundColor = CalcColor.pink
-        } else if labelTag >= 40 && labelTag <= 43 {
+        } else if labelTag >= 40 && labelTag <= 43 { // Memory buttons
             labelBackgroundColor = CalcColor.purple
         }
         return labelBackgroundColor
     }
 
     func stylizeInvertSignLabel() {
-        let font: UIFont? = UIFont(name: TEXT_FONT, size: TEXT_SIZE)
-        let fontSuper: UIFont? = UIFont(name: TEXT_FONT, size: TEXT_SIZE / 1.5)
+        let font: UIFont? = UIFont(name: CalcText.font, size: CalcText.size)
+        let fontSuper: UIFont? = UIFont(name: CalcText.font, size: CalcText.size / 1.5)
         let attString: NSMutableAttributedString = NSMutableAttributedString(string: "+/–", attributes: [NSFontAttributeName: font!])
         attString.setAttributes([NSFontAttributeName: fontSuper!, NSBaselineOffsetAttributeName: 10], range: NSRange(location:0,length:1))
         attString.setAttributes([NSFontAttributeName: fontSuper!, NSBaselineOffsetAttributeName: 2], range: NSRange(location:2,length:1))
@@ -419,13 +387,14 @@ class ViewController: UIViewController {
     //////////////////
     
     @IBAction func memoryPressed(_ sender: AnyObject) {
+        let button = Button(rawValue: sender.tag)
         let defaults = UserDefaults.standard
-        if sender.tag == 40 {
+        if button == .memoryClear {
             print("func memoryPressed(MC)")
             defaults.set(0.0, forKey: "memoryDouble")
         } else {
             var savedDouble = defaults.double(forKey: "memoryDouble")
-            if sender.tag == 43 {
+            if button == .memoryRecall {
                 print("func memoryPressed(MR)")
                 resetOutput = true
                 currentOperation = .none
@@ -436,7 +405,7 @@ class ViewController: UIViewController {
                 if outputTextIsRightNum {
                     displayedNumber = rightNumber
                 }
-                if sender.tag == 41 {
+                if button == .memoryPlus {
                     print("func memoryPressed(M+)")
                     savedDouble += displayedNumber
                 } else {

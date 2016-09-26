@@ -23,5 +23,20 @@ enum Button: Int {
     
     case decimal = 10
     
-    case output = 50
+    case equals = 20
+    case addition = 21
+    case subtraction = 22
+    case multiplication = 23
+    case division = 24
+    
+    case clear = 30
+    case invert = 31
+    
+    case memoryClear = 40
+    case memoryPlus = 41
+    case memoryMinus = 42
+    case memoryRecall = 43
+    
+    case outputLabel = 50
+    case outputBackground = 51
 }
