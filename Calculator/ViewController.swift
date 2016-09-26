@@ -11,18 +11,8 @@
 //////////////////////////////////
 
 // View is layed out improperly when orientation (etc?) changes
-// Move CALCULATOR LOGIC to Model
-// Move MEMORY to Model
-// Inverse sign puts - on 0
 // Bug: MR can't be the right number in an operation
-// Programmatically determine how many digits can fit on the screen
-// Can I make addTrailingZeros() more efficient by using NumberFormatter?
-// Adjust layout for iPad: Change ratio of "1 View" from 1:1 to 4:3 and everything magically works, learn about Xcode 8 adaptive layouts
-// Set . vs , for decimal based on phone settings (most countries, other than US and UK, use comma for decimal and period for thousands separater)
-// Thousands separater?
 // Press and hold on outputLabel copies to clipboard
-// Adjust layout if enlarged status bar due to Personal Hotspot, GPS, Phone, etc
-// Add sound effects?
 // Create app icon
 // Create launch screen
 
@@ -30,6 +20,14 @@
 ///// TO DO for v2 /////
 ////////////////////////
 
+// Move CALCULATOR LOGIC to Model
+// Move MEMORY to Model
+// Add sound effects?
+// Adjust layout if enlarged status bar due to Personal Hotspot, GPS, Phone, etc
+// Programmatically determine how many digits can fit on the screen
+// Can I make addTrailingZeros() more efficient by using NumberFormatter?
+// Set . vs , for decimal based on phone settings (most countries, other than US and UK, use comma for decimal and period for thousands separater)
+// Thousands separater?
 // Bug: reset label colors after multitasking swipe on iPad
 // Register hardware keyboard presses
 // Add second label that shows previous operations?
