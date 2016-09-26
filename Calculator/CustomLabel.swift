@@ -11,6 +11,48 @@ import UIKit
 
 class CustomLabel: UILabel {
     
+    /////////////////////////
+    ///// BUTTON LABELS /////
+    /////////////////////////
+    
+    var originalColor: UIColor?
+    
+    func darken() {
+        self.animate(duration: 0.25, textColor: .white, backgroundColor: .black)
+    }
+    
+    func whiten() {
+        self.animate(duration: 0.4, textColor: .black, backgroundColor: .white)
+    }
+    
+    func restoreColor(labelColor: UIColor) {
+        self.animate(duration: 0.4, textColor: .black, backgroundColor: labelColor)
+    }
+    
+    func disappear(labelColor: UIColor) {
+        originalColor = labelColor
+        self.animate(duration: 0.25, textColor: UIColor.black, backgroundColor: UIColor.black)
+    }
+    
+    func animate(duration: TimeInterval, textColor: UIColor, backgroundColor: UIColor) {
+        UILabel.transition(with: self, duration: duration, options: .transitionCrossDissolve, animations: {() -> Void in
+            self.textColor = textColor
+            self.backgroundColor = backgroundColor
+            }, completion: {(finished: Bool) -> Void in
+                if textColor == backgroundColor {
+                    self.restoreColor(labelColor: self.originalColor!)
+                }
+        })
+    }
+    
+    /////////////////////////
+    ///// OUTPUT LABELS /////
+    /////////////////////////
+    
+    func flashOutputLabel() {
+        self.animateOutputLabel(duration: 0.4, textColor: UIColor.white)
+    }
+    
     func animateOutputLabel(duration: TimeInterval, textColor: UIColor) {
         isAnimatingOutputLabel = true
         UILabel.transition(with: self, duration: duration, options: .transitionCrossDissolve, animations: {() -> Void in
@@ -24,23 +66,16 @@ class CustomLabel: UILabel {
         })
     }
     
+    func flashOutputBackground() {
+        self.animateOutputBackground(duration: 0.4, backgroundColor: UIColor.black)
+    }
+    
     func animateOutputBackground(duration: TimeInterval, backgroundColor: UIColor) {
         UILabel.transition(with: self, duration: duration, options: .transitionCrossDissolve, animations: {() -> Void in
             self.backgroundColor = backgroundColor
             }, completion: {(finished: Bool) -> Void in
                 if self.backgroundColor == UIColor.black {
                     self.animateOutputBackground(duration: 0.35, backgroundColor: CalcColor.tan)
-                }
-        })
-    }
-    
-    func animate(duration: TimeInterval, textColor: UIColor, backgroundColor: UIColor, labelColor: UIColor) {
-        UILabel.transition(with: self, duration: duration, options: .transitionCrossDissolve, animations: {() -> Void in
-            self.textColor = textColor
-            self.backgroundColor = backgroundColor
-            }, completion: {(finished: Bool) -> Void in
-                if textColor == backgroundColor {
-                    self.animate(duration: 0.5, textColor: UIColor.black, backgroundColor: labelColor, labelColor: labelColor)
                 }
         })
     }

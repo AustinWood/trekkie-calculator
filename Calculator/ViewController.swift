@@ -10,6 +10,7 @@
 ///// TO DO before v1 launch /////
 //////////////////////////////////
 
+// Bug: reset label colors after multitasking swipe on iPad
 // Inverse sign puts - on 0
 // Bug: MR can't be the right number in an operation
 // Programmatically determine how many digits can fit on the screen
@@ -195,8 +196,7 @@ class ViewController: UIViewController {
         print("----------")
         touchDownArray.append(sender.tag)
         let label = getLabel(senderTag: sender.tag)
-        let labelColor = getLabelBackgroundColor(labelTag: sender.tag)
-        label.animate(duration: 0.25, textColor: UIColor.white, backgroundColor: UIColor.black, labelColor: labelColor)
+        label.darken()
     }
     
     @IBAction func buttonTouchDragOutside(_ sender: AnyObject) {
@@ -204,29 +204,22 @@ class ViewController: UIViewController {
             touchDownArray = touchDownArray.filter { $0 != sender.tag }
             let label = getLabel(senderTag: sender.tag)
             let labelColor = getLabelBackgroundColor(labelTag: sender.tag)
-            label.animate(duration: 0.25, textColor: UIColor.black, backgroundColor: UIColor.black, labelColor: labelColor)
+            label.disappear(labelColor: labelColor)
         }
     }
     
     @IBAction func buttonTouchUp(_ sender: AnyObject) {
         touchDownArray = touchDownArray.filter { $0 != sender.tag }
         let label = getLabel(senderTag: sender.tag)
-        let labelColor = getLabelBackgroundColor(labelTag: sender.tag)
         if sender.tag == 20 || (sender.tag == 30 && getLabel(senderTag: 30).text == "AC") {
             resetOperationColors()
         }
         if sender.tag >= 21 && sender.tag <= 24 {
             resetOperationColors()
-            label.animate(duration: 0.4, textColor: UIColor.black, backgroundColor: UIColor.white, labelColor: labelColor)
+            label.whiten()
         } else {
-            label.animate(duration: 0.4, textColor: UIColor.black, backgroundColor: labelColor, labelColor: labelColor)
-        }
-    }
-    
-    func animateOutputLabel() {
-        if !isAnimatingOutputLabel {
-            outputLabel.animateOutputLabel(duration: 0.4, textColor: UIColor.white)
-            getLabel(senderTag: 51).animateOutputBackground(duration: 0.4, backgroundColor: UIColor.black)
+            let labelColor = getLabelBackgroundColor(labelTag: sender.tag)
+            label.restoreColor(labelColor: labelColor)
         }
     }
     
@@ -234,7 +227,15 @@ class ViewController: UIViewController {
         for operationLabel in 21...24 {
             let label = getLabel(senderTag: operationLabel)
             let labelColor = getLabelBackgroundColor(labelTag: operationLabel)
-            label.animate(duration: 0.4, textColor: UIColor.black, backgroundColor: labelColor, labelColor: labelColor)
+            label.restoreColor(labelColor: labelColor)
+        }
+    }
+    
+    func animateOutputLabel() {
+        if !isAnimatingOutputLabel {
+            outputLabel.flashOutputLabel()
+            let outputBackground = getLabel(senderTag: 51)
+            outputBackground.flashOutputBackground()
         }
     }
     
