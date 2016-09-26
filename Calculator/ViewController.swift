@@ -10,6 +10,7 @@
 ///// TO DO before v1 launch /////
 //////////////////////////////////
 
+// Programmatically determine how many digits can fit on the screen
 // Can I make addTrailingZeros() more efficient by using NumberFormatter?
 // Adjust layout for iPad: Change ratio of "1 View" from 1:1 to 4:3 and everything magically works, learn about Xcode 8 adaptive layouts
 // Set . vs , for decimal based on phone settings (most countries, other than US and UK, use comma for decimal and period for thousands separater)
@@ -53,6 +54,9 @@
 // 51: Output background label
 
 import UIKit
+
+var decimalShown = false
+var trailingZeros = 0
 
 ////////////////
 ///// TEXT /////
@@ -253,7 +257,7 @@ class ViewController: UIViewController {
     
     var resetOutput = false
     var resetOperation = false
-    var decimalPressed = false
+    
     var outputTextIsRightNum = true
     
     func resetCalc() {
@@ -263,7 +267,7 @@ class ViewController: UIViewController {
         trailingZeros = 0
         currentOperation = .none
         resetOutput = false
-        decimalPressed = false
+        decimalShown = false
         outputLabel.text = "0"
         clearLabel.text = "AC"
     }
@@ -275,7 +279,7 @@ class ViewController: UIViewController {
         } else {
             trailingZeros = 0
             rightNumber = 0.0
-            decimalPressed = false
+            decimalShown = false
             outputLabel.text = "0"
             clearLabel.text = "AC"
             if resetOutput {
@@ -302,14 +306,15 @@ class ViewController: UIViewController {
         clearLabel.text = "C"
         if proceedWithInput {
             let number = sender.tag
-            var rightString = standardNotationString(rightNumber)
+            let formatNumber = FormatNumber(numberToFormat: rightNumber)
+            var rightString = formatNumber.standardNotation()
             print("old rightDouble: \(rightNumber)")
             print("old rightString: \(rightString)")
             rightString += String(number)
             print("new rightString: \(rightString)")
             rightNumber = Double(rightString)!
             print("new rightDouble: \(rightNumber)")
-            if decimalPressed {
+            if decimalShown {
                 if sender.tag == 0 {
                     trailingZeros += 1
                 } else {
@@ -322,17 +327,15 @@ class ViewController: UIViewController {
         }
     }
     
-    var trailingZeros = 0
-    
     @IBAction func decimalPressed(_ sender: AnyObject) {
         print("func decimalPressed()")
-        if !decimalPressed {
+        if !decimalShown {
             if resetOutput {
                 rightNumber = 0.0
                 trailingZeros = 0
                 resetOutput = false
             }
-            decimalPressed = true
+            decimalShown = true
             updateOutputLabel(rightNumber)
         }
     }
@@ -350,7 +353,7 @@ class ViewController: UIViewController {
     
     @IBAction func equalsPressed(_ sender: AnyObject) {
         print("func equalsPressed()")
-        decimalPressed = false
+        decimalShown = false
         resetOutput = true
         resetOperation = true
         trailingZeros = 0
@@ -425,7 +428,7 @@ class ViewController: UIViewController {
         }
         leftNumber = calculation
         resetOutput = true
-        decimalPressed = false
+        decimalShown = false
         if currentOperation != .none {
             updateOutputLabel(leftNumber)
         }
@@ -469,48 +472,6 @@ class ViewController: UIViewController {
     ///// NUMBER FORMATTING /////
     /////////////////////////////
     
-    func scientificNotationString(_ inputDouble: Double) -> String {
-        print("func scientificNotationString()")
-        let val = inputDouble as NSNumber
-        let numberFormatter = NumberFormatter()
-        numberFormatter.minimumIntegerDigits = 1
-        numberFormatter.decimalSeparator = "."
-        numberFormatter.numberStyle = NumberFormatter.Style.scientific
-        numberFormatter.positiveFormat = "0.###E+0"
-        numberFormatter.negativeFormat = "0.###E-0"
-        numberFormatter.exponentSymbol = "e"
-        if let stringFromNumber = numberFormatter.string(from: val) {
-            return(stringFromNumber)
-        } else {
-            return "Error"
-        }
-    }
-    
-    func standardNotationString(_ inputDouble: Double) -> String {
-        print("func standardNotationString()")
-        let val = inputDouble as NSNumber
-        let numberFormatter = NumberFormatter()
-        numberFormatter.minimumIntegerDigits = 1
-        numberFormatter.decimalSeparator = "."
-        if decimalPressed {
-            numberFormatter.alwaysShowsDecimalSeparator = true
-        }
-        var integerDigits = 1
-        if abs(inputDouble) >= 1 {
-            integerDigits = Int(log10(abs(inputDouble))) + 1
-        }
-        if inputDouble < 0 { // Account for the negative sign
-            integerDigits += 1
-        }
-        numberFormatter.maximumFractionDigits = 12 - integerDigits
-        if let stringFromNumber = numberFormatter.string(from: val) {
-            let outputString = addTrailingZeros(inputString: stringFromNumber)
-            return outputString
-        } else {
-            return "Error"
-        }
-    }
-    
     func updateOutputLabel(_ inputDouble: Double) {
         print("func updateOutputLabel()")
         if inputDouble == rightNumber {
@@ -518,32 +479,15 @@ class ViewController: UIViewController {
         } else {
             outputTextIsRightNum = false
         }
-        if abs(inputDouble) >= 1000000000 || (abs(inputDouble) <= 0.00000000001 && inputDouble != 0.0) {
-            let outputText = scientificNotationString(inputDouble)
-            outputLabel.text = outputText
-            if outputText.contains("∞") {
-                animateOutputLabel()
-            }
-        } else {
-            outputLabel.text = standardNotationString(inputDouble)
+        let formatNumber = FormatNumber(numberToFormat: inputDouble)
+        let outputText = formatNumber.convertDoubleToString()
+        outputLabel.text = outputText
+        if outputText.contains("∞") {
+            animateOutputLabel()
         }
+        
     }
     
-    func addTrailingZeros(inputString: String) -> String {
-        print("func addTrailingZeros()")
-        var mutableString = inputString
-        if trailingZeros > 0 {
-            for _ in 1...trailingZeros {
-                mutableString += "0"
-            }
-        }
-        return mutableString
-    }
-    
-    func isInt(_ double: Double) -> Bool {
-        let isInteger = double.truncatingRemainder(dividingBy: 1) == 0
-        return isInteger
-    }
 }
 
 ///////////////////////////////////////////////////////

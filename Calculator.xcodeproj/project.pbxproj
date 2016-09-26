@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		420D63B21D991FC6001FA256 /* FormatNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420D63B11D991FC6001FA256 /* FormatNumber.swift */; };
 		42122EA81D8857A600B180D8 /* FinalFrontierOldStyle.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 42122EA71D8857A600B180D8 /* FinalFrontierOldStyle.TTF */; };
 		422C47081D70C92E008CDFCB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422C47071D70C92E008CDFCB /* AppDelegate.swift */; };
 		422C470A1D70C92E008CDFCB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422C47091D70C92E008CDFCB /* ViewController.swift */; };
@@ -18,6 +19,7 @@
 		425643871D8982AC000D5D83 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425643861D8982AC000D5D83 /* Extensions.swift */; };
 		428A6FB11D98141C008DFAAB /* CalcColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428A6FB01D98141C008DFAAB /* CalcColors.swift */; };
 		428A6FB31D981679008DFAAB /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428A6FB21D981679008DFAAB /* RoundedView.swift */; };
+		428A6FB51D98191A008DFAAB /* ButtonValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428A6FB41D98191A008DFAAB /* ButtonValues.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		420D63B11D991FC6001FA256 /* FormatNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormatNumber.swift; sourceTree = "<group>"; };
 		42122EA71D8857A600B180D8 /* FinalFrontierOldStyle.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = FinalFrontierOldStyle.TTF; sourceTree = "<group>"; };
 		422C47041D70C92E008CDFCB /* Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		422C47071D70C92E008CDFCB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +58,7 @@
 		425643861D8982AC000D5D83 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		428A6FB01D98141C008DFAAB /* CalcColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalcColors.swift; sourceTree = "<group>"; };
 		428A6FB21D981679008DFAAB /* RoundedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
+		428A6FB41D98191A008DFAAB /* ButtonValues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonValues.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +86,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		420D63AE1D991F46001FA256 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				420D63B11D991FC6001FA256 /* FormatNumber.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		420D63AF1D991F4D001FA256 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				422C470B1D70C92E008CDFCB /* Main.storyboard */,
+				428A6FB01D98141C008DFAAB /* CalcColors.swift */,
+				428A6FB21D981679008DFAAB /* RoundedView.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		420D63B01D991F57001FA256 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				422C47091D70C92E008CDFCB /* ViewController.swift */,
+				428A6FB41D98191A008DFAAB /* ButtonValues.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		422C46FB1D70C92E008CDFCB = {
 			isa = PBXGroup;
 			children = (
@@ -106,15 +137,14 @@
 		422C47061D70C92E008CDFCB /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
-				422C470B1D70C92E008CDFCB /* Main.storyboard */,
-				422C47091D70C92E008CDFCB /* ViewController.swift */,
+				420D63AE1D991F46001FA256 /* Model */,
+				420D63AF1D991F4D001FA256 /* View */,
+				420D63B01D991F57001FA256 /* Controller */,
 				425643861D8982AC000D5D83 /* Extensions.swift */,
 				422C47071D70C92E008CDFCB /* AppDelegate.swift */,
 				422C47111D70C92E008CDFCB /* Assets.xcassets */,
 				422C47131D70C92E008CDFCB /* LaunchScreen.storyboard */,
 				422C47161D70C92E008CDFCB /* Info.plist */,
-				428A6FB01D98141C008DFAAB /* CalcColors.swift */,
-				428A6FB21D981679008DFAAB /* RoundedView.swift */,
 			);
 			path = Calculator;
 			sourceTree = "<group>";
@@ -278,6 +308,8 @@
 				422C47081D70C92E008CDFCB /* AppDelegate.swift in Sources */,
 				428A6FB31D981679008DFAAB /* RoundedView.swift in Sources */,
 				425643871D8982AC000D5D83 /* Extensions.swift in Sources */,
+				420D63B21D991FC6001FA256 /* FormatNumber.swift in Sources */,
+				428A6FB51D98191A008DFAAB /* ButtonValues.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
