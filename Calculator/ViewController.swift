@@ -10,7 +10,6 @@
 ///// TO DO before v1 launch /////
 //////////////////////////////////
 
-// Press and hold on outputLabel copies to clipboard
 // Create app icon
 // Create launch screen
 
@@ -119,9 +118,10 @@ class ViewController: UIViewController {
             label.textColor = CalcText.color
             let backgroundColor = getLabelBackgroundColor(labelTag: label.tag)
             label.backgroundColor = backgroundColor
-            if label.tag <= 10 {
+            let labelName = Button(rawValue: label.tag)
+            if label.tag <= 10 { // Numbers and decimal labels
                 label.font = UIFont(name: CalcText.font, size: CalcText.size * 1.5)
-            } else if label.tag == 50 {
+            } else if labelName == .outputLabel || labelName == .outputBackground {
                 label.font = UIFont(name: CalcText.font, size: CalcText.size * 2.0)
             } else {
                 label.font = UIFont(name: CalcText.font, size: CalcText.size * 1.0)
@@ -230,48 +230,61 @@ class ViewController: UIViewController {
     ///// COPY OUTPUT /////
     ///////////////////////
     
-//    @IBAction func copyPressed(_ sender: AnyObject) {
-//        print("func copyPressed()")
-//        UIPasteboard.general.string = outputLabel.text
-//        timer.invalidate()
-//        backgroundAlpha = 1
-//    }
-    
     var keepAnimating = true
-    var outputAlpha: CGFloat = 1
+    let timeInterval = 0.5
     var timer: Timer!
     
-    @IBAction func copyTouchUp(_ sender: AnyObject) {
-        outputAlpha = 1
-        keepAnimating = true
-        updateOutputAlpha()
-    }
-    
     @IBAction func copyTouchDown(_ sender: AnyObject) {
+        print("func copyTouchDown()")
         keepAnimating = true
-        timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(ViewController.copyAnimation), userInfo: nil, repeats: true)
+        beginCopyAnimation()
     }
     
-    func copyAnimation() {
+    @IBAction func copyTouchUpInside(_ sender: AnyObject) {
+        print("func copyTouchUpInside()")
+        endCopyAnimation()
+    }
+    
+    @IBAction func copyTouchUpOutside(_ sender: AnyObject) {
+        print("func copyTouchUpOutside()")
+        endCopyAnimation()
+    }
+    
+    @IBAction func copyDragOutside(_ sender: AnyObject) {
+        print("func copyDragOutside()")
+        endCopyAnimation()
+    }
+    
+    func beginCopyAnimation() {
+        print("func beginCopyAnimation()")
+        let outputBackground = getLabel(senderTag: 51)
+        outputBackground.text = "COPYING..."
+        outputBackground.animate(duration: timeInterval, textColor: .white, backgroundColor: .black)
+        outputLabel.animateOutputLabel(duration: timeInterval, textColor: UIColor.white.withAlphaComponent(0.0))
+        timer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(ViewController.copyOutput), userInfo: nil, repeats: false)
+    }
+    
+    func endCopyAnimation() {
+        print("func endCopyAnimation()")
         if keepAnimating {
-            if outputAlpha > 0 {
-                outputAlpha -= 0.01
-                print(outputAlpha)
-            } else {
-                print("copied!")
-                keepAnimating = false
-            }
-            updateOutputAlpha()
+            keepAnimating = false
+            timer.invalidate()
+            let outputBackground = getLabel(senderTag: 51)
+            let backgroundColor = getLabelBackgroundColor(labelTag: 51)
+            print(backgroundColor)
+            outputBackground.animate(duration: timeInterval, textColor: UIColor.white.withAlphaComponent(0.0), backgroundColor: backgroundColor)
+            outputLabel.animate(duration: timeInterval, textColor: UIColor.black, backgroundColor: UIColor.clear)
+            outputBackground.text = ""
         }
     }
     
-    func updateOutputAlpha() {
+    func copyOutput() {
+        print("func copyOutput()")
+        UIPasteboard.general.string = outputLabel.text
+        timer.invalidate()
         let outputBackground = getLabel(senderTag: 51)
-        let backgroundColor = getLabelBackgroundColor(labelTag: 51)
-        outputBackground.backgroundColor = backgroundColor.withAlphaComponent(outputAlpha)
+        outputBackground.text = "COPIED!"
     }
-    
-    
     
     ////////////////////////////
     ///// CALCULATOR LOGIC /////

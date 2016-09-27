@@ -27,7 +27,7 @@
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lGg-pz-aQW" userLabel="outputView" customClass="RoundedView" customModule="Calculator" customModuleProvider="target">
                                 <frame key="frameInset" minX="10" minY="24" width="397" height="99"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" tag="51" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8AO-EJ-b4N" userLabel="Output BG Label" customClass="CustomLabel" customModule="Calculator" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" tag="51" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8AO-EJ-b4N" userLabel="Output BG Label" customClass="CustomLabel" customModule="Calculator" customModuleProvider="target">
                                         <frame key="frameInset" width="397" height="99"/>
                                         <color key="backgroundColor" red="0.98431372549019602" green="0.70588235294117652" blue="0.45490196078431372" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -43,8 +43,10 @@
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nKk-AF-9mU" userLabel="Copy Button">
                                         <frame key="frameInset" minY="3" width="397" height="96"/>
                                         <connections>
-                                            <action selector="copyTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="w2s-OV-OXF"/>
-                                            <action selector="copyTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qly-zz-ETH"/>
+                                            <action selector="copyDragOutside:" destination="BYZ-38-t0r" eventType="touchDragOutside" id="1ox-16-oJf"/>
+                                            <action selector="copyTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="2Gj-iN-nNG"/>
+                                            <action selector="copyTouchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="r4h-sO-IMS"/>
+                                            <action selector="copyTouchUpOutside:" destination="BYZ-38-t0r" eventType="touchUpOutside" id="rrU-g9-Rxc"/>
                                         </connections>
                                     </button>
                                 </subviews>
