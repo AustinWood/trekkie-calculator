@@ -19,14 +19,14 @@
 
 // Move CALCULATOR LOGIC to Model
 // Move MEMORY to Model
+// Move COPY animations to separate Controller file
 // Add support for landscape
 // Add sound effects?
 // Adjust layout if enlarged status bar due to Personal Hotspot, GPS, Phone, etc
-// Programmatically determine how many digits can fit on the screen
+// Programmatically determine how many digits can fit on the screen (currently max digits is determined by iPhone 5 screen size)
 // Can I make addTrailingZeros() more efficient by using NumberFormatter?
 // Set . vs , for decimal based on phone settings (most countries, other than US and UK, use comma for decimal and period for thousands separater)
 // Thousands separater?
-// Bug: reset label colors after multitasking swipe on iPad
 // Register hardware keyboard presses
 // Add second label that shows previous operations?
 // Add slide-in animation to outputLabel: http://www.andrewcbancroft.com/2014/09/24/slide-in-animation-in-swift/
