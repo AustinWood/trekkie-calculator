@@ -8,6 +8,9 @@
 
 import UIKit
 
+//let bounds = UIScreen.main.bounds
+//let width = bounds.size.width
+
 struct CalcColor {
     static let tan = UIColor(red:0.996, green:0.796, blue:0.612, alpha:1.00)
     static let salmon = UIColor(red:0.992, green:0.600, blue:0.420, alpha:1.00)

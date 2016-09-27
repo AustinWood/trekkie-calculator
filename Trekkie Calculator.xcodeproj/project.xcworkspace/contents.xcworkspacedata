@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Calculator.xcodeproj">
+      location = "self:/Users/austinwood/Documents/XCode/Calculator/Trekkie Calculator.xcodeproj">
    </FileRef>
 </Workspace>

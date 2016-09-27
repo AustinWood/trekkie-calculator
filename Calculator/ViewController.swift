@@ -6,17 +6,11 @@
 //  Copyright © 2016 Austin Wood. All rights reserved.
 //
 
-//////////////////////////////////
-///// TO DO before v1 launch /////
-//////////////////////////////////
+/////////////////
+///// TO DO /////
+/////////////////
 
-// Create app icon
 // Create launch screen
-
-////////////////////////
-///// TO DO for v2 /////
-////////////////////////
-
 // Move CALCULATOR LOGIC to Model
 // Move MEMORY to Model
 // Move COPY animations to separate Controller file
@@ -146,7 +140,7 @@ class ViewController: UIViewController {
         }
         return labelBackgroundColor
     }
-
+    
     func stylizeInvertSignLabel() {
         let font: UIFont? = UIFont(name: CalcText.font, size: CalcText.size)
         let fontSuper: UIFont? = UIFont(name: CalcText.font, size: CalcText.size / 1.5)

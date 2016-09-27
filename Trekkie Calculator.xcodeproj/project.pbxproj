@@ -46,17 +46,17 @@
 		420D63B71D993162001FA256 /* Operations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operations.swift; sourceTree = "<group>"; };
 		420D63B91D993486001FA256 /* CustomLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		42122EA71D8857A600B180D8 /* FinalFrontierOldStyle.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = FinalFrontierOldStyle.TTF; sourceTree = "<group>"; };
-		422C47041D70C92E008CDFCB /* Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		422C47041D70C92E008CDFCB /* Trekkie Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Trekkie Calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		422C47071D70C92E008CDFCB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		422C47091D70C92E008CDFCB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		422C470C1D70C92E008CDFCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		422C47111D70C92E008CDFCB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		422C47141D70C92E008CDFCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		422C47161D70C92E008CDFCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		422C471B1D70C92E008CDFCB /* CalculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalculatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		422C471B1D70C92E008CDFCB /* Trekkie CalculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Trekkie CalculatorTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		422C471F1D70C92E008CDFCB /* CalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTests.swift; sourceTree = "<group>"; };
 		422C47211D70C92E008CDFCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		422C47261D70C92E008CDFCB /* CalculatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalculatorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		422C47261D70C92E008CDFCB /* Trekkie CalculatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Trekkie CalculatorUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		422C472A1D70C92E008CDFCB /* CalculatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorUITests.swift; sourceTree = "<group>"; };
 		422C472C1D70C92E008CDFCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		425643861D8982AC000D5D83 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -133,9 +133,9 @@
 		422C47051D70C92E008CDFCB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				422C47041D70C92E008CDFCB /* Calculator.app */,
-				422C471B1D70C92E008CDFCB /* CalculatorTests.xctest */,
-				422C47261D70C92E008CDFCB /* CalculatorUITests.xctest */,
+				422C47041D70C92E008CDFCB /* Trekkie Calculator.app */,
+				422C471B1D70C92E008CDFCB /* Trekkie CalculatorTests.xctest */,
+				422C47261D70C92E008CDFCB /* Trekkie CalculatorUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -176,9 +176,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		422C47031D70C92E008CDFCB /* Calculator */ = {
+		422C47031D70C92E008CDFCB /* Trekkie Calculator */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 422C472F1D70C92E008CDFCB /* Build configuration list for PBXNativeTarget "Calculator" */;
+			buildConfigurationList = 422C472F1D70C92E008CDFCB /* Build configuration list for PBXNativeTarget "Trekkie Calculator" */;
 			buildPhases = (
 				422C47001D70C92E008CDFCB /* Sources */,
 				422C47011D70C92E008CDFCB /* Frameworks */,
@@ -188,14 +188,14 @@
 			);
 			dependencies = (
 			);
-			name = Calculator;
+			name = "Trekkie Calculator";
 			productName = Calculator;
-			productReference = 422C47041D70C92E008CDFCB /* Calculator.app */;
+			productReference = 422C47041D70C92E008CDFCB /* Trekkie Calculator.app */;
 			productType = "com.apple.product-type.application";
 		};
-		422C471A1D70C92E008CDFCB /* CalculatorTests */ = {
+		422C471A1D70C92E008CDFCB /* Trekkie CalculatorTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 422C47321D70C92E008CDFCB /* Build configuration list for PBXNativeTarget "CalculatorTests" */;
+			buildConfigurationList = 422C47321D70C92E008CDFCB /* Build configuration list for PBXNativeTarget "Trekkie CalculatorTests" */;
 			buildPhases = (
 				422C47171D70C92E008CDFCB /* Sources */,
 				422C47181D70C92E008CDFCB /* Frameworks */,
@@ -206,14 +206,14 @@
 			dependencies = (
 				422C471D1D70C92E008CDFCB /* PBXTargetDependency */,
 			);
-			name = CalculatorTests;
+			name = "Trekkie CalculatorTests";
 			productName = CalculatorTests;
-			productReference = 422C471B1D70C92E008CDFCB /* CalculatorTests.xctest */;
+			productReference = 422C471B1D70C92E008CDFCB /* Trekkie CalculatorTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		422C47251D70C92E008CDFCB /* CalculatorUITests */ = {
+		422C47251D70C92E008CDFCB /* Trekkie CalculatorUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 422C47351D70C92E008CDFCB /* Build configuration list for PBXNativeTarget "CalculatorUITests" */;
+			buildConfigurationList = 422C47351D70C92E008CDFCB /* Build configuration list for PBXNativeTarget "Trekkie CalculatorUITests" */;
 			buildPhases = (
 				422C47221D70C92E008CDFCB /* Sources */,
 				422C47231D70C92E008CDFCB /* Frameworks */,
@@ -224,9 +224,9 @@
 			dependencies = (
 				422C47281D70C92E008CDFCB /* PBXTargetDependency */,
 			);
-			name = CalculatorUITests;
+			name = "Trekkie CalculatorUITests";
 			productName = CalculatorUITests;
-			productReference = 422C47261D70C92E008CDFCB /* CalculatorUITests.xctest */;
+			productReference = 422C47261D70C92E008CDFCB /* Trekkie CalculatorUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -243,6 +243,7 @@
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = ATN7UULDN9;
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Manual;
 					};
 					422C471A1D70C92E008CDFCB = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -256,7 +257,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 422C46FF1D70C92E008CDFCB /* Build configuration list for PBXProject "Calculator" */;
+			buildConfigurationList = 422C46FF1D70C92E008CDFCB /* Build configuration list for PBXProject "Trekkie Calculator" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -269,9 +270,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				422C47031D70C92E008CDFCB /* Calculator */,
-				422C471A1D70C92E008CDFCB /* CalculatorTests */,
-				422C47251D70C92E008CDFCB /* CalculatorUITests */,
+				422C47031D70C92E008CDFCB /* Trekkie Calculator */,
+				422C471A1D70C92E008CDFCB /* Trekkie CalculatorTests */,
+				422C47251D70C92E008CDFCB /* Trekkie CalculatorUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -342,12 +343,12 @@
 /* Begin PBXTargetDependency section */
 		422C471D1D70C92E008CDFCB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 422C47031D70C92E008CDFCB /* Calculator */;
+			target = 422C47031D70C92E008CDFCB /* Trekkie Calculator */;
 			targetProxy = 422C471C1D70C92E008CDFCB /* PBXContainerItemProxy */;
 		};
 		422C47281D70C92E008CDFCB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 422C47031D70C92E008CDFCB /* Calculator */;
+			target = 422C47031D70C92E008CDFCB /* Trekkie Calculator */;
 			targetProxy = 422C47271D70C92E008CDFCB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -392,6 +393,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -440,7 +442,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Austin Wood (ATN7UULDN9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Austin Wood (ATN7UULDN9)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -466,11 +469,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = ATN7UULDN9;
 				INFOPLIST_FILE = Calculator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.austinwood.Calculator;
+				PRODUCT_BUNDLE_IDENTIFIER = com.austinwood.trekkiecalculator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "3f1dcaa4-5b41-4d15-a52a-09e04be0a6ee";
+				PROVISIONING_PROFILE_SPECIFIER = TrekkieCalculatorProfileDev;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -482,8 +488,10 @@
 				DEVELOPMENT_TEAM = ATN7UULDN9;
 				INFOPLIST_FILE = Calculator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.austinwood.Calculator;
+				PRODUCT_BUNDLE_IDENTIFIER = com.austinwood.trekkiecalculator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "de7f7b7e-b4d8-444d-8154-1f6b93bdcb8c";
+				PROVISIONING_PROFILE_SPECIFIER = TrekkieCalculatorProfileDist;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -497,7 +505,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.austinwood.CalculatorTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Calculator.app/Calculator";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Trekkie Calculator.app/Trekkie Calculator";
 			};
 			name = Debug;
 		};
@@ -510,7 +518,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.austinwood.CalculatorTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Calculator.app/Calculator";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Trekkie Calculator.app/Trekkie Calculator";
 			};
 			name = Release;
 		};
@@ -541,7 +549,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		422C46FF1D70C92E008CDFCB /* Build configuration list for PBXProject "Calculator" */ = {
+		422C46FF1D70C92E008CDFCB /* Build configuration list for PBXProject "Trekkie Calculator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				422C472D1D70C92E008CDFCB /* Debug */,
@@ -550,7 +558,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		422C472F1D70C92E008CDFCB /* Build configuration list for PBXNativeTarget "Calculator" */ = {
+		422C472F1D70C92E008CDFCB /* Build configuration list for PBXNativeTarget "Trekkie Calculator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				422C47301D70C92E008CDFCB /* Debug */,
@@ -559,7 +567,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		422C47321D70C92E008CDFCB /* Build configuration list for PBXNativeTarget "CalculatorTests" */ = {
+		422C47321D70C92E008CDFCB /* Build configuration list for PBXNativeTarget "Trekkie CalculatorTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				422C47331D70C92E008CDFCB /* Debug */,
@@ -568,7 +576,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		422C47351D70C92E008CDFCB /* Build configuration list for PBXNativeTarget "CalculatorUITests" */ = {
+		422C47351D70C92E008CDFCB /* Build configuration list for PBXNativeTarget "Trekkie CalculatorUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				422C47361D70C92E008CDFCB /* Debug */,
